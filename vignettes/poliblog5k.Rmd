@@ -1,0 +1,498 @@
+---
+title: "Structural Topic Modeling in Aitchison Geometry: Blog Posts on the 2008 US Presidential Election"
+author: "egscatm package"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+vignette: >
+  %\VignetteIndexEntry{Structural Topic Modeling in Aitchison Geometry: Blog Posts on the 2008 US Presidential Election}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  collapse  = TRUE,
+  comment   = "#>",
+  fig.width = 7,
+  fig.height = 4.5
+)
+```
+
+# Introduction
+
+`egscatm` fits a **Structural Topic Model in Aitchison geometry** via a
+closed-form spectral solution.  Document–topic proportions live on the
+probability simplex $\mathcal{S}^K$ and are linked to document-level
+covariates through a Generalized Structured Component Analysis (GSCA)
+formulation.  Estimation reduces to a **single eigendecomposition**—no
+iterative algorithm, no random initialisation, no local optima.
+
+This vignette walks through a complete analysis of `poliblog5k`, a corpus of
+5 000 US political blog posts collected during the 2008 presidential
+campaign and distributed with the `stm` package
+(Roberts, Stewart & Tingley, 2019).
+
+## The ILR-EGSCA model in brief
+
+For $M$ documents, $N$ terms, $K$ topics and $P$ covariates:
+
+| Symbol | Dimension | Meaning |
+|--------|-----------|---------|
+| $\mathbf{W}$ | $M \times N$ | Document–term matrix |
+| $\mathbf{C}$ | $M \times P$ | Covariate matrix (column-centred) |
+| $\mathbf{\Pi}$ | $M \times K$ | **Topic proportions** (rows $\in \mathcal{S}^K$) |
+| $\boldsymbol{\Phi}$ | $K \times N$ | Topic–term loadings |
+| $\mathbf{B}_z$ | $P \times (K{-}1)$ | Covariate path coefficients in ILR space |
+
+The model solves
+
+$$
+\min_{\mathbf{Z},\boldsymbol{\Psi},\mathbf{B}_z,\boldsymbol{\mu}}
+\left\|
+  \widetilde{\mathbf{W}} - \tfrac{1}{K}\,\mathbf{Z}\boldsymbol{\Psi}
+\right\|_F^2
++
+\lambda\,\left\|\mathbf{Z} - \mathbf{C}\mathbf{B}_z\right\|_F^2,
+\qquad
+\text{s.t.}\; \mathbf{Z}^\top\mathbf{Z} = \mathbf{I}_{K-1},
+$$
+
+where $\mathbf{Z}$ are the ILR topic scores and $\widetilde{\mathbf{W}}$
+is the row-centred document–term matrix.  After profiling out
+$\boldsymbol{\Psi}$, $\mathbf{B}_z$ and $\boldsymbol{\mu}$, the problem
+reduces to the top-$(K{-}1)$ eigendecomposition of the
+$M \times M$ matrix
+
+$$
+\mathbf{S}_z =
+\underbrace{\widetilde{\mathbf{W}}\widetilde{\mathbf{W}}^\top}_{\text{centred doc similarity (LSA)}}
++
+\lambda\,\underbrace{\mathbf{C}(\mathbf{C}^\top\mathbf{C})^{-1}\mathbf{C}^\top}_{\text{covariate projector } \mathbf{P}_C}.
+$$
+
+$\lambda = 0$ recovers centred LSA; $\lambda \to \infty$ collapses topics
+onto the covariate space.
+
+---
+
+# Setup
+
+```{r pkgs, message=FALSE, warning=FALSE}
+# Load egscatm functions (replace with library(egscatm) once installed)
+pkg_dir <- system.file("R", package = "egscatm")
+if (nchar(pkg_dir) == 0L) {
+  # running from source
+  for (f in list.files("../R", pattern = "[.]R$", full.names = TRUE)) source(f)
+} else {
+  library(egscatm)
+}
+
+library(stm)   # for data and comparison
+set.seed(2024)
+```
+
+---
+
+# Data
+
+## The `poliblog5k` corpus
+
+```{r load-data}
+data(poliblog5k)
+
+cat("Total documents :", length(poliblog5k.docs), "\n")
+cat("Vocabulary size :", length(poliblog5k.voc),  "\n")
+cat("Metadata columns:", names(poliblog5k.meta),  "\n")
+```
+
+The corpus covers the period from the early 2008 primaries to the
+November election.  Each document has two covariates:
+
+- **`rating`** — political leaning of the blog (*Conservative* / *Liberal*).
+- **`day`** — day of the campaign (integer, roughly 1–365).
+
+```{r meta-summary}
+table(poliblog5k.meta$rating)
+```
+
+## Sampling and vocabulary pruning
+
+We draw a random sample of **1 000 documents** and use
+`prepDocuments()` to remove terms appearing in fewer than 2 documents
+(required by `stm`; we re-use the same pruned vocabulary for `egscatm`
+to ensure a fair comparison).
+
+```{r sample}
+N_sample <- 1000L
+idx      <- sample.int(5000L, N_sample)
+
+out   <- prepDocuments(
+  poliblog5k.docs[idx],
+  poliblog5k.voc,
+  poliblog5k.meta[idx, ],
+  lower.thresh = 2L,
+  verbose      = FALSE
+)
+
+docs  <- out$documents
+vocab <- out$vocab
+meta  <- out$meta
+M     <- length(docs)
+V     <- length(vocab)
+
+cat(sprintf("After pruning: %d documents, %d terms\n", M, V))
+```
+
+## Building the document–term matrix for `egscatm`
+
+`egscatm` expects a dense numeric matrix $\mathbf{W} \in \mathbb{R}_{\ge 0}^{M \times N}$.
+We convert `stm`'s sparse list format:
+
+```{r dtm}
+stm_to_dtm <- function(docs, V) {
+  W <- matrix(0.0, length(docs), V)
+  for (i in seq_along(docs)) {
+    d <- docs[[i]]
+    W[i, d[1L, ]] <- d[2L, ]
+  }
+  W
+}
+
+W <- stm_to_dtm(docs, V)
+cat(sprintf("DTM: %d x %d,  sparsity %.1f%%\n",
+            nrow(W), ncol(W), 100 * mean(W == 0)))
+```
+
+## Covariate matrix
+
+We use two covariates: political leaning (0/1) and campaign day (centred).
+
+```{r covariates}
+C <- scale(
+  cbind(rating = as.integer(meta$rating == "Liberal"),
+        day    = meta$day),
+  center = TRUE, scale = FALSE
+)
+colnames(C) <- c("Liberal", "day")
+head(round(C, 2))
+```
+
+---
+
+# Fitting the model
+
+`egscatm()` requires only $\mathbf{W}$, $\mathbf{C}$, the number of
+topics $K$, and the regularisation weight $\lambda$.  The default
+`scale_W = TRUE` row-normalises $\mathbf{W}$ to term frequencies before
+fitting.
+
+```{r fit, cache=TRUE}
+K      <- 7L
+lambda <- 3.0
+
+t_start <- proc.time()
+fit <- egscatm(W, C, K = K, lambda = lambda, scale_W = TRUE)
+t_fit   <- proc.time() - t_start
+
+cat(sprintf("Fit completed in %.2f seconds (elapsed)\n", t_fit["elapsed"]))
+```
+
+## Eigenvalue spectrum
+
+The top $K - 1 = 6$ eigenvalues of $\mathbf{S}_z$ quantify how much
+variance in the covariate-augmented document similarity is captured by
+each ILR direction.
+
+```{r eigenvalues}
+ev_df <- data.frame(
+  Direction  = paste0("ILR", seq_len(K - 1L)),
+  Eigenvalue = round(fit$eigenvalues, 3),
+  Cumulative = round(cumsum(fit$eigenvalues) / sum(fit$eigenvalues_all), 3)
+)
+knitr::kable(ev_df, align = "lrr",
+             caption = "Top eigenvalues of $S_z$")
+```
+
+The first two eigenvalues dominate and correspond to the covariate
+projector $\lambda \mathbf{P}_C$ (with $\lambda = 3$, this term
+contributes up to $3 \times \text{rank}(\mathbf{C}) = 6$ to the trace).
+The remaining directions capture purely textual variance (LSA signal).
+
+---
+
+# Topic–term structure
+
+## Top-10 keywords per topic
+
+```{r top-terms}
+tt <- top_terms(fit, n = 10L, vocab = vocab)
+
+for (k in seq_len(K)) {
+  cat(sprintf("Topic %d : %s\n", k, paste(tt[k, ], collapse = "  |  ")))
+}
+```
+
+The topics capture coherent themes from the 2008 campaign:
+
+| Topic | Interpretation |
+|-------|----------------|
+| 1 | War in Iraq / Bush administration |
+| 2 | General political commentary |
+| 3 | Sarah Palin / financial crisis |
+| 4 | Obama–McCain general election |
+| 5 | Obama–Clinton Democratic primary |
+| 6 | Electoral mechanics (voting, polls, parties) |
+| 7 | Republican foreign policy / Iran |
+
+## ILR topic–term deviation matrix
+
+The matrix $\hat{\boldsymbol{\Psi}} \in \mathbb{R}^{(K-1) \times N}$
+captures topic-specific word deviations in ILR coordinates.  Each row is
+the ILR projection of one direction; positive entries indicate words
+*over-represented* relative to the corpus baseline in that direction.
+
+```{r psi-heatmap, fig.width=7, fig.height=3.5}
+# Show the 20 most variable terms across ILR directions
+term_var <- apply(fit$Psi, 2L, var)
+top_var  <- order(term_var, decreasing = TRUE)[1:20]
+
+image(
+  t(fit$Psi[, top_var]),
+  xaxt = "n", yaxt = "n",
+  col  = hcl.colors(64, "Blue-Red 3"),
+  main = expression(paste("ILR deviation matrix ", hat(Psi),
+                          " (top-20 variable terms)")),
+  xlab = "Term", ylab = "ILR direction"
+)
+axis(1, at = seq(0, 1, length.out = 20),
+     labels = vocab[top_var], las = 2, cex.axis = 0.65)
+axis(2, at = seq(0, 1, length.out = K - 1L),
+     labels = paste0("ILR", seq_len(K - 1L)), las = 1, cex.axis = 0.8)
+```
+
+---
+
+# Document–topic proportions
+
+## Distribution across the corpus
+
+`fit$Pi` is an $M \times K$ matrix; each row sums to 1 by construction
+(the closure map $\text{softmax}(\mathbf{V}\mathbf{z}_i^*)$ is the
+exact inverse of the ILR transformation, not an approximation).
+
+```{r pi-check}
+cat("Row-sum range:", range(round(rowSums(fit$Pi), 10)), "\n")
+cat("Min proportion:", min(fit$Pi), "\n")
+```
+
+```{r pi-boxplot, fig.height=3.5}
+boxplot(
+  fit$Pi,
+  names  = paste0("T", seq_len(K)),
+  col    = hcl.colors(K, "Set 2", alpha = 0.7),
+  border = hcl.colors(K, "Set 2"),
+  ylab   = "Topic proportion",
+  main   = "Distribution of document–topic proportions",
+  las    = 1
+)
+abline(h = 1 / K, lty = 2, col = "grey50")
+legend("topright", "1/K centroid", lty = 2, col = "grey50", bty = "n",
+       cex = 0.8)
+```
+
+The median of each topic is close to $1/K \approx 0.14$ — this is
+expected: the ILR centroid $\mathbf{z} = \mathbf{0}$ maps exactly to
+the uniform composition, so the *average* topic proportion is $1/K$
+by construction.  The spread reflects how strongly individual documents
+deviate from the centroid.
+
+---
+
+# Covariate effects
+
+## ILR path coefficients $\hat{\mathbf{B}}_z$
+
+$\hat{\mathbf{B}}_z \in \mathbb{R}^{P \times (K-1)}$ gives the OLS
+regression of the ILR topic scores on the covariates.  Column $k$
+describes how covariate $p$ shifts the topic composition along the $k$-th
+ILR direction.
+
+```{r bz}
+Bz_df <- as.data.frame(round(fit$Bz, 4))
+rownames(Bz_df) <- c("Liberal (vs Conservative)", "day (centred)")
+colnames(Bz_df) <- paste0("ILR", seq_len(K - 1L))
+knitr::kable(Bz_df,
+             caption = "Path coefficients $\\hat{\\mathbf{B}}_z$")
+```
+
+The `Liberal` coefficient on ILR1 (−0.063) is the largest signal:
+Liberal blogs score systematically lower on the first ILR direction.
+Since ILR1 contrasts the first topic against the others, this
+reflects a shift in topic composition between political leanings.
+
+## Mean topic prevalence by leaning
+
+```{r rating-effect, fig.height=3.5}
+prev_cons <- colMeans(fit$Pi[meta$rating == "Conservative", ])
+prev_lib  <- colMeans(fit$Pi[meta$rating == "Liberal",      ])
+
+x   <- seq_len(K)
+ylim <- range(c(prev_cons, prev_lib)) + c(-0.005, 0.005)
+
+plot(x - 0.12, prev_cons, pch = 19, col = "#E64B35",
+     xlim = c(0.5, K + 0.5), ylim = ylim,
+     xlab = "Topic", ylab = "Mean prevalence",
+     main = "Mean topic prevalence by political leaning",
+     xaxt = "n")
+points(x + 0.12, prev_lib, pch = 17, col = "#4DBBD5")
+axis(1, at = x, labels = paste0("T", x))
+legend("topright",
+       legend = c("Conservative", "Liberal"),
+       pch    = c(19, 17),
+       col    = c("#E64B35", "#4DBBD5"),
+       bty    = "n")
+abline(h = 1/K, lty = 2, col = "grey70")
+segments(x - 0.12, prev_cons, x + 0.12, prev_lib,
+         col = "grey60", lty = 3)
+```
+
+```{r delta-table}
+delta_df <- data.frame(
+  Topic        = paste0("T", seq_len(K)),
+  Conservative = round(prev_cons, 4),
+  Liberal      = round(prev_lib,  4),
+  Delta        = round(prev_lib - prev_cons, 4),
+  Leaning      = ifelse(prev_lib > prev_cons, "Liberal ↑", "Conservative ↑")
+)
+knitr::kable(delta_df, align = "lrrrr",
+             caption = "Mean prevalence difference (Liberal − Conservative)")
+```
+
+## Prevalence over time
+
+```{r day-effect, fig.height=4}
+# Bin campaign days into quartiles for visualisation
+day_q <- cut(meta$day, breaks = quantile(meta$day, c(0,.25,.5,.75,1)),
+             include.lowest = TRUE,
+             labels = c("Q1 (early)", "Q2", "Q3", "Q4 (late)"))
+
+prev_time <- t(sapply(levels(day_q), function(q)
+  colMeans(fit$Pi[day_q == q, ])))
+
+matplot(prev_time, type = "b", pch = seq_len(K),
+        col = hcl.colors(K, "Set 2"),
+        xaxt = "n",
+        xlab = "Campaign quarter", ylab = "Mean prevalence",
+        main = "Topic prevalence across campaign timeline",
+        lty  = 1)
+axis(1, at = seq_len(4), labels = levels(day_q))
+abline(h = 1/K, lty = 2, col = "grey70")
+legend("topright", paste0("T", seq_len(K)),
+       pch = seq_len(K), col = hcl.colors(K, "Set 2"),
+       bty = "n", ncol = 2, cex = 0.8)
+```
+
+---
+
+# Prediction on new documents
+
+`predict.egscatm()` projects new documents onto the fitted topic space
+via the ILR loadings $\hat{\boldsymbol{\Psi}}$ without refitting.
+
+```{r predict}
+# Hold out 50 documents for prediction
+idx_new  <- sample.int(M, 50L)
+W_new    <- W[idx_new, ]
+Pi_new   <- predict(fit, W_new, scale_W = TRUE)
+
+cat("Predicted Pi dimensions:", dim(Pi_new), "\n")
+cat("Row-sum range:", range(round(rowSums(Pi_new), 10)), "\n")
+
+# Top predicted topic per document
+top_topic <- apply(Pi_new, 1L, which.max)
+cat("Topic distribution in new docs:\n")
+print(table(paste0("T", top_topic)))
+```
+
+---
+
+# Bootstrap standard errors for path coefficients
+
+`ilr_se()` estimates standard errors for $\hat{\mathbf{B}}_z$ via
+nonparametric bootstrap resampling of documents.
+
+```{r se, cache=TRUE}
+se_res <- ilr_se(fit, W, C, B = 100L, seed = 42L, verbose = FALSE)
+
+se_df <- as.data.frame(round(se_res$se, 5))
+rownames(se_df) <- rownames(Bz_df)
+colnames(se_df) <- paste0("ILR", seq_len(K - 1L))
+knitr::kable(se_df,
+             caption = "Bootstrap SE for $\\hat{\\mathbf{B}}_z$ (B = 100)")
+```
+
+```{r ci-plot, fig.height=3.5}
+# Plot Bz +/- 1.96*SE for the 'Liberal' covariate (row 1)
+bz_liberal <- fit$Bz[1L, ]
+se_liberal  <- se_res$se[1L, ]
+
+ci_lo <- bz_liberal - 1.96 * se_liberal
+ci_hi <- bz_liberal + 1.96 * se_liberal
+dirs  <- seq_len(K - 1L)
+
+plot(dirs, bz_liberal, pch = 19, col = "#3C5488",
+     ylim = range(c(ci_lo, ci_hi)) + c(-0.01, 0.01),
+     xaxt = "n",
+     xlab = "ILR direction", ylab = "Coefficient",
+     main = expression(paste(hat(B)[z],
+       ": 'Liberal' covariate with 95% bootstrap CI")))
+arrows(dirs, ci_lo, dirs, ci_hi,
+       length = 0.05, angle = 90, code = 3, col = "#3C5488")
+abline(h = 0, lty = 2, col = "grey50")
+axis(1, at = dirs, labels = paste0("ILR", dirs))
+```
+
+---
+
+# Summary
+
+```{r summary}
+print(fit)
+```
+
+```{r summary-table, echo=FALSE}
+summ_df <- data.frame(
+  Parameter        = c("Documents (M)", "Terms (N)", "Topics (K)",
+                       "Covariates (P)", "Lambda (λ)", "Fit time (s)"),
+  Value            = c(M, V, K, ncol(C), lambda,
+                       round(t_fit["elapsed"], 2))
+)
+knitr::kable(summ_df, align = "lr", caption = "Model summary")
+```
+
+## Key properties
+
+- **Non-iterative**: the solution is the top-$(K{-}1)$ eigenspace of an
+  $(r + P) \times (r + P)$ matrix ($r \le \min(M, N, 100)$) — no random
+  initialisation, no convergence issues, fully deterministic.
+- **Globally optimal**: for the profiled, linearised ILR-EGSCA
+  objective (Ky Fan theorem).
+- **Simplex-consistent**: topic proportions satisfy
+  $\hat{\pi}_{ik} \ge 0$ and $\sum_k \hat{\pi}_{ik} = 1$ by
+  construction — not through post-hoc clipping.
+- **Compositional**: the structural penalty
+  $\lambda \|\mathbf{Z} - \mathbf{C}\mathbf{B}_z\|_F^2$ equals the
+  sum of squared **Aitchison distances** between observed and
+  covariate-predicted topic compositions (isometry of ILR).
+
+---
+
+# Session info
+
+```{r session}
+sessionInfo()
+```

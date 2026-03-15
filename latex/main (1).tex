@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{amsfonts}
+\usepackage{bm}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{natbib}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}{Remark}
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\closure}{closure}
+\DeclareMathOperator{\ilr}{ilr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\softmax}{softmax}
+\DeclareMathOperator{\vect}{vec}
+
+\begin{document}
+
+\title{Structural Topic Modeling in Aitchison Geometry:\\
+  An Analytical Spectral Solution via ILR-EGSCA}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+We introduce a structural topic model that operates natively in the
+Aitchison geometry of the simplex. Document--topic proportions are
+represented in isometric log-ratio (ILR) coordinates, and covariates are
+linked to topic prevalence through a Generalized Structured Component
+Analysis (GSCA) formulation. By profiling out all nuisance parameters in
+closed form, we reduce the estimation problem to a single eigenvalue
+decomposition of a covariate-augmented document similarity matrix.
+The resulting estimator is non-iterative, globally optimal for the
+profiled linearised objective, and yields topic proportions on the
+probability simplex by construction---not through a post-hoc
+transformation, but as the natural inverse of the coordinate system in
+which estimation is performed. We establish global optimality for the
+linearised ILR-EGSCA objective, clarify the identifiability conditions
+of the spectral solution under both simple and degenerate spectra, and
+derive consistency and asymptotic normality of the covariate path
+coefficients with an explicit analytical covariance formula based on
+eigenvector perturbation theory. A linearisation error bound under an
+eigenvector delocalisation condition quantifies the approximation quality
+relative to the original simplex problem. The approach bridges three
+previously disjoint frameworks---topic modeling, structural equation
+modeling, and compositional data analysis---through the unifying lens of
+Aitchison geometry.
+\end{abstract}
+
+\input{introduction}
+
+\input{methodology}
+
+\input{algorithm}
+
+
+\bibliographystyle{apalike}
+\bibliography{bibliography}
+\end{document}

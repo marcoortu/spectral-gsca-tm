@@ -1,0 +1,24 @@
+Package: egscatm
+Type: Package
+Title: Structural Topic Modeling via ILR-EGSCA
+Version: 0.1.0
+Authors@R: person("Author", "Name", role = c("aut", "cre"), email = "author@example.com")
+Description: Fits a structural topic model that operates natively in the Aitchison
+    geometry of the simplex. Document-topic proportions are represented in isometric
+    log-ratio (ILR) coordinates and linked to covariates through a Generalized
+    Structured Component Analysis (GSCA) formulation. Estimation reduces to a single
+    eigenvalue decomposition of a covariate-augmented document similarity matrix,
+    yielding a non-iterative, globally optimal solution.
+License: GPL-3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+    Matrix,
+    methods
+Suggests:
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown
+Config/testthat/edition: 3
+VignetteBuilder: knitr

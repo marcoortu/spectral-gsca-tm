@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="egscatm package" />
+
+<meta name="date" content="2026-03-15" />
+
+<title>Structural Topic Modeling in Aitchison Geometry: Blog Posts on the 2008 US Presidential Election</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Structural Topic Modeling in Aitchison
+Geometry: Blog Posts on the 2008 US Presidential Election</h1>
+<h4 class="author">egscatm package</h4>
+<h4 class="date">2026-03-15</h4>
+
+
+<div id="TOC">
+<ul>
+<li><a href="#introduction" id="toc-introduction"><span class="toc-section-number">1</span> Introduction</a>
+<ul>
+<li><a href="#the-ilr-egsca-model-in-brief" id="toc-the-ilr-egsca-model-in-brief"><span class="toc-section-number">1.1</span> The ILR-EGSCA model in
+brief</a></li>
+</ul></li>
+<li><a href="#setup" id="toc-setup"><span class="toc-section-number">2</span> Setup</a></li>
+<li><a href="#data" id="toc-data"><span class="toc-section-number">3</span> Data</a>
+<ul>
+<li><a href="#the-poliblog5k-corpus" id="toc-the-poliblog5k-corpus"><span class="toc-section-number">3.1</span> The <code>poliblog5k</code>
+corpus</a></li>
+<li><a href="#sampling-and-vocabulary-pruning" id="toc-sampling-and-vocabulary-pruning"><span class="toc-section-number">3.2</span> Sampling and vocabulary
+pruning</a></li>
+<li><a href="#building-the-documentterm-matrix-for-egscatm" id="toc-building-the-documentterm-matrix-for-egscatm"><span class="toc-section-number">3.3</span> Building the document–term matrix
+for <code>egscatm</code></a></li>
+<li><a href="#covariate-matrix" id="toc-covariate-matrix"><span class="toc-section-number">3.4</span> Covariate matrix</a></li>
+</ul></li>
+<li><a href="#fitting-the-model" id="toc-fitting-the-model"><span class="toc-section-number">4</span> Fitting the model</a>
+<ul>
+<li><a href="#eigenvalue-spectrum" id="toc-eigenvalue-spectrum"><span class="toc-section-number">4.1</span> Eigenvalue spectrum</a></li>
+</ul></li>
+<li><a href="#topicterm-structure" id="toc-topicterm-structure"><span class="toc-section-number">5</span> Topic–term structure</a>
+<ul>
+<li><a href="#top-10-keywords-per-topic" id="toc-top-10-keywords-per-topic"><span class="toc-section-number">5.1</span> Top-10 keywords per topic</a></li>
+<li><a href="#ilr-topicterm-deviation-matrix" id="toc-ilr-topicterm-deviation-matrix"><span class="toc-section-number">5.2</span> ILR topic–term deviation
+matrix</a></li>
+</ul></li>
+<li><a href="#documenttopic-proportions" id="toc-documenttopic-proportions"><span class="toc-section-number">6</span> Document–topic proportions</a>
+<ul>
+<li><a href="#distribution-across-the-corpus" id="toc-distribution-across-the-corpus"><span class="toc-section-number">6.1</span> Distribution across the
+corpus</a></li>
+</ul></li>
+<li><a href="#covariate-effects" id="toc-covariate-effects"><span class="toc-section-number">7</span> Covariate effects</a>
+<ul>
+<li><a href="#ilr-path-coefficients-hatmathbfb_z" id="toc-ilr-path-coefficients-hatmathbfb_z"><span class="toc-section-number">7.1</span> ILR path coefficients <span class="math inline">\(\hat{\mathbf{B}}_z\)</span></a></li>
+<li><a href="#mean-topic-prevalence-by-leaning" id="toc-mean-topic-prevalence-by-leaning"><span class="toc-section-number">7.2</span> Mean topic prevalence by
+leaning</a></li>
+<li><a href="#prevalence-over-time" id="toc-prevalence-over-time"><span class="toc-section-number">7.3</span> Prevalence over time</a></li>
+</ul></li>
+<li><a href="#prediction-on-new-documents" id="toc-prediction-on-new-documents"><span class="toc-section-number">8</span> Prediction on new documents</a></li>
+<li><a href="#bootstrap-standard-errors-for-path-coefficients" id="toc-bootstrap-standard-errors-for-path-coefficients"><span class="toc-section-number">9</span> Bootstrap standard errors for path
+coefficients</a></li>
+<li><a href="#summary" id="toc-summary"><span class="toc-section-number">10</span> Summary</a>
+<ul>
+<li><a href="#key-properties" id="toc-key-properties"><span class="toc-section-number">10.1</span> Key properties</a></li>
+</ul></li>
+<li><a href="#session-info" id="toc-session-info"><span class="toc-section-number">11</span> Session info</a></li>
+</ul>
+</div>
+
+<div id="introduction" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Introduction</h1>
+<p><code>egscatm</code> fits a <strong>Structural Topic Model in
+Aitchison geometry</strong> via a closed-form spectral solution.
+Document–topic proportions live on the probability simplex <span class="math inline">\(\mathcal{S}^K\)</span> and are linked to
+document-level covariates through a Generalized Structured Component
+Analysis (GSCA) formulation. Estimation reduces to a <strong>single
+eigendecomposition</strong>—no iterative algorithm, no random
+initialisation, no local optima.</p>
+<p>This vignette walks through a complete analysis of
+<code>poliblog5k</code>, a corpus of 5 000 US political blog posts
+collected during the 2008 presidential campaign and distributed with the
+<code>stm</code> package (Roberts, Stewart &amp; Tingley, 2019).</p>
+<div id="the-ilr-egsca-model-in-brief" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> The ILR-EGSCA model
+in brief</h2>
+<p>For <span class="math inline">\(M\)</span> documents, <span class="math inline">\(N\)</span> terms, <span class="math inline">\(K\)</span> topics and <span class="math inline">\(P\)</span> covariates:</p>
+<table>
+<colgroup>
+<col width="28%" />
+<col width="39%" />
+<col width="32%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Dimension</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mathbf{W}\)</span></td>
+<td><span class="math inline">\(M \times N\)</span></td>
+<td>Document–term matrix</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\mathbf{C}\)</span></td>
+<td><span class="math inline">\(M \times P\)</span></td>
+<td>Covariate matrix (column-centred)</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathbf{\Pi}\)</span></td>
+<td><span class="math inline">\(M \times K\)</span></td>
+<td><strong>Topic proportions</strong> (rows <span class="math inline">\(\in \mathcal{S}^K\)</span>)</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\boldsymbol{\Phi}\)</span></td>
+<td><span class="math inline">\(K \times N\)</span></td>
+<td>Topic–term loadings</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathbf{B}_z\)</span></td>
+<td><span class="math inline">\(P \times (K{-}1)\)</span></td>
+<td>Covariate path coefficients in ILR space</td>
+</tr>
+</tbody>
+</table>
+<p>The model solves</p>
+<p><span class="math display">\[
+\min_{\mathbf{Z},\boldsymbol{\Psi},\mathbf{B}_z,\boldsymbol{\mu}}
+\left\|
+  \widetilde{\mathbf{W}} - \tfrac{1}{K}\,\mathbf{Z}\boldsymbol{\Psi}
+\right\|_F^2
++
+\lambda\,\left\|\mathbf{Z} - \mathbf{C}\mathbf{B}_z\right\|_F^2,
+\qquad
+\text{s.t.}\; \mathbf{Z}^\top\mathbf{Z} = \mathbf{I}_{K-1},
+\]</span></p>
+<p>where <span class="math inline">\(\mathbf{Z}\)</span> are the ILR
+topic scores and <span class="math inline">\(\widetilde{\mathbf{W}}\)</span> is the row-centred
+document–term matrix. After profiling out <span class="math inline">\(\boldsymbol{\Psi}\)</span>, <span class="math inline">\(\mathbf{B}_z\)</span> and <span class="math inline">\(\boldsymbol{\mu}\)</span>, the problem reduces to
+the top-<span class="math inline">\((K{-}1)\)</span> eigendecomposition
+of the <span class="math inline">\(M \times M\)</span> matrix</p>
+<p><span class="math display">\[
+\mathbf{S}_z =
+\underbrace{\widetilde{\mathbf{W}}\widetilde{\mathbf{W}}^\top}_{\text{centred
+doc similarity (LSA)}}
++
+\lambda\,\underbrace{\mathbf{C}(\mathbf{C}^\top\mathbf{C})^{-1}\mathbf{C}^\top}_{\text{covariate
+projector } \mathbf{P}_C}.
+\]</span></p>
+<p><span class="math inline">\(\lambda = 0\)</span> recovers centred
+LSA; <span class="math inline">\(\lambda \to \infty\)</span> collapses
+topics onto the covariate space.</p>
+<hr />
+</div>
+</div>
+<div id="setup" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Setup</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># Load egscatm functions (replace with library(egscatm) once installed)</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>pkg_dir <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;R&quot;</span>, <span class="at">package =</span> <span class="st">&quot;egscatm&quot;</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">nchar</span>(pkg_dir) <span class="sc">==</span> <span class="dv">0</span><span class="dt">L</span>) {</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  <span class="co"># running from source</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="cf">for</span> (f <span class="cf">in</span> <span class="fu">list.files</span>(<span class="st">&quot;../R&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;[.]R$&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)) <span class="fu">source</span>(f)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  <span class="fu">library</span>(egscatm)</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>}</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="fu">library</span>(stm)   <span class="co"># for data and comparison</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span></code></pre></div>
+<hr />
+</div>
+<div id="data" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Data</h1>
+<div id="the-poliblog5k-corpus" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> The
+<code>poliblog5k</code> corpus</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">data</span>(poliblog5k)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Total documents :&quot;</span>, <span class="fu">length</span>(poliblog5k.docs), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co">#&gt; Total documents : 5000</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Vocabulary size :&quot;</span>, <span class="fu">length</span>(poliblog5k.voc),  <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="co">#&gt; Vocabulary size : 2632</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Metadata columns:&quot;</span>, <span class="fu">names</span>(poliblog5k.meta),  <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="co">#&gt; Metadata columns: rating day blog text</span></span></code></pre></div>
+<p>The corpus covers the period from the early 2008 primaries to the
+November election. Each document has two covariates:</p>
+<ul>
+<li><strong><code>rating</code></strong> — political leaning of the blog
+(<em>Conservative</em> / <em>Liberal</em>).</li>
+<li><strong><code>day</code></strong> — day of the campaign (integer,
+roughly 1–365).</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">table</span>(poliblog5k.meta<span class="sc">$</span>rating)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="co">#&gt; Conservative      Liberal </span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co">#&gt;         2853         2147</span></span></code></pre></div>
+</div>
+<div id="sampling-and-vocabulary-pruning" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Sampling and
+vocabulary pruning</h2>
+<p>We draw a random sample of <strong>1 000 documents</strong> and use
+<code>prepDocuments()</code> to remove terms appearing in fewer than 2
+documents (required by <code>stm</code>; we re-use the same pruned
+vocabulary for <code>egscatm</code> to ensure a fair comparison).</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>N_sample <span class="ot">&lt;-</span> <span class="dv">1000</span><span class="dt">L</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>idx      <span class="ot">&lt;-</span> <span class="fu">sample.int</span>(<span class="dv">5000</span><span class="dt">L</span>, N_sample)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>out   <span class="ot">&lt;-</span> <span class="fu">prepDocuments</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>  poliblog5k.docs[idx],</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>  poliblog5k.voc,</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>  poliblog5k.meta[idx, ],</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>  <span class="at">lower.thresh =</span> <span class="dv">2</span><span class="dt">L</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a>  <span class="at">verbose      =</span> <span class="cn">FALSE</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a>)</span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a>docs  <span class="ot">&lt;-</span> out<span class="sc">$</span>documents</span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a>vocab <span class="ot">&lt;-</span> out<span class="sc">$</span>vocab</span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a>meta  <span class="ot">&lt;-</span> out<span class="sc">$</span>meta</span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a>M     <span class="ot">&lt;-</span> <span class="fu">length</span>(docs)</span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>V     <span class="ot">&lt;-</span> <span class="fu">length</span>(vocab)</span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;After pruning: %d documents, %d terms</span><span class="sc">\n</span><span class="st">&quot;</span>, M, V))</span>
+<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="co">#&gt; After pruning: 1000 documents, 2632 terms</span></span></code></pre></div>
+</div>
+<div id="building-the-documentterm-matrix-for-egscatm" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Building the
+document–term matrix for <code>egscatm</code></h2>
+<p><code>egscatm</code> expects a dense numeric matrix <span class="math inline">\(\mathbf{W} \in \mathbb{R}_{\ge 0}^{M \times
+N}\)</span>. We convert <code>stm</code>’s sparse list format:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>stm_to_dtm <span class="ot">&lt;-</span> <span class="cf">function</span>(docs, V) {</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  W <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fl">0.0</span>, <span class="fu">length</span>(docs), V)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(docs)) {</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>    d <span class="ot">&lt;-</span> docs[[i]]</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>    W[i, d[<span class="dv">1</span><span class="dt">L</span>, ]] <span class="ot">&lt;-</span> d[<span class="dv">2</span><span class="dt">L</span>, ]</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>  }</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>  W</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>}</span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>W <span class="ot">&lt;-</span> <span class="fu">stm_to_dtm</span>(docs, V)</span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;DTM: %d x %d,  sparsity %.1f%%</span><span class="sc">\n</span><span class="st">&quot;</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a>            <span class="fu">nrow</span>(W), <span class="fu">ncol</span>(W), <span class="dv">100</span> <span class="sc">*</span> <span class="fu">mean</span>(W <span class="sc">==</span> <span class="dv">0</span>)))</span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt; DTM: 1000 x 2632,  sparsity 94.9%</span></span></code></pre></div>
+</div>
+<div id="covariate-matrix" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Covariate matrix</h2>
+<p>We use two covariates: political leaning (0/1) and campaign day
+(centred).</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>C <span class="ot">&lt;-</span> <span class="fu">scale</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  <span class="fu">cbind</span>(<span class="at">rating =</span> <span class="fu">as.integer</span>(meta<span class="sc">$</span>rating <span class="sc">==</span> <span class="st">&quot;Liberal&quot;</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>        <span class="at">day    =</span> meta<span class="sc">$</span>day),</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  <span class="at">center =</span> <span class="cn">TRUE</span>, <span class="at">scale =</span> <span class="cn">FALSE</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>)</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="fu">colnames</span>(C) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Liberal&quot;</span>, <span class="st">&quot;day&quot;</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">round</span>(C, <span class="dv">2</span>))</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co">#&gt;      Liberal     day</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co">#&gt; [1,]    0.57  -93.32</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co">#&gt; [2,]   -0.43 -168.32</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co">#&gt; [3,]    0.57  -14.32</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="co">#&gt; [4,]    0.57  -22.32</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co">#&gt; [5,]   -0.43   20.68</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co">#&gt; [6,]    0.57  -16.32</span></span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="fitting-the-model" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Fitting the model</h1>
+<p><code>egscatm()</code> requires only <span class="math inline">\(\mathbf{W}\)</span>, <span class="math inline">\(\mathbf{C}\)</span>, the number of topics <span class="math inline">\(K\)</span>, and the regularisation weight <span class="math inline">\(\lambda\)</span>. The default
+<code>scale_W = TRUE</code> row-normalises <span class="math inline">\(\mathbf{W}\)</span> to term frequencies before
+fitting.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>K      <span class="ot">&lt;-</span> <span class="dv">7</span><span class="dt">L</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>lambda <span class="ot">&lt;-</span> <span class="fl">3.0</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>t_start <span class="ot">&lt;-</span> <span class="fu">proc.time</span>()</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">egscatm</span>(W, C, <span class="at">K =</span> K, <span class="at">lambda =</span> lambda, <span class="at">scale_W =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>t_fit   <span class="ot">&lt;-</span> <span class="fu">proc.time</span>() <span class="sc">-</span> t_start</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Fit completed in %.2f seconds (elapsed)</span><span class="sc">\n</span><span class="st">&quot;</span>, t_fit[<span class="st">&quot;elapsed&quot;</span>]))</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt; Fit completed in 5.11 seconds (elapsed)</span></span></code></pre></div>
+<div id="eigenvalue-spectrum" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Eigenvalue
+spectrum</h2>
+<p>The top <span class="math inline">\(K - 1 = 6\)</span> eigenvalues of
+<span class="math inline">\(\mathbf{S}_z\)</span> quantify how much
+variance in the covariate-augmented document similarity is captured by
+each ILR direction.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>ev_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  <span class="at">Direction  =</span> <span class="fu">paste0</span>(<span class="st">&quot;ILR&quot;</span>, <span class="fu">seq_len</span>(K <span class="sc">-</span> <span class="dv">1</span><span class="dt">L</span>)),</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="at">Eigenvalue =</span> <span class="fu">round</span>(fit<span class="sc">$</span>eigenvalues, <span class="dv">3</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  <span class="at">Cumulative =</span> <span class="fu">round</span>(<span class="fu">cumsum</span>(fit<span class="sc">$</span>eigenvalues) <span class="sc">/</span> <span class="fu">sum</span>(fit<span class="sc">$</span>eigenvalues_all), <span class="dv">3</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>)</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(ev_df, <span class="at">align =</span> <span class="st">&quot;lrr&quot;</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">&quot;Top eigenvalues of $S_z$&quot;</span>)</span></code></pre></div>
+<table>
+<caption>Top eigenvalues of <span class="math inline">\(S_z\)</span></caption>
+<thead>
+<tr class="header">
+<th align="left">Direction</th>
+<th align="right">Eigenvalue</th>
+<th align="right">Cumulative</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">ILR1</td>
+<td align="right">3.063</td>
+<td align="right">0.401</td>
+</tr>
+<tr class="even">
+<td align="left">ILR2</td>
+<td align="right">3.009</td>
+<td align="right">0.795</td>
+</tr>
+<tr class="odd">
+<td align="left">ILR3</td>
+<td align="right">0.517</td>
+<td align="right">0.863</td>
+</tr>
+<tr class="even">
+<td align="left">ILR4</td>
+<td align="right">0.300</td>
+<td align="right">0.902</td>
+</tr>
+<tr class="odd">
+<td align="left">ILR5</td>
+<td align="right">0.177</td>
+<td align="right">0.925</td>
+</tr>
+<tr class="even">
+<td align="left">ILR6</td>
+<td align="right">0.144</td>
+<td align="right">0.944</td>
+</tr>
+</tbody>
+</table>
+<p>The first two eigenvalues dominate and correspond to the covariate
+projector <span class="math inline">\(\lambda \mathbf{P}_C\)</span>
+(with <span class="math inline">\(\lambda = 3\)</span>, this term
+contributes up to <span class="math inline">\(3 \times
+\text{rank}(\mathbf{C}) = 6\)</span> to the trace). The remaining
+directions capture purely textual variance (LSA signal).</p>
+<hr />
+</div>
+</div>
+<div id="topicterm-structure" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Topic–term
+structure</h1>
+<div id="top-10-keywords-per-topic" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Top-10 keywords per
+topic</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>tt <span class="ot">&lt;-</span> <span class="fu">top_terms</span>(fit, <span class="at">n =</span> <span class="dv">10</span><span class="dt">L</span>, <span class="at">vocab =</span> vocab)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="cf">for</span> (k <span class="cf">in</span> <span class="fu">seq_len</span>(K)) {</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="fu">sprintf</span>(<span class="st">&quot;Topic %d : %s</span><span class="sc">\n</span><span class="st">&quot;</span>, k, <span class="fu">paste</span>(tt[k, ], <span class="at">collapse =</span> <span class="st">&quot;  |  &quot;</span>)))</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>}</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co">#&gt; Topic 1 : one  |  year  |  can  |  govern  |  time  |  stori  |  world  |  forc  |  didn  |  global</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co">#&gt; Topic 2 : mccain  |  said  |  bush  |  iraq  |  know  |  presid  |  say  |  sen  |  john  |  report</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co">#&gt; Topic 3 : palin  |  mccain  |  report  |  one  |  sarah  |  know  |  joe  |  peopl  |  financi  |  crisi</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="co">#&gt; Topic 4 : obama  |  mccain  |  campaign  |  barack  |  john  |  hillari  |  poll  |  clinton  |  lead  |  say</span></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="co">#&gt; Topic 5 : obama  |  hillari  |  clinton  |  barack  |  presid  |  polit  |  administr  |  public  |  white  |  news</span></span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="co">#&gt; Topic 6 : democrat  |  vote  |  republican  |  voter  |  parti  |  elect  |  poll  |  hillari  |  senat  |  candid</span></span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="co">#&gt; Topic 7 : will  |  bush  |  iraq  |  presid  |  democrat  |  war  |  republican  |  troop  |  iran  |  vote</span></span></code></pre></div>
+<p>The topics capture coherent themes from the 2008 campaign:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>War in Iraq / Bush administration</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>General political commentary</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Sarah Palin / financial crisis</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Obama–McCain general election</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Obama–Clinton Democratic primary</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>Electoral mechanics (voting, polls, parties)</td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Republican foreign policy / Iran</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="ilr-topicterm-deviation-matrix" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> ILR topic–term
+deviation matrix</h2>
+<p>The matrix <span class="math inline">\(\hat{\boldsymbol{\Psi}} \in
+\mathbb{R}^{(K-1) \times N}\)</span> captures topic-specific word
+deviations in ILR coordinates. Each row is the ILR projection of one
+direction; positive entries indicate words <em>over-represented</em>
+relative to the corpus baseline in that direction.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="co"># Show the 20 most variable terms across ILR directions</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>term_var <span class="ot">&lt;-</span> <span class="fu">apply</span>(fit<span class="sc">$</span>Psi, <span class="dv">2</span><span class="dt">L</span>, var)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>top_var  <span class="ot">&lt;-</span> <span class="fu">order</span>(term_var, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>]</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">image</span>(</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>  <span class="fu">t</span>(fit<span class="sc">$</span>Psi[, top_var]),</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>  <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>, <span class="at">yaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>  <span class="at">col  =</span> <span class="fu">hcl.colors</span>(<span class="dv">64</span>, <span class="st">&quot;Blue-Red 3&quot;</span>),</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>  <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">&quot;ILR deviation matrix &quot;</span>, <span class="fu">hat</span>(Psi),</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>                          <span class="st">&quot; (top-20 variable terms)&quot;</span>)),</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="st">&quot;Term&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;ILR direction&quot;</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a>)</span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">20</span>),</span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>     <span class="at">labels =</span> vocab[top_var], <span class="at">las =</span> <span class="dv">2</span>, <span class="at">cex.axis =</span> <span class="fl">0.65</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">2</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="at">length.out =</span> K <span class="sc">-</span> <span class="dv">1</span><span class="dt">L</span>),</span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a>     <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="st">&quot;ILR&quot;</span>, <span class="fu">seq_len</span>(K <span class="sc">-</span> <span class="dv">1</span><span class="dt">L</span>)), <span class="at">las =</span> <span class="dv">1</span>, <span class="at">cex.axis =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<hr />
+</div>
+</div>
+<div id="documenttopic-proportions" class="section level1" number="6">
+<h1><span class="header-section-number">6</span> Document–topic
+proportions</h1>
+<div id="distribution-across-the-corpus" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Distribution across
+the corpus</h2>
+<p><code>fit$Pi</code> is an <span class="math inline">\(M \times
+K\)</span> matrix; each row sums to 1 by construction (the closure map
+<span class="math inline">\(\text{softmax}(\mathbf{V}\mathbf{z}_i^*)\)</span>
+is the exact inverse of the ILR transformation, not an
+approximation).</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Row-sum range:&quot;</span>, <span class="fu">range</span>(<span class="fu">round</span>(<span class="fu">rowSums</span>(fit<span class="sc">$</span>Pi), <span class="dv">10</span>)), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="co">#&gt; Row-sum range: 1 1</span></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Min proportion:&quot;</span>, <span class="fu">min</span>(fit<span class="sc">$</span>Pi), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a><span class="co">#&gt; Min proportion: 0.1229359</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">boxplot</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  fit<span class="sc">$</span>Pi,</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="at">names  =</span> <span class="fu">paste0</span>(<span class="st">&quot;T&quot;</span>, <span class="fu">seq_len</span>(K)),</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="at">col    =</span> <span class="fu">hcl.colors</span>(K, <span class="st">&quot;Set 2&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>),</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  <span class="at">border =</span> <span class="fu">hcl.colors</span>(K, <span class="st">&quot;Set 2&quot;</span>),</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>  <span class="at">ylab   =</span> <span class="st">&quot;Topic proportion&quot;</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>  <span class="at">main   =</span> <span class="st">&quot;Distribution of document–topic proportions&quot;</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>  <span class="at">las    =</span> <span class="dv">1</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>)</span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">1</span> <span class="sc">/</span> K, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;grey50&quot;</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="st">&quot;1/K centroid&quot;</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;grey50&quot;</span>, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>       <span class="at">cex =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<p>The median of each topic is close to <span class="math inline">\(1/K
+\approx 0.14\)</span> — this is expected: the ILR centroid <span class="math inline">\(\mathbf{z} = \mathbf{0}\)</span> maps exactly to
+the uniform composition, so the <em>average</em> topic proportion is
+<span class="math inline">\(1/K\)</span> by construction. The spread
+reflects how strongly individual documents deviate from the
+centroid.</p>
+<hr />
+</div>
+</div>
+<div id="covariate-effects" class="section level1" number="7">
+<h1><span class="header-section-number">7</span> Covariate effects</h1>
+<div id="ilr-path-coefficients-hatmathbfb_z" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> ILR path coefficients
+<span class="math inline">\(\hat{\mathbf{B}}_z\)</span></h2>
+<p><span class="math inline">\(\hat{\mathbf{B}}_z \in \mathbb{R}^{P
+\times (K-1)}\)</span> gives the OLS regression of the ILR topic scores
+on the covariates. Column <span class="math inline">\(k\)</span>
+describes how covariate <span class="math inline">\(p\)</span> shifts
+the topic composition along the <span class="math inline">\(k\)</span>-th ILR direction.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>Bz_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">round</span>(fit<span class="sc">$</span>Bz, <span class="dv">4</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">rownames</span>(Bz_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Liberal (vs Conservative)&quot;</span>, <span class="st">&quot;day (centred)&quot;</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="fu">colnames</span>(Bz_df) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;ILR&quot;</span>, <span class="fu">seq_len</span>(K <span class="sc">-</span> <span class="dv">1</span><span class="dt">L</span>))</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(Bz_df,</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">&quot;Path coefficients $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mathbf{B}}_z$&quot;</span>)</span></code></pre></div>
+<table>
+<caption>Path coefficients <span class="math inline">\(\hat{\mathbf{B}}_z\)</span></caption>
+<colgroup>
+<col width="37%" />
+<col width="11%" />
+<col width="11%" />
+<col width="10%" />
+<col width="11%" />
+<col width="10%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">ILR1</th>
+<th align="right">ILR2</th>
+<th align="right">ILR3</th>
+<th align="right">ILR4</th>
+<th align="right">ILR5</th>
+<th align="right">ILR6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Liberal (vs Conservative)</td>
+<td align="right">-0.0631</td>
+<td align="right">0.0104</td>
+<td align="right">0.0011</td>
+<td align="right">-0.0019</td>
+<td align="right">-2e-04</td>
+<td align="right">6e-04</td>
+</tr>
+<tr class="even">
+<td align="left">day (centred)</td>
+<td align="right">0.0000</td>
+<td align="right">-0.0003</td>
+<td align="right">0.0000</td>
+<td align="right">0.0000</td>
+<td align="right">0e+00</td>
+<td align="right">0e+00</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>Liberal</code> coefficient on ILR1 (−0.063) is the largest
+signal: Liberal blogs score systematically lower on the first ILR
+direction. Since ILR1 contrasts the first topic against the others, this
+reflects a shift in topic composition between political leanings.</p>
+</div>
+<div id="mean-topic-prevalence-by-leaning" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Mean topic prevalence
+by leaning</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>prev_cons <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(fit<span class="sc">$</span>Pi[meta<span class="sc">$</span>rating <span class="sc">==</span> <span class="st">&quot;Conservative&quot;</span>, ])</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>prev_lib  <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(fit<span class="sc">$</span>Pi[meta<span class="sc">$</span>rating <span class="sc">==</span> <span class="st">&quot;Liberal&quot;</span>,      ])</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>x   <span class="ot">&lt;-</span> <span class="fu">seq_len</span>(K)</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>ylim <span class="ot">&lt;-</span> <span class="fu">range</span>(<span class="fu">c</span>(prev_cons, prev_lib)) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.005</span>, <span class="fl">0.005</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="fu">plot</span>(x <span class="sc">-</span> <span class="fl">0.12</span>, prev_cons, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;#E64B35&quot;</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, K <span class="sc">+</span> <span class="fl">0.5</span>), <span class="at">ylim =</span> ylim,</span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Topic&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Mean prevalence&quot;</span>,</span>
+<span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Mean topic prevalence by political leaning&quot;</span>,</span>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="fu">points</span>(x <span class="sc">+</span> <span class="fl">0.12</span>, prev_lib, <span class="at">pch =</span> <span class="dv">17</span>, <span class="at">col =</span> <span class="st">&quot;#4DBBD5&quot;</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> x, <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="st">&quot;T&quot;</span>, x))</span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>,</span>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Conservative&quot;</span>, <span class="st">&quot;Liberal&quot;</span>),</span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a>       <span class="at">pch    =</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">17</span>),</span>
+<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a>       <span class="at">col    =</span> <span class="fu">c</span>(<span class="st">&quot;#E64B35&quot;</span>, <span class="st">&quot;#4DBBD5&quot;</span>),</span>
+<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a>       <span class="at">bty    =</span> <span class="st">&quot;n&quot;</span>)</span>
+<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">1</span><span class="sc">/</span>K, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;grey70&quot;</span>)</span>
+<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="fu">segments</span>(x <span class="sc">-</span> <span class="fl">0.12</span>, prev_cons, x <span class="sc">+</span> <span class="fl">0.12</span>, prev_lib,</span>
+<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a>         <span class="at">col =</span> <span class="st">&quot;grey60&quot;</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>delta_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  <span class="at">Topic        =</span> <span class="fu">paste0</span>(<span class="st">&quot;T&quot;</span>, <span class="fu">seq_len</span>(K)),</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  <span class="at">Conservative =</span> <span class="fu">round</span>(prev_cons, <span class="dv">4</span>),</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>  <span class="at">Liberal      =</span> <span class="fu">round</span>(prev_lib,  <span class="dv">4</span>),</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>  <span class="at">Delta        =</span> <span class="fu">round</span>(prev_lib <span class="sc">-</span> prev_cons, <span class="dv">4</span>),</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>  <span class="at">Leaning      =</span> <span class="fu">ifelse</span>(prev_lib <span class="sc">&gt;</span> prev_cons, <span class="st">&quot;Liberal ↑&quot;</span>, <span class="st">&quot;Conservative ↑&quot;</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>)</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(delta_df, <span class="at">align =</span> <span class="st">&quot;lrrrr&quot;</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">&quot;Mean prevalence difference (Liberal − Conservative)&quot;</span>)</span></code></pre></div>
+<table>
+<caption>Mean prevalence difference (Liberal − Conservative)</caption>
+<thead>
+<tr class="header">
+<th align="left">Topic</th>
+<th align="right">Conservative</th>
+<th align="right">Liberal</th>
+<th align="right">Delta</th>
+<th align="right">Leaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">T1</td>
+<td align="right">0.1455</td>
+<td align="right">0.1394</td>
+<td align="right">-0.0061</td>
+<td align="right">Conservative ↑</td>
+</tr>
+<tr class="even">
+<td align="left">T2</td>
+<td align="right">0.1400</td>
+<td align="right">0.1467</td>
+<td align="right">0.0067</td>
+<td align="right">Liberal ↑</td>
+</tr>
+<tr class="odd">
+<td align="left">T3</td>
+<td align="right">0.1431</td>
+<td align="right">0.1425</td>
+<td align="right">-0.0007</td>
+<td align="right">Conservative ↑</td>
+</tr>
+<tr class="even">
+<td align="left">T4</td>
+<td align="right">0.1429</td>
+<td align="right">0.1427</td>
+<td align="right">-0.0002</td>
+<td align="right">Conservative ↑</td>
+</tr>
+<tr class="odd">
+<td align="left">T5</td>
+<td align="right">0.1427</td>
+<td align="right">0.1430</td>
+<td align="right">0.0003</td>
+<td align="right">Liberal ↑</td>
+</tr>
+<tr class="even">
+<td align="left">T6</td>
+<td align="right">0.1428</td>
+<td align="right">0.1429</td>
+<td align="right">0.0000</td>
+<td align="right">Liberal ↑</td>
+</tr>
+<tr class="odd">
+<td align="left">T7</td>
+<td align="right">0.1429</td>
+<td align="right">0.1428</td>
+<td align="right">-0.0001</td>
+<td align="right">Conservative ↑</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="prevalence-over-time" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Prevalence over
+time</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># Bin campaign days into quartiles for visualisation</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>day_q <span class="ot">&lt;-</span> <span class="fu">cut</span>(meta<span class="sc">$</span>day, <span class="at">breaks =</span> <span class="fu">quantile</span>(meta<span class="sc">$</span>day, <span class="fu">c</span>(<span class="dv">0</span>,.<span class="dv">25</span>,.<span class="dv">5</span>,.<span class="dv">75</span>,<span class="dv">1</span>)),</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>             <span class="at">include.lowest =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>             <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Q1 (early)&quot;</span>, <span class="st">&quot;Q2&quot;</span>, <span class="st">&quot;Q3&quot;</span>, <span class="st">&quot;Q4 (late)&quot;</span>))</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>prev_time <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">sapply</span>(<span class="fu">levels</span>(day_q), <span class="cf">function</span>(q)</span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>  <span class="fu">colMeans</span>(fit<span class="sc">$</span>Pi[day_q <span class="sc">==</span> q, ])))</span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a><span class="fu">matplot</span>(prev_time, <span class="at">type =</span> <span class="st">&quot;b&quot;</span>, <span class="at">pch =</span> <span class="fu">seq_len</span>(K),</span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">hcl.colors</span>(K, <span class="st">&quot;Set 2&quot;</span>),</span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a>        <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb16-12"><a href="#cb16-12" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;Campaign quarter&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Mean prevalence&quot;</span>,</span>
+<span id="cb16-13"><a href="#cb16-13" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Topic prevalence across campaign timeline&quot;</span>,</span>
+<span id="cb16-14"><a href="#cb16-14" tabindex="-1"></a>        <span class="at">lty  =</span> <span class="dv">1</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq_len</span>(<span class="dv">4</span>), <span class="at">labels =</span> <span class="fu">levels</span>(day_q))</span>
+<span id="cb16-16"><a href="#cb16-16" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">1</span><span class="sc">/</span>K, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;grey70&quot;</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="fu">paste0</span>(<span class="st">&quot;T&quot;</span>, <span class="fu">seq_len</span>(K)),</span>
+<span id="cb16-18"><a href="#cb16-18" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">seq_len</span>(K), <span class="at">col =</span> <span class="fu">hcl.colors</span>(K, <span class="st">&quot;Set 2&quot;</span>),</span>
+<span id="cb16-19"><a href="#cb16-19" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">cex =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<hr />
+</div>
+</div>
+<div id="prediction-on-new-documents" class="section level1" number="8">
+<h1><span class="header-section-number">8</span> Prediction on new
+documents</h1>
+<p><code>predict.egscatm()</code> projects new documents onto the fitted
+topic space via the ILR loadings <span class="math inline">\(\hat{\boldsymbol{\Psi}}\)</span> without
+refitting.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># Hold out 50 documents for prediction</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>idx_new  <span class="ot">&lt;-</span> <span class="fu">sample.int</span>(M, <span class="dv">50</span><span class="dt">L</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>W_new    <span class="ot">&lt;-</span> W[idx_new, ]</span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>Pi_new   <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit, W_new, <span class="at">scale_W =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Predicted Pi dimensions:&quot;</span>, <span class="fu">dim</span>(Pi_new), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a><span class="co">#&gt; Predicted Pi dimensions: 50 7</span></span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Row-sum range:&quot;</span>, <span class="fu">range</span>(<span class="fu">round</span>(<span class="fu">rowSums</span>(Pi_new), <span class="dv">10</span>)), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a><span class="co">#&gt; Row-sum range: 1 1</span></span>
+<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a><span class="co"># Top predicted topic per document</span></span>
+<span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a>top_topic <span class="ot">&lt;-</span> <span class="fu">apply</span>(Pi_new, <span class="dv">1</span><span class="dt">L</span>, which.max)</span>
+<span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Topic distribution in new docs:</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a><span class="co">#&gt; Topic distribution in new docs:</span></span>
+<span id="cb17-15"><a href="#cb17-15" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">table</span>(<span class="fu">paste0</span>(<span class="st">&quot;T&quot;</span>, top_topic)))</span>
+<span id="cb17-16"><a href="#cb17-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb17-17"><a href="#cb17-17" tabindex="-1"></a><span class="co">#&gt; T1 T2 T3 T4 T5 T6 T7 </span></span>
+<span id="cb17-18"><a href="#cb17-18" tabindex="-1"></a><span class="co">#&gt; 16 10  7  6  2  3  6</span></span></code></pre></div>
+<hr />
+</div>
+<div id="bootstrap-standard-errors-for-path-coefficients" class="section level1" number="9">
+<h1><span class="header-section-number">9</span> Bootstrap standard
+errors for path coefficients</h1>
+<p><code>ilr_se()</code> estimates standard errors for <span class="math inline">\(\hat{\mathbf{B}}_z\)</span> via nonparametric
+bootstrap resampling of documents.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>se_res <span class="ot">&lt;-</span> <span class="fu">ilr_se</span>(fit, W, C, <span class="at">B =</span> <span class="dv">100</span><span class="dt">L</span>, <span class="at">seed =</span> <span class="dv">42</span><span class="dt">L</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>se_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">round</span>(se_res<span class="sc">$</span>se, <span class="dv">5</span>))</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a><span class="fu">rownames</span>(se_df) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(Bz_df)</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a><span class="fu">colnames</span>(se_df) <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;ILR&quot;</span>, <span class="fu">seq_len</span>(K <span class="sc">-</span> <span class="dv">1</span><span class="dt">L</span>))</span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(se_df,</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>             <span class="at">caption =</span> <span class="st">&quot;Bootstrap SE for $</span><span class="sc">\\</span><span class="st">hat{</span><span class="sc">\\</span><span class="st">mathbf{B}}_z$ (B = 100)&quot;</span>)</span></code></pre></div>
+<table>
+<caption>Bootstrap SE for <span class="math inline">\(\hat{\mathbf{B}}_z\)</span> (B = 100)</caption>
+<colgroup>
+<col width="36%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="11%" />
+<col width="8%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">ILR1</th>
+<th align="right">ILR2</th>
+<th align="right">ILR3</th>
+<th align="right">ILR4</th>
+<th align="right">ILR5</th>
+<th align="right">ILR6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Liberal (vs Conservative)</td>
+<td align="right">0.06271</td>
+<td align="right">0.01388</td>
+<td align="right">0.00111</td>
+<td align="right">0.00177</td>
+<td align="right">5e-04</td>
+<td align="right">0.00064</td>
+</tr>
+<tr class="even">
+<td align="left">day (centred)</td>
+<td align="right">0.00005</td>
+<td align="right">0.00031</td>
+<td align="right">0.00000</td>
+<td align="right">0.00000</td>
+<td align="right">0e+00</td>
+<td align="right">0.00000</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Plot Bz +/- 1.96*SE for the &#39;Liberal&#39; covariate (row 1)</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>bz_liberal <span class="ot">&lt;-</span> fit<span class="sc">$</span>Bz[<span class="dv">1</span><span class="dt">L</span>, ]</span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>se_liberal  <span class="ot">&lt;-</span> se_res<span class="sc">$</span>se[<span class="dv">1</span><span class="dt">L</span>, ]</span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>ci_lo <span class="ot">&lt;-</span> bz_liberal <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> se_liberal</span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a>ci_hi <span class="ot">&lt;-</span> bz_liberal <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> se_liberal</span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a>dirs  <span class="ot">&lt;-</span> <span class="fu">seq_len</span>(K <span class="sc">-</span> <span class="dv">1</span><span class="dt">L</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a><span class="fu">plot</span>(dirs, bz_liberal, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">col =</span> <span class="st">&quot;#3C5488&quot;</span>,</span>
+<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">range</span>(<span class="fu">c</span>(ci_lo, ci_hi)) <span class="sc">+</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.01</span>, <span class="fl">0.01</span>),</span>
+<span id="cb19-11"><a href="#cb19-11" tabindex="-1"></a>     <span class="at">xaxt =</span> <span class="st">&quot;n&quot;</span>,</span>
+<span id="cb19-12"><a href="#cb19-12" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;ILR direction&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Coefficient&quot;</span>,</span>
+<span id="cb19-13"><a href="#cb19-13" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="fu">hat</span>(B)[z],</span>
+<span id="cb19-14"><a href="#cb19-14" tabindex="-1"></a>       <span class="st">&quot;: &#39;Liberal&#39; covariate with 95% bootstrap CI&quot;</span>)))</span>
+<span id="cb19-15"><a href="#cb19-15" tabindex="-1"></a><span class="fu">arrows</span>(dirs, ci_lo, dirs, ci_hi,</span>
+<span id="cb19-16"><a href="#cb19-16" tabindex="-1"></a>       <span class="at">length =</span> <span class="fl">0.05</span>, <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">code =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">&quot;#3C5488&quot;</span>)</span>
+<span id="cb19-17"><a href="#cb19-17" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">&quot;grey50&quot;</span>)</span>
+<span id="cb19-18"><a href="#cb19-18" tabindex="-1"></a><span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> dirs, <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="st">&quot;ILR&quot;</span>, dirs))</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAFQCAMAAABXmDxzAAAA2FBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZrY6AAA6ADo6AGY6OgA6Ojo6OmY6OpA6ZmY6ZpA6ZrY6kLY6kNs8VIhmAABmADpmOgBmOjpmZgBmZjpmkJBmkLZmkNtmtrZmtttmtv9/f3+QOgCQZgCQZjqQZmaQkGaQttuQ29uQ2/+2ZgC2Zjq2kDq2kGa2kJC2tra2ttu225C229u22/+2/7a2/9u2///bkDrbkGbbtmbbtpDb25Db27bb29vb2//b/7bb/9vb////tmb/25D/27b/29v//7b//9v///8CMcPxAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAQQElEQVR4nO2di5rbxBlA5SRrQ0JL6pgAhbLdUugaWtoEIkJpy9qJ7fd/o85Nt7ElS+MZ7W/vOR9ktbKkX2OdnZs0o2wHIJjsvk8AoAsEBdEgKIgGQUE0CAqiQVAQDYKCaBAURIOgIBoEBdEgKIgGQUE0CAqiQVAQDYKCaBAURIOgIBoEBdEgKIgGQUE0CAqiQVAQDYKCaBAURIOgIBoEBdGcnaB5dn3fpwAjcm6Cbm+y6X2fA4zIuQm6/uDzR2/u+yRgPM5N0OXVv2eU8Q+IMxN0s5hubyjjHxBnJuhKNZFyyvgHxJkJulRyrmjHPyDOTFB4aCAoiOasBF1lhsdf3B34ULWfdrXif3tzdWdqBEfRW5qdh2OC1Hjfa/v3+zvutl9n2eQrs5jbVKqEbL/Lso/vzH610zueqPedv7bxy6cq6kev9WLg15GCcxQ0O9hXL0DQnz88Es5sr7fyBd0sqnQtS0Hzye07c2KryW217dFEeadx9Kzcqbnvdr5D0FCcfu9e1q9XgSeoIbWgHr3Cma18QZfZ1WudYV7XpTdLudl6PiSKt0HPs8qevFIh3870d4ugYRT6rbL5/ofmKoYK2lQglGBBN4ursiSv5DBLKhfdrRrHTSLoKnMntMqmCBpKJWilYV7mpsv5gSL+p++KetU7XcvTtVelQZ49er17+9SusFuWgr57mWW/c3vMVB1QLS5NDGNRtZM+yCvjmVtnCslpLVB5GvYvSi3+pv/TW5nlbPKli1kIsVQbr2fzZhLeeH89zUS5U6wW3Wlsv5uZjbYuXjPNjYOYgxZf4/YfrxA0lLKIr+UJeaO43xP0M12t0pusZ0Utb3vzeKbyi7yocjVzM7udDuD2KHtezU2Caid9kN9MIezWOTOqQNX5LW22NN9Wgj55WVT4drUc1AT74qWTztVBcz9H9BPVOFt3GrYmO7ktBG2muX6Q8tuqQNAwikbSpLWn3hc0e/Q3XbWbakf+cGdreeqSzfU1UBnKbr3QxXvt4pgPt9/rwyyz53d2Z3u9VF5W38llinfVOluYVoHKM9rePLOaly03tbuqdP5calzEUh85iYw6KpN7rgI0qx+NRBWn2FhUR7HKv7UuvtlLs9p88q3bXOMZiaBhlK3454f6mewWTUHNZdYZ03o2tWunNp/S/OeHvz7NPEHrNcAqV8vNJZ82dtIHcbu6dUaFWqDygOvZHz+4tYV1KahtixSRbf43eao+KgQvFVHBVbWjrA7UElU7xfrZWkEnH//wX7u9iddMc+0gXrIP/XqfnJmgRj+VwbU1aQ53M6mi0pWAWSWkW+MJWtUAiyVdRq9n1/bQ3k7m33KdE7QMZI+j6pX5ox8X1/qi1wQtd7e8+1TXCKv2TKmOksVkvG/LlNUTVZ5i/WzNBiYjdtXNslHWPNVdVUGiiI9Cod9eN/feFu2CumxM9zz+/ot//uoX8YcFVfmh2crfyRbxxbqmoIVgqgmuHF1OteTtgu6lq3Q1v7rTp1L11fcTdPfr1zUX/TT7glaNJLOEoGFUgrb1nHQU8WWmWzSs9ZYbX9DDRbwqZv81m+/vpP+t1jlBvdx9PfuTqkTmV98XnhwS1PqiG/tlWPeRykB3pdt22z5FvOH9Ly+dr36a/SJehXCHNwsIGkZVxE9dfdRvLe01kp68tvU5Ven7UrcaZtPyYk3vdJfSfiPpq93ul1mz2aEu2+f6ivo7WUGLdeaq1wIVR3ymKqCrydNp7a/GFzTXB/llZlv8Kuy7m6IWU/Q81XLQMlFtjSRTKZmqGug7XdWt4tVPtTpIedRv1Rn9faa/QQQNo2wkufJoOd3vZnIUDebPvG6Y8mK5m4tlkV/gmiu39T2Mt4d2ckV8UaTntW6m6rTyzDRayrtEue0HbQjqDjKvFssMze1Wr4MeSFR9Ma+6mbSAVbzaqS4nT+v1EG51RsHpN7E90yZzOSboT1+75y1M/7npXnRa6A75x18tdU9hoyao1z+puvaf26ZwbnM0byfzb7lutzGZUxnIYdr1ttluK7IvXQdqvc6pHxZ5bB8WsWGrJpb6d9NoxXuJcqdYLZrT0HmhPWIVr3aq9YO4M3j7TJ33R6/0MoLGIG9rKcFx+t2VFcD5Cro6l69YJAiamsYTaDAUBE2MrdMjaSgIChADBAXRICiIBkFBNAgKokFQEA2CgmgQFESDoCAaBAXRICiIBkFBNAgKokFQEA2CgmgQFESDoCAaBAXRICiIBkFBNAgKokFQEA2CgmgQFEQTWdAMoBf3JWjcw8GlgqAgGgQF0SAoiAZBQTQICqJBUBANgoJoEBREg6AgGgQF0UgR9EVJ3Dhw5kgR1ICc4IOgIBoEBdEgKIhmZEG7n0NFUPAhBwXRICiIBkFBNAgKokFQEA2CgmgelqAvuOV/bjwsQUeMAnFAUBANgoJoEBREg6AgGgQF0SQSdHtjn1l69GbI4RAUfNIImmdzu7AqFnodDkHBJ4mg25tSy/zqrv/hEBR8kgi6WVwXi6uWQh5BoRfkoCCaVHVQl4UKrINyH/6sSNSK3yxsK74l/7xHQXlS5Lx4aP2gPMt0ZiAoiOahddQj6Jnx4DrqR/KTP4JIDBd088mt+dnWw7kT3s00lp8XZOhIaTkYJlzQvF3Qh95RP97Akkv6azscZqigy2rympbCeyc8B72Ymu44A6xGGsbVGiU8B+2itaO+tPvPGrWi8fOF9/u5/lRfs/s5Tpyx0nMvcY7KVqjVd0OD3I76S2qKjZFRjzYQtiVIQCv+aBfSsMPVuBxBR6wcjlLRPZ86qGJ5kpldcS9I0BEYb5D/mbXiF+2to33a2voIGoVL6sw6TIig113bnRIXQcFnuKDbm2mquAgKPgF10FUWIQtFUOhFSBGfHW/Fi31YZLQoEIeH9bDIeA1fiMQDHJME50SIoKqQv7pbdnQ2yX5YBM6JkEbS5Fbli13doeSgEIuQbqa50a7jcTvRozrhrAjrqNeCdjywLPthETgnwnPQZat8wXERFHyC66D5ad31CAq9CGzFZ9nk+GPLg+MiKPik6agPPByCgg+CgmgQFEQzUNDNYt7rYZGwuAgKPuSgIBoEBdGECKq76FvvYZ4SF0HBJ2RUp7mFtFmcNPIDQaEX4YPmOu/Fh8VFUPAJuxev6XqaKTAugoJPQBFv78KvZyGV0GrqsUOfIij4hDSS1jPuxcNI0M0EokFQEI0kQRkMDHsIuhfPcHXYR04OyoQKcIDBOeh1nynAQ+IiKBwgoIhHUBiPoUV8XnW1UweF9ATci++TgwbNboefsEeaOqjU2e3g7EhSB2VuJohFkjoos9tBLJLUQclBIRapZlhmdjuIQpIJbJndDmKRZALb0LgICj5pJrANjIug4JNoAtuwuAgKPkxgC6JJMoFt+choe28pgkIv0kxgu705Vv4jKPQi0QPLR984i6DQi1RP1B974yyCQi8YFw+iCWkkmduXvOUDxuCEuZlCupmY+gaGkXp2u7b7TQgKvRg5B+2Oi6DgQx0UREMrHkSTrKM+YFQngsIeqZ6oZ1QnRGGwoPYmZvf8yoxJglgMFXSzsMYVPw/CqE6IxVBBy6dAu4Z8kINCLAYK2kM98xmjOiEOw6e+KVZ03kliVCfEYfjUN8UKBs3BCAyug5YPIh8fk1SrD/SLi6DgM1TQ9ezaW2gHQeFkBveDumZP3uNtxwgKJxPyNJNu/fR51TGCwsmkfMsHgsLJpBR08OEQFHwQFESDoCAaBAXRICiIBkFBNAgKokFQEA2CgmgQFEQzsqDMzQTDIAcF0SAoiAZBQTQICqJBUBANgoJoEBREg6AgGgQF0SAoiIYZlkE0zLAMokkiKPODQiySCMoMyxALclAQTao6KDMsQxQSteKZYRniQD8oiAZBQTSJBM1V8W6qoX1fx/2iZFAcuHQSNZImt6oaqie5HfS+eACfhN1M2xvVREJQOImkHfXLqzsEhZNI21G/nCIonESiOqjTcrNoe54JQaEXyVrxtpDf3iAonIKoflAAH1FzMwH4pBaURhKcBEU8iAZBQTT3JihAL9IIenRUZ4QYoVxSFBITtvPxUZ2nxwjmkqKQmKCde4xJOjlGOJcUhcQE7dxjVOfJMcK5pCgkJmhnctDzuKbCooxaBz02qvP0GMFcUhQSE7jz0VGdEWKEcklRSEycnQXFuKwoJOaUnWtV0WQxArikKCTmlJ0HCwoQDIKCaBAURIOgIBqejwPRICiIBkFBNAgKokFQEA2CgmgQFESDoCAaBAXRpBB0NbnVc4ia5WIcqLv5tP5w0HjQkChmOdq9rta05FmmPkoeZrcr16eLYh/znUaK0p6Y9Wx4lPSCmjNa2WfxN4thA5YDomxv1Po82rfdlhY9988qnqHtX5n6mUjQKsr6g3h/ah1hVmqdnUF+ACMJan+sho6oD4iynunr2jZ3VKwom8W8/D1hmJ3J3VIKan4MGgIZHMY+wzH0yowkqPl9lc0jfhVtUcoPk0dJK6j7Pb/6S0pBze95tHR0hQnLp0fNQaP+rXZEUd9H4hzUkCct4u0PdVVT1UGrKMtnMavtbWFWj35cDA8zkqDFeNC0ggaOOg2Lskp8TU0YXSwmFVRH2Sz0umWihmUZJtf1u8Glzlit+MKcVII2o6RtkRbTV5gX8qQNo+cfSNuKD5uLIySMLXCGhhklB13PCmFS5qBllHj5Z2daItZ028KYalvCHLSeGNu6TBjGNo+GhhmniC+VSVrEr4oeyohP/HekJek1tWHyzMvmkkSxxOtragljr/3QMCPVQZcur0lbBzVR8liXsyuKVTNVqdj4ytLWQUdMjJ3aS2QRv3P18NSC6ijrWdQRU21p0esiDs7q+MrSCmoToxeTNpJMmDzkO0smqLvDVbTaXLkbW9D9KK5UjNoPeigty3glb1eYXXRB7zExq4DeLB4WAdEgKIgGQUE0CAqiQVAQDYKCaBAURIOgIBoEBdEgKIgGQUE0CAqiQVAQDYKCaBAURIOgIBoEBdEgKIgGQUE0CAqiQVAQDYKCaBAURIOgIBoEBdEgKIgGQUE0CBpG13tjig3sdG6Hd7/edXwKFQgaRsd7Y6oNWkHO3iBoGJ2vcCg2aAVBe4OgYXS+BEe/he4bW8RvPvlGvzsgr72gLpvqN65d/c/O52o/2Cz+tIg5A+LlgKBhdOWg+h04q8wJaqahzc08xnO7sFnM7SfXtlqgX762Wej340V8t+LFgKBhdLwEx86ovSwENfmjzj1Xj97YBVvE6//tfMOmPTWPOeX9BYGgYRx91c6qEPS6qI8q/woFi0/s7+pfsxk10wMgaBgdb3TJ9wUtXtZRvOKiKahaQtA2EDSMo6/a2c9Bd1UhTg7aGwQNo+O9Me59yzVBS/M66qAIehgEDaPrvTG6NV614p2tVmC9oDbXonqteAQ9DIKG0fXemEY/qJVOd3+akt/0g+r3vvj9oAh6GAQF0SAoiAZBQTQICqJBUBANgoJoEBREg6AgGgQF0SAoiAZBQTQICqJBUBANgoJoEBREg6AgGgQF0SAoiAZBQTQICqJBUBANgoJoEBREg6Agmv8Dl5Ehe6wVERMAAAAASUVORK5CYII=" /><!-- --></p>
+<hr />
+</div>
+<div id="summary" class="section level1" number="10">
+<h1><span class="header-section-number">10</span> Summary</h1>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">print</span>(fit)</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a><span class="co">#&gt; ILR-EGSCA Structural Topic Model</span></span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="co">#&gt;   Topics (K)    : 7 </span></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="co">#&gt;   Lambda        : 3 </span></span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a><span class="co">#&gt;   Documents (M) : 1000 </span></span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a><span class="co">#&gt;   Terms (N)     : 2632 </span></span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a><span class="co">#&gt;   Covariates (P): 2</span></span></code></pre></div>
+<table>
+<caption>Model summary</caption>
+<thead>
+<tr class="header">
+<th align="left">Parameter</th>
+<th align="right">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Documents (M)</td>
+<td align="right">1000.00</td>
+</tr>
+<tr class="even">
+<td align="left">Terms (N)</td>
+<td align="right">2632.00</td>
+</tr>
+<tr class="odd">
+<td align="left">Topics (K)</td>
+<td align="right">7.00</td>
+</tr>
+<tr class="even">
+<td align="left">Covariates (P)</td>
+<td align="right">2.00</td>
+</tr>
+<tr class="odd">
+<td align="left">Lambda (λ)</td>
+<td align="right">3.00</td>
+</tr>
+<tr class="even">
+<td align="left">Fit time (s)</td>
+<td align="right">5.11</td>
+</tr>
+</tbody>
+</table>
+<div id="key-properties" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Key properties</h2>
+<ul>
+<li><strong>Non-iterative</strong>: the solution is the top-<span class="math inline">\((K{-}1)\)</span> eigenspace of an <span class="math inline">\((r + P) \times (r + P)\)</span> matrix (<span class="math inline">\(r \le \min(M, N, 100)\)</span>) — no random
+initialisation, no convergence issues, fully deterministic.</li>
+<li><strong>Globally optimal</strong>: for the profiled, linearised
+ILR-EGSCA objective (Ky Fan theorem).</li>
+<li><strong>Simplex-consistent</strong>: topic proportions satisfy <span class="math inline">\(\hat{\pi}_{ik} \ge 0\)</span> and <span class="math inline">\(\sum_k \hat{\pi}_{ik} = 1\)</span> by construction
+— not through post-hoc clipping.</li>
+<li><strong>Compositional</strong>: the structural penalty <span class="math inline">\(\lambda \|\mathbf{Z} -
+\mathbf{C}\mathbf{B}_z\|_F^2\)</span> equals the sum of squared
+<strong>Aitchison distances</strong> between observed and
+covariate-predicted topic compositions (isometry of ILR).</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="session-info" class="section level1" number="11">
+<h1><span class="header-section-number">11</span> Session info</h1>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="co">#&gt; R version 4.4.1 (2024-06-14 ucrt)</span></span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a><span class="co">#&gt; Platform: x86_64-w64-mingw32/x64</span></span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a><span class="co">#&gt; Running under: Windows 11 x64 (build 26200)</span></span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a><span class="co">#&gt; Matrix products: default</span></span>
+<span id="cb21-7"><a href="#cb21-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-8"><a href="#cb21-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-9"><a href="#cb21-9" tabindex="-1"></a><span class="co">#&gt; locale:</span></span>
+<span id="cb21-10"><a href="#cb21-10" tabindex="-1"></a><span class="co">#&gt; [1] LC_COLLATE=Italian_Italy.utf8  LC_CTYPE=Italian_Italy.utf8   </span></span>
+<span id="cb21-11"><a href="#cb21-11" tabindex="-1"></a><span class="co">#&gt; [3] LC_MONETARY=Italian_Italy.utf8 LC_NUMERIC=C                  </span></span>
+<span id="cb21-12"><a href="#cb21-12" tabindex="-1"></a><span class="co">#&gt; [5] LC_TIME=Italian_Italy.utf8    </span></span>
+<span id="cb21-13"><a href="#cb21-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-14"><a href="#cb21-14" tabindex="-1"></a><span class="co">#&gt; time zone: Europe/Rome</span></span>
+<span id="cb21-15"><a href="#cb21-15" tabindex="-1"></a><span class="co">#&gt; tzcode source: internal</span></span>
+<span id="cb21-16"><a href="#cb21-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-17"><a href="#cb21-17" tabindex="-1"></a><span class="co">#&gt; attached base packages:</span></span>
+<span id="cb21-18"><a href="#cb21-18" tabindex="-1"></a><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
+<span id="cb21-19"><a href="#cb21-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-20"><a href="#cb21-20" tabindex="-1"></a><span class="co">#&gt; other attached packages:</span></span>
+<span id="cb21-21"><a href="#cb21-21" tabindex="-1"></a><span class="co">#&gt; [1] stm_1.3.7</span></span>
+<span id="cb21-22"><a href="#cb21-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-23"><a href="#cb21-23" tabindex="-1"></a><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
+<span id="cb21-24"><a href="#cb21-24" tabindex="-1"></a><span class="co">#&gt;  [1] digest_0.6.37     R6_2.5.1          codetools_0.2-20  fastmap_1.2.0    </span></span>
+<span id="cb21-25"><a href="#cb21-25" tabindex="-1"></a><span class="co">#&gt;  [5] Matrix_1.7-0      xfun_0.48         lattice_0.22-6    cachem_1.1.0     </span></span>
+<span id="cb21-26"><a href="#cb21-26" tabindex="-1"></a><span class="co">#&gt;  [9] knitr_1.49        htmltools_0.5.8.1 rmarkdown_2.29    lifecycle_1.0.4  </span></span>
+<span id="cb21-27"><a href="#cb21-27" tabindex="-1"></a><span class="co">#&gt; [13] cli_3.6.5         grid_4.4.1        sass_0.4.9        data.table_1.16.4</span></span>
+<span id="cb21-28"><a href="#cb21-28" tabindex="-1"></a><span class="co">#&gt; [17] jquerylib_0.1.4   compiler_4.4.1    tools_4.4.1       evaluate_1.0.3   </span></span>
+<span id="cb21-29"><a href="#cb21-29" tabindex="-1"></a><span class="co">#&gt; [21] bslib_0.8.0       Rcpp_1.0.13       yaml_2.3.10       rlang_1.1.6      </span></span>
+<span id="cb21-30"><a href="#cb21-30" tabindex="-1"></a><span class="co">#&gt; [25] jsonlite_1.8.9</span></span></code></pre></div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

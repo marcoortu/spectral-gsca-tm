@@ -1,0 +1,45 @@
+# R package
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# Build artifacts
+/doc/
+/Meta/
+/inst/doc/
+
+# devtools / roxygen
+NAMESPACE.bak
+
+# Output files
+output/
+*.csv
+*.rds
+*.RData
+*.rda
+
+# LaTeX auxiliary files
+latex/*.aux
+latex/*.log
+latex/*.out
+latex/*.toc
+latex/*.lof
+latex/*.lot
+latex/*.fls
+latex/*.fdb_latexmk
+latex/*.synctex.gz
+latex/*.bbl
+latex/*.blg
+latex/*.pdf
+
+# OS-specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*~
+*.tmp
+*.swp

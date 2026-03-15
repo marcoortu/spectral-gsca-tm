@@ -1,0 +1,34 @@
+---
+title: "Introduction to egscatm"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to egscatm}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Overview
+
+`egscatm` fits structural topic models in Aitchison geometry via a non-iterative
+spectral solution.
+
+## Quick start
+
+```r
+library(egscatm)
+
+# Simulate data
+set.seed(1)
+M <- 100; N <- 50; K <- 4; P <- 2
+W <- matrix(rpois(M * N, 5), M, N)
+C <- scale(matrix(rnorm(M * P), M, P))
+
+# Fit model
+fit <- egscatm(W, C, K = K, lambda = 2)
+
+# Topic proportions
+head(fit$Pi)
+
+# Top terms per topic
+top_terms(fit, n = 5, vocab = paste0("word", seq_len(N)))
+```
