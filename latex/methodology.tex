@@ -297,7 +297,7 @@ the structural penalty reduces, up to an additive constant, to
 Defining $\tilde{\lambda}=\lambda/K^2$ (or equivalently, redefining
 $\lambda$ to absorb the scaling without loss of generality since
 $\lambda$ is a user-specified tuning parameter), we arrive at the
-\textbf{ILR-EGSCA objective}:
+\textbf{ILR-Spectral-GSCA objective}:
 %
 \begin{equation}
   \boxed{\;
@@ -314,7 +314,7 @@ $\lambda$ is a user-specified tuning parameter), we arrive at the
   \label{eq:objective}
 \end{equation}
 %
-subject to the EGSCA normalisation constraint
+subject to the Spectral-GSCA normalisation constraint
 \begin{equation}
   \mathbf{Z}^{\!\top}\mathbf{Z} = \mathbf{I}_{K-1}.
   \label{eq:constraint}
@@ -488,7 +488,7 @@ $\mathbf{M}_C = \mathbf{I}_M - \mathbf{P}_C$.
 \end{proposition}
 
 % ---- Main theorem ------------------------------------------------
-\subsection{The ILR-EGSCA Spectral Theorem}
+\subsection{The ILR-Spectral-GSCA Spectral Theorem}
 \label{subsec:spectral}
 
 Combining Propositions~\ref{prop:mu_profile}--\ref{prop:Bz_profile},
@@ -869,7 +869,7 @@ smaller than~$M\times M$.
 \section{Theoretical Properties}
 \label{sec:theory}
 
-This section establishes the theoretical foundations of the ILR-EGSCA
+This section establishes the theoretical foundations of the ILR-Spectral-GSCA
 estimator. All results concern the \emph{profiled linearised objective}
 defined by~\eqref{eq:objective}--\eqref{eq:constraint}; the connection
 to the original simplex problem~\eqref{eq:objective_simplex} is made
@@ -1114,7 +1114,7 @@ $(\mathbf{Z}^*,\hat{\boldsymbol{\Psi}},
   \hat{\mathbf{B}}_z,\hat{\boldsymbol{\mu}})$
 defined by Theorem~\ref{thm:spectral} and
 Corollary~\ref{cor:recovery} is a \emph{global} minimiser
-of the linearised ILR-EGSCA
+of the linearised ILR-Spectral-GSCA
 objective~\eqref{eq:objective} subject
 to~\eqref{eq:constraint}: no other feasible parameter set achieves a
 strictly smaller value of~\eqref{eq:objective}.
@@ -1704,7 +1704,7 @@ to future work.
 \label{sec:connections}
 % ====================================================================
 
-The ILR-EGSCA topic model sits at the intersection of three established
+The ILR-Spectral-GSCA topic model sits at the intersection of three established
 frameworks:
 %
 \begin{enumerate}

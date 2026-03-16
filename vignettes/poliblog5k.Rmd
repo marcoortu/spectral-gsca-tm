@@ -1,6 +1,6 @@
 ---
 title: "Structural Topic Modeling in Aitchison Geometry: Blog Posts on the 2008 US Presidential Election"
-author: "egscatm package"
+author: "sgscatm package"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-`egscatm` fits a **Structural Topic Model in Aitchison geometry** via a
+`sgscatm` fits a **Structural Topic Model in Aitchison geometry** via a
 closed-form spectral solution.  Document–topic proportions live on the
 probability simplex $\mathcal{S}^K$ and are linked to document-level
 covariates through a Generalized Structured Component Analysis (GSCA)
@@ -36,7 +36,7 @@ This vignette walks through a complete analysis of `poliblog5k`, a corpus of
 campaign and distributed with the `stm` package
 (Roberts, Stewart & Tingley, 2019).
 
-## The ILR-EGSCA model in brief
+## The ILR-Spectral-GSCA model in brief
 
 For $M$ documents, $N$ terms, $K$ topics and $P$ covariates:
 
@@ -82,13 +82,13 @@ onto the covariate space.
 # Setup
 
 ```{r pkgs, message=FALSE, warning=FALSE}
-# Load egscatm functions (replace with library(egscatm) once installed)
-pkg_dir <- system.file("R", package = "egscatm")
+# Load sgscatm functions (replace with library(sgscatm) once installed)
+pkg_dir <- system.file("R", package = "sgscatm")
 if (nchar(pkg_dir) == 0L) {
   # running from source
   for (f in list.files("../R", pattern = "[.]R$", full.names = TRUE)) source(f)
 } else {
-  library(egscatm)
+  library(sgscatm)
 }
 
 library(stm)   # for data and comparison
@@ -123,7 +123,7 @@ table(poliblog5k.meta$rating)
 
 We draw a random sample of **1 000 documents** and use
 `prepDocuments()` to remove terms appearing in fewer than 2 documents
-(required by `stm`; we re-use the same pruned vocabulary for `egscatm`
+(required by `stm`; we re-use the same pruned vocabulary for `sgscatm`
 to ensure a fair comparison).
 
 ```{r sample}
@@ -147,9 +147,9 @@ V     <- length(vocab)
 cat(sprintf("After pruning: %d documents, %d terms\n", M, V))
 ```
 
-## Building the document–term matrix for `egscatm`
+## Building the document–term matrix for `sgscatm`
 
-`egscatm` expects a dense numeric matrix $\mathbf{W} \in \mathbb{R}_{\ge 0}^{M \times N}$.
+`sgscatm` expects a dense numeric matrix $\mathbf{W} \in \mathbb{R}_{\ge 0}^{M \times N}$.
 We convert `stm`'s sparse list format:
 
 ```{r dtm}
@@ -185,7 +185,7 @@ head(round(C, 2))
 
 # Fitting the model
 
-`egscatm()` requires only $\mathbf{W}$, $\mathbf{C}$, the number of
+`sgscatm()` requires only $\mathbf{W}$, $\mathbf{C}$, the number of
 topics $K$, and the regularisation weight $\lambda$.  The default
 `scale_W = TRUE` row-normalises $\mathbf{W}$ to term frequencies before
 fitting.
@@ -195,7 +195,7 @@ K      <- 7L
 lambda <- 3.0
 
 t_start <- proc.time()
-fit <- egscatm(W, C, K = K, lambda = lambda, scale_W = TRUE)
+fit <- sgscatm(W, C, K = K, lambda = lambda, scale_W = TRUE)
 t_fit   <- proc.time() - t_start
 
 cat(sprintf("Fit completed in %.2f seconds (elapsed)\n", t_fit["elapsed"]))
@@ -400,7 +400,7 @@ legend("topright", paste0("T", seq_len(K)),
 
 # Prediction on new documents
 
-`predict.egscatm()` projects new documents onto the fitted topic space
+`predict.sgscatm()` projects new documents onto the fitted topic space
 via the ILR loadings $\hat{\boldsymbol{\Psi}}$ without refitting.
 
 ```{r predict}
@@ -479,7 +479,7 @@ knitr::kable(summ_df, align = "lr", caption = "Model summary")
 - **Non-iterative**: the solution is the top-$(K{-}1)$ eigenspace of an
   $(r + P) \times (r + P)$ matrix ($r \le \min(M, N, 100)$) — no random
   initialisation, no convergence issues, fully deterministic.
-- **Globally optimal**: for the profiled, linearised ILR-EGSCA
+- **Globally optimal**: for the profiled, linearised ILR-Spectral-GSCA
   objective (Ky Fan theorem).
 - **Simplex-consistent**: topic proportions satisfy
   $\hat{\pi}_{ik} \ge 0$ and $\sum_k \hat{\pi}_{ik} = 1$ by

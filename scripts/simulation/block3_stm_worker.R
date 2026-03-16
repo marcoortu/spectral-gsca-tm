@@ -24,7 +24,7 @@ N_VOCAB  <- as.integer(args[7L])
 row_idx  <- as.integer(args[8L])
 out_rds  <- args[9L]
 
-# Source egscatm infrastructure (no ggplot2/dplyr dependencies)
+# Source sgscatm infrastructure (no ggplot2/dplyr dependencies)
 for (.f in list.files("R", pattern = "[.]R$", full.names = TRUE)) source(.f)
 source("scripts/simulation/sim_dgp.R")
 source("scripts/simulation/sim_utils.R")

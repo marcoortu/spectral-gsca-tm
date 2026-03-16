@@ -1,6 +1,6 @@
-Package: egscatm
+Package: sgscatm
 Type: Package
-Title: Structural Topic Modeling via ILR-EGSCA
+Title: Structural Topic Modeling via ILR-Spectral-GSCA
 Version: 0.1.0
 Authors@R: person("Author", "Name", role = c("aut", "cre"), email = "author@example.com")
 Description: Fits a structural topic model that operates natively in the Aitchison

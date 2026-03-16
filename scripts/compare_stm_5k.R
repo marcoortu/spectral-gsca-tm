@@ -1,9 +1,9 @@
 # =============================================================================
-# egscatm vs STM — Benchmark on FULL CORPUS (poliblog5k, 5000 documents)
+# sgscatm vs STM — Benchmark on FULL CORPUS (poliblog5k, 5000 documents)
 #
 # Covariates: rating (Conservative/Liberal), day (centred)
-# Models  :  (1) egscatm  — default (rotate=TRUE)
-#            (2) egscatm  — + M-step refinement (kmeans, temp=0.5)
+# Models  :  (1) sgscatm  — default (rotate=TRUE)
+#            (2) sgscatm  — + M-step refinement (kmeans, temp=0.5)
 #            (3) STM variational EM (reference)
 # Focus   : TIMING on full corpus (5000 documents)
 # =============================================================================
@@ -57,18 +57,18 @@ docs_train <- docs[idx_train]
 cat(sprintf("Train: %d  |  Test: %d\n\n", length(idx_train), length(idx_test)))
 
 # =============================================================================
-# FIT 1 — egscatm (rotate=TRUE, default)
+# FIT 1 — sgscatm (rotate=TRUE, default)
 # =============================================================================
-cat(">>> egscatm  (rotate=TRUE, no refinement) ...\n")
+cat(">>> sgscatm  (rotate=TRUE, no refinement) ...\n")
 t0    <- proc.time()
-fit_eg <- egscatm(W_train, C_train, K = K, lambda = 3.0, scale_W = TRUE)
+fit_eg <- sgscatm(W_train, C_train, K = K, lambda = 3.0, scale_W = TRUE)
 t_eg  <- (proc.time() - t0)["elapsed"]
 cat(sprintf("    %.2f s\n\n", t_eg))
 
 # =============================================================================
-# FIT 2 — egscatm + refine_phi (kmeans, temp=0.5)
+# FIT 2 — sgscatm + refine_phi (kmeans, temp=0.5)
 # =============================================================================
-cat(">>> egscatm  + refine_phi (kmeans, temp=0.5) ...\n")
+cat(">>> sgscatm  + refine_phi (kmeans, temp=0.5) ...\n")
 t0      <- proc.time()
 fit_rt  <- refine_phi(fit_eg, W_train, method = "kmeans",
                       smooth = 1e-4, temp = 0.5, seed = 2024L)
@@ -153,21 +153,21 @@ ll_stm   <- held_out_ll(phi_stm, W_test)
 # =============================================================================
 sep <- paste(rep("=", 72), collapse = "")
 cat("\n", sep, "\n", sep = "")
-cat("  BENCHMARK  egscatm / egscatm+refine+temp0.5 / STM\n")
+cat("  BENCHMARK  sgscatm / sgscatm+refine+temp0.5 / STM\n")
 cat(sprintf("  poliblog5k FULL  |  K=%d  |  M=%d  |  V=%d\n", K, M, V))
 cat(sep, "\n\n")
 
 # ---- timing -----------------------------------------------------------------
 cat("TIMING\n")
-cat(sprintf("  %-42s %8.2f s\n",  "egscatm (rotate=TRUE)",        t_eg))
+cat(sprintf("  %-42s %8.2f s\n",  "sgscatm (rotate=TRUE)",        t_eg))
 cat(sprintf("  %-42s %8.2f s  (overhead +%.2f s)\n",
-            "egscatm + refine_phi (kmeans, temp=0.5)",
+            "sgscatm + refine_phi (kmeans, temp=0.5)",
             t_eg + t_ref, t_ref))
 cat(sprintf("  %-42s %8.2f s  (%d EM iter)\n",
             "STM (variational EM)", t_stm, fit_stm$convergence$its))
-cat(sprintf("  Speedup  egscatm / STM               : %.1fx\n",
+cat(sprintf("  Speedup  sgscatm / STM               : %.1fx\n",
             t_stm / t_eg))
-cat(sprintf("  Speedup  egscatm+refine / STM        : %.1fx\n\n",
+cat(sprintf("  Speedup  sgscatm+refine / STM        : %.1fx\n\n",
             t_stm / (t_eg + t_ref)))
 
 # ---- aggregate metrics ------------------------------------------------------
@@ -256,10 +256,10 @@ cat(sep, "\n")
 cat(sprintf("  Total documents               : %d\n", M))
 cat(sprintf("  Vocabulary size               : %d\n", V))
 cat(sprintf("  K                             : %d\n", K))
-cat(sprintf("\n  Time egscatm (fit only)       : %.2f s\n", t_eg))
+cat(sprintf("\n  Time sgscatm (fit only)       : %.2f s\n", t_eg))
 cat(sprintf("  Time refine_phi overhead      : %.2f s\n", t_ref))
-cat(sprintf("  Time egscatm+refine TOTAL     : %.2f s\n", t_eg + t_ref))
+cat(sprintf("  Time sgscatm+refine TOTAL     : %.2f s\n", t_eg + t_ref))
 cat(sprintf("  Time STM                      : %.2f s  (%d iter)\n",
             t_stm, fit_stm$convergence$its))
-cat(sprintf("\n  Speedup egscatm / STM         : %.1fx\n", t_stm / t_eg))
-cat(sprintf("  Speedup egscatm+refine / STM  : %.1fx\n\n", t_stm / (t_eg + t_ref)))
+cat(sprintf("\n  Speedup sgscatm / STM         : %.1fx\n", t_stm / t_eg))
+cat(sprintf("  Speedup sgscatm+refine / STM  : %.1fx\n\n", t_stm / (t_eg + t_ref)))

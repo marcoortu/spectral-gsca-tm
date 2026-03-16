@@ -1,21 +1,21 @@
 ---
-title: "Introduction to egscatm"
+title: "Introduction to sgscatm"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction to egscatm}
+  %\VignetteIndexEntry{Introduction to sgscatm}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
 ## Overview
 
-`egscatm` fits structural topic models in Aitchison geometry via a non-iterative
+`sgscatm` fits structural topic models in Aitchison geometry via a non-iterative
 spectral solution.
 
 ## Quick start
 
 ```r
-library(egscatm)
+library(sgscatm)
 
 # Simulate data
 set.seed(1)
@@ -24,7 +24,7 @@ W <- matrix(rpois(M * N, 5), M, N)
 C <- scale(matrix(rnorm(M * P), M, P))
 
 # Fit model
-fit <- egscatm(W, C, K = K, lambda = 2)
+fit <- sgscatm(W, C, K = K, lambda = 2)
 
 # Topic proportions
 head(fit$Pi)

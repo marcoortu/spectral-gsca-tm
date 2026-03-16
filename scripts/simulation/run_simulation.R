@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 # ===================================================================
-#  ILR-EGSCA Simulation Study — Biometrika Paper
+#  ILR-Spectral-GSCA Simulation Study — Biometrika Paper
 # ===================================================================
 #
 #  Three blocks, each tied to a specific theoretical result:
@@ -27,7 +27,7 @@ RUN_BLOCK <- if ("--block" %in% args) {
 }
 QUICK <- "--quick" %in% args
 
-cat("=== ILR-EGSCA Simulation Study ===\n")
+cat("=== ILR-Spectral-GSCA Simulation Study ===\n")
 cat("Blocks:", paste(RUN_BLOCK, collapse = ", "), "\n")
 cat("Mode:", if (QUICK) "QUICK (reduced design)\n" else "FULL\n")
 
@@ -38,9 +38,9 @@ suppressPackageStartupMessages({
   library(tidyr)
 })
 
-# Source egscatm package (adjust path as needed)
+# Source sgscatm package (adjust path as needed)
 # devtools::load_all(".")
-source("R/egscatm_fit.R")
+source("R/sgscatm_fit.R")
 source("R/ilr_contrast.R")
 source("R/ilr_se.R")
 source("R/methods.R")
@@ -119,7 +119,7 @@ if (1L %in% RUN_BLOCK) {
 
       res <- tryCatch({
         t0  <- proc.time()
-        fit <- egscatm(dat$W, dat$C, K = K_TOPICS, lambda = 1,
+        fit <- sgscatm(dat$W, dat$C, K = K_TOPICS, lambda = 1,
                        rotate = TRUE)
         tf  <- (proc.time() - t0)[3]
 
@@ -318,7 +318,7 @@ if (2L %in% RUN_BLOCK) {
                        seed = 20000L + row_idx * 1000L + r)
 
         fit <- tryCatch(
-          egscatm(dat$W, dat$C, K = K, lambda = 1, rotate = FALSE),
+          sgscatm(dat$W, dat$C, K = K, lambda = 1, rotate = FALSE),
           error = function(e) NULL
         )
         if (is.null(fit)) next
@@ -449,10 +449,10 @@ if (3L %in% RUN_BLOCK) {
                        alpha_beta = 0.1, doc_length = 200L,
                        seed = 30000L + row_idx * 1000L + r)
 
-        # --- egscatm ---
+        # --- sgscatm ---
         t0 <- proc.time()
         fit_eg <- tryCatch(
-          egscatm(dat$W, dat$C, K = K_TOPICS, lambda = 1, rotate = TRUE),
+          sgscatm(dat$W, dat$C, K = K_TOPICS, lambda = 1, rotate = TRUE),
           error = function(e) NULL
         )
         t_eg <- (proc.time() - t0)[3]
@@ -460,7 +460,7 @@ if (3L %in% RUN_BLOCK) {
         if (!is.null(fit_eg)) {
           pa_eg <- procrustes_align(fit_eg$Bz, Bz0_r)
           metrics <- rbind(metrics, data.frame(
-            rep = r, method = "egscatm",
+            rep = r, method = "sgscatm",
             mse_Bz = pa_eg$mse, time_s = t_eg
           ))
         }
@@ -496,14 +496,14 @@ if (3L %in% RUN_BLOCK) {
 
   # --- Block 3 Summary Table (LaTeX) -------------------------------
   b3_summary <- do.call(rbind, lapply(results_b3, function(x) {
-    eg  <- x$metrics[x$metrics$method == "egscatm", ]
+    eg  <- x$metrics[x$metrics$method == "sgscatm", ]
     stm <- x$metrics[x$metrics$method == "STM", ]
     data.frame(
       M = x$M,
       signal = x$signal,
-      mse_egscatm  = if (nrow(eg) > 0) mean(eg$mse_Bz) else NA,
+      mse_sgscatm  = if (nrow(eg) > 0) mean(eg$mse_Bz) else NA,
       mse_stm      = if (nrow(stm) > 0) mean(stm$mse_Bz) else NA,
-      time_egscatm = if (nrow(eg) > 0) mean(eg$time_s) else NA,
+      time_sgscatm = if (nrow(eg) > 0) mean(eg$time_s) else NA,
       time_stm     = if (nrow(stm) > 0) mean(stm$time_s) else NA,
       speedup      = if (nrow(stm) > 0 && nrow(eg) > 0)
                        mean(stm$time_s) / mean(eg$time_s) else NA,
@@ -514,7 +514,7 @@ if (3L %in% RUN_BLOCK) {
   tex_b3 <- paste0(
     "\\begin{table}[t]\n",
     "\\centering\n",
-    "\\caption{Structural comparison: \\texttt{egscatm} vs.\\ STM. ",
+    "\\caption{Structural comparison: \\texttt{sgscatm} vs.\\ STM. ",
     "MSE of $\\hat{\\mathbf{B}}_z$ after Procrustes alignment, ",
     "and computation time. ",
     "$K=", K_TOPICS, "$, $P=", P_COV, "$, $N=", N_VOCAB, "$, ",
@@ -525,15 +525,15 @@ if (3L %in% RUN_BLOCK) {
     "$M$ & Signal & \\multicolumn{2}{c}{MSE$(\\hat{\\mathbf{B}}_z)$} & ",
     "\\multicolumn{2}{c}{Time (s)} & Speedup & Reps \\\\\n",
     "\\cmidrule(lr){3-4}\\cmidrule(lr){5-6}\n",
-    " & & egscatm & STM & egscatm & STM & & \\\\\n",
+    " & & sgscatm & STM & sgscatm & STM & & \\\\\n",
     "\\midrule\n",
     paste(apply(b3_summary, 1, function(row) {
       sprintf("%s & %s & %.4f & %.4f & %.1f & %.1f & %.1f$\\times$ & %d",
               format(as.integer(row["M"]), big.mark = ","),
               as.character(row["signal"]),
-              as.numeric(row["mse_egscatm"]),
+              as.numeric(row["mse_sgscatm"]),
               as.numeric(row["mse_stm"]),
-              as.numeric(row["time_egscatm"]),
+              as.numeric(row["time_sgscatm"]),
               as.numeric(row["time_stm"]),
               as.numeric(row["speedup"]),
               as.integer(row["n_rep"]))
@@ -560,7 +560,7 @@ if (3L %in% RUN_BLOCK) {
   p3a <- ggplot(all_metrics, aes(x = method, y = mse_Bz, fill = method)) +
     geom_boxplot(alpha = 0.7, outlier.size = 0.8) +
     facet_grid(signal ~ M_label, scales = "free_y") +
-    scale_fill_manual(values = c("egscatm" = "#534AB7", "STM" = "#D85A30")) +
+    scale_fill_manual(values = c("sgscatm" = "#534AB7", "STM" = "#D85A30")) +
     scale_y_log10() +
     labs(x = NULL, y = expression("MSE of"~hat(bold(B))[z]),
          fill = NULL) +
@@ -581,7 +581,7 @@ if (3L %in% RUN_BLOCK) {
     geom_line(linewidth = 0.7) +
     scale_x_log10(labels = scales::comma) +
     scale_y_log10() +
-    scale_colour_manual(values = c("egscatm" = "#534AB7",
+    scale_colour_manual(values = c("sgscatm" = "#534AB7",
                                     "STM" = "#D85A30")) +
     labs(x = expression(italic(M)~"(corpus size)"),
          y = "Mean computation time (s, log scale)",

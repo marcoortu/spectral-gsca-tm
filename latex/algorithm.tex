@@ -4,7 +4,7 @@
 % ====================================================================
 
 The estimation procedure consists of two stages.
-Algorithm~\ref{alg:ilr_egsca} computes the globally optimal spectral
+Algorithm~\ref{(alg:ilr_spectral_gsca)} computes the globally optimal spectral
 solution for the profiled linearised objective; its output is
 deterministic and non-iterative.
 Algorithm~\ref{alg:refine} is an optional single-pass refinement that
@@ -14,8 +14,8 @@ proportions or path coefficients.
 
 % ---- Algorithm 1 --------------------------------------------------
 \begin{algorithm}[h]
-\caption{ILR-EGSCA Spectral Fit}
-\label{alg:ilr_egsca}
+\caption{ILR-Spectral-GSCA Spectral Fit}
+\label{(alg:ilr_spectral_gsca)}
 \begin{algorithmic}[1]
 \REQUIRE Document--term matrix
   $\mathbf{W}\in\mathbb{R}^{M\times N}_{\geq 0}$,
@@ -94,7 +94,7 @@ proportions or path coefficients.
 \end{algorithm}
 
 \noindent
-Algorithm~\ref{alg:ilr_egsca} is \emph{non-iterative}: it consists
+Algorithm~\ref{(alg:ilr_spectral_gsca)} is \emph{non-iterative}: it consists
 of a fixed sequence of matrix decompositions and linear-algebra
 operations, with no convergence loop and no random initialisation.
 Its output is deterministic for any given input (up to the optional
@@ -130,7 +130,7 @@ while leaving the spectral estimates
 $(\hat{\boldsymbol{\Pi}}, \hat{\mathbf{B}}_z, \mathbf{Z}^*)$
 unchanged. The key observation is that the document--topic
 proportions $\hat{\boldsymbol{\Pi}}$ produced by
-Algorithm~\ref{alg:ilr_egsca}---which lie on the simplex and enjoy
+Algorithm~\ref{(alg:ilr_spectral_gsca)}---which lie on the simplex and enjoy
 the theoretical guarantees of
 Section~\ref{sec:theory}---provide a valid soft assignment of
 documents to topics, from which unconstrained topic--term
@@ -199,7 +199,7 @@ $\tau<1$ sharpens the distribution towards a sparse representation.
 \caption{Topic--Term Refinement (post-spectral)}
 \label{alg:refine}
 \begin{algorithmic}[1]
-\REQUIRE Spectral fit from Algorithm~\ref{alg:ilr_egsca}:
+\REQUIRE Spectral fit from Algorithm~\ref{(alg:ilr_spectral_gsca)}:
   $\hat{\boldsymbol{\Pi}}$, $\hat{\boldsymbol{\Psi}}$,
   $\mathbf{Z}^*$;\;
   document--term matrix~$\mathbf{W}$;\;
@@ -281,7 +281,7 @@ The recommended workflow for applied use combines both algorithms:
 %
 \begin{enumerate}
   \item \textbf{Spectral fit}
-    (Algorithm~\ref{alg:ilr_egsca}): produces
+    (Algorithm~\ref{(alg:ilr_spectral_gsca)}): produces
     $\hat{\boldsymbol{\Pi}}$, $\hat{\mathbf{B}}_z$,
     $\hat{\boldsymbol{\Psi}}$, $\mathbf{Z}^*$ with full theoretical
     guarantees. Varimax rotation is applied by default.
@@ -308,7 +308,7 @@ step in Algorithm~\ref{alg:refine}.
 \label{subsec:complexity}
 
 Table~\ref{tab:complexity} summarises the cost of each step. The
-dominant cost is the randomised SVD in Algorithm~\ref{alg:ilr_egsca},
+dominant cost is the randomised SVD in Algorithm~\ref{(alg:ilr_spectral_gsca)},
 Step~2, which scales as $O(MN\log r)$ via the algorithm
 of~\citet{halko2011finding}. All other steps are linear in~$M$.
 For comparison, STM requires $O(MK\cdot\text{iter}_{\text{EM}})$
@@ -325,7 +325,7 @@ $N_{\text{start}}$~the number of $K$-means restarts.}
 \toprule
 Step & Operation & Cost \\
 \midrule
-\multicolumn{3}{l}{\emph{Algorithm~\ref{alg:ilr_egsca}: Spectral fit}} \\
+\multicolumn{3}{l}{\emph{Algorithm~\ref{(alg:ilr_spectral_gsca)}: Spectral fit}} \\
 \; 1 & Column centering & $O(MN)$ \\
 \; 2 & Randomised SVD (rank $r$) & $O(MN\log r)$ \\
 \; 3 & Covariate QR & $O(MP^2)$ \\

@@ -8,7 +8,7 @@
 #' require the eigengap assumption. For large corpora (`M > 5000`) consider
 #' reducing `B` for speed.
 #'
-#' @param fit An `"egscatm"` object returned by [egscatm()].
+#' @param fit An `"sgscatm"` object returned by [sgscatm()].
 #' @param W Numeric M x N document-term matrix used to fit `fit`.
 #' @param C Numeric M x P covariate matrix used to fit `fit`.
 #' @param B Integer. Number of bootstrap replicates. Default 200.
@@ -26,11 +26,11 @@
 #'     \item{B}{Number of replicates used.}
 #'     \item{conf}{Confidence level used.}
 #'   }
-#' @seealso [egscatm()], [ilr_se_analytical()]
+#' @seealso [sgscatm()], [ilr_se_analytical()]
 #' @export
 ilr_se <- function(fit, W, C, B = 200L, conf = 0.95,
                    seed = NULL, verbose = FALSE) {
-  stopifnot(inherits(fit, "egscatm"))
+  stopifnot(inherits(fit, "sgscatm"))
   W  <- as.matrix(W)
   C  <- as.matrix(C)
   M  <- nrow(W)
@@ -50,7 +50,7 @@ ilr_se <- function(fit, W, C, B = 200L, conf = 0.95,
 
     idx <- sample.int(M, M, replace = TRUE)
     fb  <- tryCatch(
-      egscatm(W[idx, , drop = FALSE],
+      sgscatm(W[idx, , drop = FALSE],
               C[idx, , drop = FALSE],
               K        = K,
               lambda   = fit$lambda,
@@ -96,7 +96,7 @@ ilr_se <- function(fit, W, C, B = 200L, conf = 0.95,
 #' is issued and results should be treated with caution. Prefer [ilr_se()] for
 #' routine use.
 #'
-#' @param fit An `"egscatm"` object returned by [egscatm()].
+#' @param fit An `"sgscatm"` object returned by [sgscatm()].
 #' @param tol_gap Numeric. Relative eigengap threshold. Default 0.05.
 #'
 #' @return A list with:
@@ -106,9 +106,9 @@ ilr_se <- function(fit, W, C, B = 200L, conf = 0.95,
 #'   }
 #' @export
 ilr_se_analytical <- function(fit, tol_gap = 0.05) {
-  stopifnot(inherits(fit, "egscatm"))
+  stopifnot(inherits(fit, "sgscatm"))
   if (is.null(fit$U_all))
-    stop("fit was created with an old version of egscatm(); please refit.")
+    stop("fit was created with an old version of sgscatm(); please refit.")
 
   K   <- fit$K
   Kp  <- K - 1L
