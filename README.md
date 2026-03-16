@@ -16,7 +16,7 @@
 
 ```r
 # install.packages("remotes")  # if not already installed
-remotes::install_github("marcoortu/irl-egsca-tm")
+remotes::install_github("marcoortu/spectral-gsca-tm")
 ```
 
 ### From source
@@ -24,8 +24,8 @@ remotes::install_github("marcoortu/irl-egsca-tm")
 Clone the repository and build/install from the project root:
 
 ```bash
-git clone https://github.com/marcoortu/irl-egsca-tm.git
-cd irl-egsca-tm
+git clone https://github.com/marcoortu/spectral-gsca-tm.git
+cd spectral-gsca-tm
 R CMD build .
 R CMD INSTALL sgscatm_0.1.0.tar.gz
 ```
