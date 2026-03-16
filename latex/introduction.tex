@@ -2,5 +2,145 @@
 \section{Introduction}
 \label{sec:introduction}
 % ====================================================================
-
-[To be written.]
+ 
+Topic models are a workhorse of modern text analysis. By representing
+each document as a mixture of latent themes, they reduce
+high-dimensional word-count data to an interpretable low-rank
+structure that can be explored, visualised, and related to external
+variables. In many applications the central scientific question is not
+``what are the topics?'' but ``how does topic prevalence vary with
+covariates?''---for instance, how do perceptions of the most important
+political issue shift across demographic and attitudinal groups?
+ 
+The Structural Topic Model \citep[STM,][]{roberts2014stm} addresses
+this question by embedding a logistic-normal regression of
+document--topic proportions on covariates within a hierarchical
+generative model, estimated via variational expectation--maximisation.
+STM has become the dominant framework for covariate-driven topic
+analysis in political science, sociology, and the digital humanities.
+Yet its inferential machinery carries three limitations that are
+inherent to the variational approach.
+First, the optimisation landscape is non-convex: the variational EM
+algorithm converges to a local optimum whose quality depends on
+initialisation.
+Second, the method is iterative: each EM cycle requires a pass over
+all documents, and convergence typically demands tens to hundreds of
+iterations, making the method slow on large corpora.
+Third, uncertainty quantification for the covariate effects requires
+parametric bootstrap resampling---a computationally expensive
+post-estimation step with no closed-form alternative.
+ 
+This paper shows that all three limitations dissolve when the problem
+is reformulated in the natural geometry of the probability simplex.
+ 
+Document--topic proportions live on the $K$-simplex
+$\mathcal{S}^K$, a $(K{-}1)$-dimensional manifold whose intrinsic
+metric structure is given by the Aitchison inner
+product~\citep{aitchison1986statistical}.
+The isometric log-ratio (ILR)
+transformation~\citep{egozcue2003isometric} maps the simplex to
+$\mathbb{R}^{K-1}$ without distortion, replacing the constrained
+compositional estimation problem with an unconstrained one in
+Euclidean space. We exploit this coordinate change to formulate a
+structural topic model whose objective function---combining
+document--term reconstruction with a covariate-driven structural
+penalty---admits sequential closed-form profiling of all nuisance
+parameters, reducing the entire estimation problem to a single
+eigenvalue decomposition.
+ 
+The resulting estimator, which we call \emph{egscatm} (exploratory
+generalised structured component analysis for topic models), has
+several distinctive features.
+It is \emph{non-iterative}: the solution is a deterministic sequence
+of matrix decompositions with no convergence loop and no random
+initialisation.
+It is \emph{globally optimal} for the profiled linearised objective:
+the Ky~Fan eigenvalue theorem guarantees that no other feasible
+parameter set achieves a lower value.
+And it yields \emph{analytical standard errors} for the covariate
+path coefficients: the asymptotic covariance matrix is derived in
+closed form from eigenvector perturbation theory, providing valid
+confidence intervals without bootstrap.
+ 
+The key algebraic insight is that profiling out the corpus mean,
+the topic--term loadings, and the regression coefficients in
+sequence leaves a trace maximisation over an orthonormality-constrained
+matrix---exactly the problem solved by the leading eigenvectors of a
+covariate-augmented document similarity matrix. This matrix,
+$\mathbf{S}_z = \widetilde{\mathbf{W}}\widetilde{\mathbf{W}}^{\!\top}
++ \lambda\mathbf{P}_C$, blends centred document similarity with the
+inter-document structure induced by covariates, and the regularisation
+parameter $\lambda$ governs the balance: $\lambda=0$ recovers Latent
+Semantic Analysis; $\lambda\to\infty$ collapses the topics onto the
+covariate space.
+ 
+The spectral solution operates in the ILR coordinate system, where
+the topic--term distributions are constrained to a
+$(K{-}1)$-dimensional affine subspace anchored at the corpus mean.
+This constraint---the algebraic price of the closed-form
+solution---limits topic exclusivity relative to methods that
+estimate each topic distribution freely.
+To address this, we introduce a single-pass post-spectral refinement
+that re-estimates the topic--term matrix via a weighted
+assignment--maximisation step, breaking the subspace constraint while
+leaving the document--topic proportions and path coefficients---and
+their theoretical guarantees---intact.
+ 
+We develop the theoretical foundations of the estimator in detail.
+Global optimality for the linearised objective is established via the
+Ky~Fan theorem. Identifiability conditions under both simple and
+degenerate eigenspectra are characterised.
+Consistency and first-order asymptotic normality of the path
+coefficients are derived via the Davis--Kahan theorem and eigenvector
+perturbation expansions, yielding an explicit sandwich covariance
+formula.
+A linearisation error bound under an eigenvector delocalisation
+condition quantifies the approximation quality relative to the
+original simplex problem, showing that the per-document discrepancy
+vanishes at rate $O(M^{-2})$ as the corpus grows.
+ 
+A three-block simulation study validates the theory: the analytical
+confidence intervals achieve nominal coverage without bootstrap; the
+linearisation error is three to four orders of magnitude below the
+theoretical bound; and the spectral estimator achieves speedups of
+$9\times$ to $107\times$ over STM with comparable accuracy in the
+recovery of covariate effects under moderate signal strength.
+An application to open-ended responses from the British Election
+Study demonstrates the method on a substantive political science
+question: how do perceptions of the most important issue facing
+the country vary across demographic and attitudinal groups?
+ 
+The paper makes three contributions that sit at the intersection
+of distinct methodological traditions.
+To \emph{topic modeling}, it contributes a non-iterative estimator
+with analytical inference---a qualitatively different object from the
+variational and sampling-based estimators that dominate the field.
+To \emph{structural equation modeling}, it contributes a
+compositional latent-variable model where the latent space is not
+arbitrary but is the ILR transform of the probability simplex,
+giving the component scores a principled interpretation as
+document--topic compositions.
+To \emph{compositional data analysis}, it contributes a spectral
+method for high-dimensional compositions with covariate structure,
+extending the Aitchison framework beyond its traditional
+low-dimensional settings.
+ 
+The remainder of the paper is organised as follows.
+Section~\ref{sec:background} reviews the Aitchison geometry and the
+ILR transformation.
+Section~\ref{sec:model} formulates the structural topic model on the
+simplex and derives the ILR reparametrisation.
+Section~\ref{sec:analytical} presents the analytical solution via
+spectral profiling, including the post-estimation rotation and
+topic--term refinement.
+Section~\ref{sec:theory} establishes the theoretical properties:
+global optimality, identifiability, consistency, asymptotic
+normality, and the linearisation error bound.
+Section~\ref{sec:connections} discusses connections to existing
+frameworks.
+Section~\ref{sec:algorithm} describes the complete algorithmic
+pipeline.
+Section~\ref{sec:simulation} reports the simulation study.
+Section~\ref{sec:application} presents the British Election Study
+application.
+Section~\ref{sec:conclusions} concludes.
