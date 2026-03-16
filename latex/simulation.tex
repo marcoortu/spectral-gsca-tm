@@ -4,7 +4,7 @@
 % ====================================================================
 
 We conduct a three-block simulation study to assess the finite-sample
-behaviour of the ILR-EGSCA estimator along three complementary axes:
+behaviour of the ILR-Spectral-GSCA estimator along three complementary axes:
 (i)~consistency and asymptotic normality of the covariate path
 coefficients $\hat{\mathbf{B}}_z$ (Theorems~12 and~14); (ii)~the
 tightness of the linearisation error bound (Proposition~15); and
@@ -18,7 +18,7 @@ tightness of the linearisation error bound (Proposition~15); and
 % -------------------------------------------------------------------
 
 All synthetic corpora are drawn from the following hierarchical model,
-which is exactly the generative process assumed by egscatm:
+which is exactly the generative process assumed by sgscatm:
 %
 \begin{align}
   \mathbf{c}_i \;&\overset{\mathrm{iid}}{\sim}\;
@@ -83,7 +83,7 @@ $\hat{\mathbf{R}} = \mathop{\arg\min}_{\mathbf{R}\in\mathcal{O}_{K-1}}
 We vary the corpus size $M \in \{500, 1{,}000, 2{,}000\}$ and run
 $50$ independent replicates at each level, fixing all other parameters
 as above.
-For each replicate we fit egscatm (with $\lambda=1$ and Procrustes
+For each replicate we fit sgscatm (with $\lambda=1$ and Procrustes
 rotation), compute the Procrustes-aligned estimate
 $\hat{\mathbf{B}}_z^{\mathrm{al}}$, and record:
 (a)~the mean squared error
@@ -247,7 +247,7 @@ ILR dimensions and marginally larger score norms.
 % -------------------------------------------------------------------
 
 \paragraph{Design.}
-We compare egscatm with STM~\citep{roberts2014stm} on the primary
+We compare sgscatm with STM~\citep{roberts2014stm} on the primary
 inferential target: recovery of the covariate path coefficients
 $\mathbf{B}_z$.
 Following the notation of Section~\ref{subsec:dgp}, we vary
@@ -255,7 +255,7 @@ $M\in\{1{,}000, 5{,}000\}$ and two signal levels,
 $\|\mathbf{B}_{z,0}\|_\infty \leq b_{\max}$ with
 $b_{\max}\in\{0.15\ (\text{weak}),\;0.50\ (\text{strong})\}$,
 running $20$ replicates per cell.
-For egscatm the path coefficients are obtained directly as
+For sgscatm the path coefficients are obtained directly as
 $\hat{\mathbf{B}}_z$ from the spectral step.
 For STM we extract the posterior mean topic proportions
 $\hat{\boldsymbol{\Theta}}^{\mathrm{STM}}$, project each row into
@@ -273,13 +273,13 @@ is computed.
 
 \begin{table}[t]
 \centering
-\caption{Structural comparison: \texttt{egscatm} vs.\ STM. MSE of $\hat{\mathbf{B}}_z$ after Procrustes alignment, and computation time. $K=5$, $P=3$, $N=500$, $\sigma_\varepsilon=0.3$.}
+\caption{Structural comparison: \texttt{sgscatm} vs.\ STM. MSE of $\hat{\mathbf{B}}_z$ after Procrustes alignment, and computation time. $K=5$, $P=3$, $N=500$, $\sigma_\varepsilon=0.3$.}
 \label{tab:block3}
 \begin{tabular}{clcccccc}
 \toprule
 $M$ & Signal & \multicolumn{2}{c}{MSE$(\hat{\mathbf{B}}_z)$} & \multicolumn{2}{c}{Time (s)} & Speedup & Reps \\
 \cmidrule(lr){3-4}\cmidrule(lr){5-6}
- & & egscatm & STM & egscatm & STM & & \\
+ & & sgscatm & STM & sgscatm & STM & & \\
 \midrule
 1,000 & weak   & 0.0055 & 0.0091 & 0.5 &  4.1 &   8.9$\times$ & 20 \\
 1,000 & strong & 0.0772 & 0.0208 & 0.5 &  5.2 &  11.2$\times$ & 20 \\
@@ -293,30 +293,30 @@ Table~\ref{tab:block3} presents the full comparison across $20$
 replicates per cell.
 Under the \emph{weak-signal} regime ($b_{\max}=0.15$), where
 covariate effects are small relative to residual noise, the two
-methods are competitive: at $M=1{,}000$ egscatm achieves
+methods are competitive: at $M=1{,}000$ sgscatm achieves
 MSE~$=0.006$ vs.\ STM's $0.009$, and at $M=5{,}000$ their
 MSEs converge ($0.006$ vs.\ $0.005$), consistent with both
 estimators being consistent as $M\to\infty$.
 Under the \emph{strong-signal} regime ($b_{\max}=0.50$), STM
 reports lower MSE ($0.021$ and $0.016$ at $M=1{,}000$ and
-$M=5{,}000$ respectively) compared to egscatm ($0.077$ and
+$M=5{,}000$ respectively) compared to sgscatm ($0.077$ and
 $0.080$).
 This gap is expected: when ILR scores are large, the
 first-order linearisation of the closure map introduces a
-non-negligible bias in the egscatm objective, whereas STM's
+non-negligible bias in the sgscatm objective, whereas STM's
 variational EM operates directly on the simplex.
-The tradeoff is computational: egscatm is $8.9\times$ faster at
+The tradeoff is computational: sgscatm is $8.9\times$ faster at
 $M=1{,}000$ and over $90\times$ faster at $M=5{,}000$, where
-STM requires $\approx 20$\,s versus egscatm's $0.2$\,s.
+STM requires $\approx 20$\,s versus sgscatm's $0.2$\,s.
 The speedup grows with $M$ because STM's EM complexity scales
-super-linearly while the eigendecomposition in egscatm is
+super-linearly while the eigendecomposition in sgscatm is
 dominated by a single matrix factorisation.
 
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.75\textwidth]{imgs/block3_mse_boxplot.pdf}
   \caption{Distribution of MSE$(\hat{\mathbf{B}}_z)$ over $20$
-           replicates for egscatm (purple) and STM (orange),
+           replicates for sgscatm (purple) and STM (orange),
            for weak and strong signal levels across corpus sizes
            $M\in\{1{,}000,5{,}000\}$.
            Log scale on the vertical axis.
@@ -328,8 +328,8 @@ dominated by a single matrix factorisation.
   \centering
   \includegraphics[width=0.65\textwidth]{imgs/block3_timing.pdf}
   \caption{Mean computation time (seconds, log scale) as a function
-           of corpus size $M$, for egscatm and STM.
-           The non-iterative spectral estimator of egscatm achieves
+           of corpus size $M$, for sgscatm and STM.
+           The non-iterative spectral estimator of sgscatm achieves
            sub-second fitting times throughout.}
   \label{fig:block3_timing}
 \end{figure}
@@ -377,6 +377,6 @@ The three blocks collectively support the following conclusions.
         longer fitting times.
         The linearisation error bound of Block~2 explains this
         behaviour quantitatively: larger ILR scores amplify the
-        approximation error in the egscatm objective.
+        approximation error in the sgscatm objective.
 
 \end{enumerate}

@@ -1,6 +1,6 @@
 #' Re-estimate Topic-Word Distributions via One Post-Spectral Refinement Step
 #'
-#' After fitting egscatm, the stored topic-term matrix
+#' After fitting sgscatm, the stored topic-term matrix
 #' \eqn{\hat{\boldsymbol{\Phi}} = \mathbf{V}\hat{\boldsymbol{\Psi}}
 #' + \mathbf{1}_K\bar{\mathbf{w}}^\top} is constrained to a
 #' \eqn{(K{-}1)}-dimensional affine ILR subspace. This limits topic
@@ -21,7 +21,7 @@
 #'     \eqn{\sqrt{M}\,\hat{\mathbf{Z}}} (scaled to natural population
 #'     variance). Documents are partitioned into K clusters; each cluster
 #'     becomes one topic. This directly exploits the spectral structure of
-#'     egscatm and produces **diverse, exclusive** topics.}
+#'     sgscatm and produces **diverse, exclusive** topics.}
 #'   \item{`"em"`}{One LDA-style E-step: soft assignments
 #'     \eqn{q_{ik} \propto \exp(\sum_n \tilde{w}_{in}\,
 #'     \log\hat\phi^{(0)}_{kn})} from the current ILR-based
@@ -38,7 +38,7 @@
 #' An optional temperature \eqn{\tau \in (0,1]} further sharpens the
 #' M-step distribution by raising every entry to \eqn{1/\tau}.
 #'
-#' @param fit An `"egscatm"` object returned by [egscatm()].
+#' @param fit An `"sgscatm"` object returned by [sgscatm()].
 #' @param W Numeric M x N document-term matrix used to fit `fit`.
 #' @param smooth Non-negative numeric. Laplace smoothing added to every entry
 #'   of the M-step estimate before row-normalising. Default `1e-4`.
@@ -55,12 +55,12 @@
 #'   matrix (K x N, rows sum to 1). Fields added: `phi_refined`, `phi_smooth`,
 #'   `phi_temp`, `phi_method`.
 #'
-#' @seealso [topic_word_dist()], [egscatm()]
+#' @seealso [topic_word_dist()], [sgscatm()]
 #' @export
 refine_phi <- function(fit, W, smooth = 1e-4, temp = 1.0,
                        method = c("kmeans", "em"),
                        nstart = 10L, seed = NULL) {
-  stopifnot(inherits(fit, "egscatm"))
+  stopifnot(inherits(fit, "sgscatm"))
   method <- match.arg(method)
   W <- as.matrix(W)
   stopifnot(
@@ -132,7 +132,7 @@ refine_phi <- function(fit, W, smooth = 1e-4, temp = 1.0,
 
 #' Extract Topic-Word Probability Matrix
 #'
-#' Returns the K x N topic-word probability matrix for a fitted egscatm model,
+#' Returns the K x N topic-word probability matrix for a fitted sgscatm model,
 #' with optional temperature sharpening.
 #'
 #' For models refined via [refine_phi()] the stored `Phi` is returned.
@@ -140,7 +140,7 @@ refine_phi <- function(fit, W, smooth = 1e-4, temp = 1.0,
 #' \eqn{\mathbf{V}\hat{\boldsymbol{\Psi}}} is converted to row-wise softmax
 #' probabilities. In both cases `temp < 1` can sharpen the distribution.
 #'
-#' @param fit An `"egscatm"` object.
+#' @param fit An `"sgscatm"` object.
 #' @param temp Positive numeric. Temperature. `1` (default) returns
 #'   the distribution unchanged; values less than `1` sharpen.
 #' @return K x N numeric matrix with rows summing to 1.
@@ -151,7 +151,7 @@ topic_word_dist <- function(fit, temp = 1.0) {
 }
 
 #' @export
-topic_word_dist.egscatm <- function(fit, temp = 1.0) {
+topic_word_dist.sgscatm <- function(fit, temp = 1.0) {
   stopifnot(is.numeric(temp), length(temp) == 1L, temp > 0)
 
   if (isTRUE(fit$phi_refined)) {

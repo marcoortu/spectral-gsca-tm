@@ -1,9 +1,9 @@
 #' ===================================================================
-#' Data Generating Process for ILR-EGSCA Simulation Study
+#' Data Generating Process for ILR-Spectral-GSCA Simulation Study
 #' ===================================================================
 #'
 #' Generates synthetic corpora from a structural topic model consistent
-#' with the egscatm framework:
+#' with the spectral-gsca framework:
 #'
 #'   1. Covariates  C  ~ N(0, Sigma_C), then centred
 #'   2. ILR scores  z_i = B_z0' c_i + eps_i,  eps ~ N(0, sigma_eps^2 I)
@@ -14,7 +14,7 @@
 #' the observed data (W, C), the ground truth (Bz0, Z_true, Theta_true,
 #' Beta), and the contrast matrix V.
 #'
-#' @author egscatm simulation study
+#' @author spectral-gsca simulation study
 # ===================================================================
 
 
@@ -286,8 +286,8 @@ validate_dgp <- function(dat) {
 # ===================================================================
 
 if (FALSE) {
-  # Source the egscatm package first
-  # devtools::load_all("path/to/egscatm")
+  # Source the sgscatm package first
+  # devtools::load_all("path/to/sgscatm")
 
   # Generate a small corpus
   dat <- sim_dgp(M = 1000, N = 500, K = 5, P = 3,
@@ -295,8 +295,8 @@ if (FALSE) {
                  doc_length = 200, seed = 42)
   validate_dgp(dat)
 
-  # Fit egscatm
-  fit <- egscatm(dat$W, dat$C, K = 5, lambda = 1)
+  # Fit sgscatm
+  fit <- sgscatm(dat$W, dat$C, K = 5, lambda = 1)
 
   # Compare estimated vs true Bz
   cat("True Bz:\n"); print(round(dat$Bz0, 3))

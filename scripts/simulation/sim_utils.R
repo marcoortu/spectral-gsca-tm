@@ -8,6 +8,7 @@
 #' ===================================================================
 
 
+
 #' Procrustes alignment of estimated Bz to true Bz0
 #'
 #' Finds the orthogonal matrix R that minimises
@@ -52,7 +53,7 @@ procrustes_align_Z <- function(Z_hat, Z_true) {
 
 #' Evaluate Bz recovery on a single replicate
 #'
-#' Fits egscatm, aligns via Procrustes, computes MSE, and optionally
+#' Fits sgscatm, aligns via Procrustes, computes MSE, and optionally
 #' checks coverage of analytical and bootstrap CIs.
 #'
 #' @param dat        Output of sim_dgp().
@@ -71,7 +72,7 @@ procrustes_align_Z <- function(Z_hat, Z_true) {
 #'     \item{se_bootstrap}{Bootstrap SEs (if requested), rotated to aligned basis.}
 #'     \item{coverage_analytical}{Logical P x (K-1) matrix: does the 95% CI cover truth?}
 #'     \item{coverage_bootstrap}{Same for bootstrap CIs.}
-#'     \item{time_fit}{Time for egscatm fit (seconds).}
+#'     \item{time_fit}{Time for spectral-gsca fit (seconds).}
 #'     \item{time_se}{Time for SE computation (seconds).}
 #'   }
 #' @export
@@ -87,7 +88,7 @@ eval_single_replicate <- function(dat, lambda = 1,
 
   # --- fit ---
   t0  <- proc.time()
-  fit <- egscatm(dat$W, dat$C, K = K, lambda = lambda, rotate = TRUE)
+  fit <- sgscatm(dat$W, dat$C, K = K, lambda = lambda, rotate = TRUE)
   t_fit <- (proc.time() - t0)[3]
 
   # --- Procrustes alignment ---
@@ -180,7 +181,7 @@ eval_single_replicate <- function(dat, lambda = 1,
 #' @param n_rep     Integer. Number of replicates.
 #' @param dgp_fun   Function. DGP generator (e.g., sim_dgp).
 #' @param dgp_args  List. Arguments passed to dgp_fun (except seed).
-#' @param lambda    Regularisation parameter for egscatm.
+#' @param lambda    Regularisation parameter for spectral-gsca.
 #' @param compute_se As in eval_single_replicate().
 #' @param B_boot    Bootstrap replicates.
 #' @param verbose   Logical. Print progress.
@@ -260,7 +261,7 @@ run_simulation <- function(n_rep, dgp_fun, dgp_args,
 #' topic proportions, and compares to the theoretical bound
 #' (Proposition 15).
 #'
-#' @param fit  An egscatm fit object.
+#' @param fit  An sgscatm fit object.
 #' @param K    Number of topics.
 #' @return A list with:
 #'   \describe{

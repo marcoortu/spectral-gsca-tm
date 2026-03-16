@@ -1,3 +1,3 @@
 library(testthat)
-library(egscatm)
-test_check("egscatm")
+library(sgscatm)
+test_check("sgscatm")

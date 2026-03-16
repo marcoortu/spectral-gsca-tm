@@ -1,6 +1,6 @@
 #' @export
-print.egscatm <- function(x, ...) {
-  cat("ILR-EGSCA Structural Topic Model\n")
+print.sgscatm <- function(x, ...) {
+  cat("ILR-Spectral-GSCA Structural Topic Model\n")
   cat("  Topics (K)    :", x$K, "\n")
   cat("  Lambda        :", x$lambda, "\n")
   cat("  Documents (M) :", nrow(x$Pi), "\n")
@@ -15,8 +15,8 @@ print.egscatm <- function(x, ...) {
 }
 
 #' @export
-summary.egscatm <- function(object, n_terms = 10L, ...) {
-  cat("ILR-EGSCA Structural Topic Model\n")
+summary.sgscatm <- function(object, n_terms = 10L, ...) {
+  cat("ILR-Spectral-GSCA Structural Topic Model\n")
   cat("================================\n")
   rot_str <- if (isTRUE(object$rotate)) "yes" else "no"
   ref_str <- if (isTRUE(object$phi_refined)) "yes" else "no"
@@ -34,18 +34,18 @@ summary.egscatm <- function(object, n_terms = 10L, ...) {
 
 #' Extract path coefficients
 #' @export
-coef.egscatm <- function(object, ...) object$Bz
+coef.sgscatm <- function(object, ...) object$Bz
 
 #' Extract fitted topic proportions
 #' @export
-fitted.egscatm <- function(object, ...) object$Pi
+fitted.sgscatm <- function(object, ...) object$Pi
 
 #' Top terms per topic
 #'
 #' Returns the top `n` terms for each topic, ranked by the corresponding row
 #' of the topic-term loading matrix `Phi`.
 #'
-#' @param x An object of class `"egscatm"`.
+#' @param x An object of class `"sgscatm"`.
 #' @param n Integer. Number of top terms per topic. Default 10.
 #' @param vocab Character vector of length N. Term labels. If NULL, column
 #'   indices are returned.
@@ -56,7 +56,7 @@ top_terms <- function(x, n = 10L, vocab = NULL) {
 }
 
 #' @export
-top_terms.egscatm <- function(x, n = 10L, vocab = NULL) {
+top_terms.sgscatm <- function(x, n = 10L, vocab = NULL) {
   Phi <- x$Phi
   K   <- x$K
   n   <- min(n, ncol(Phi))
@@ -74,13 +74,13 @@ top_terms.egscatm <- function(x, n = 10L, vocab = NULL) {
 #' Projects new documents into the fitted ILR topic space using the
 #' topic-term loadings.
 #'
-#' @param object An `"egscatm"` object.
+#' @param object An `"sgscatm"` object.
 #' @param newW Numeric matrix M_new x N. New document-term matrix.
 #' @param scale_W Logical. Row-normalise newW. Default TRUE.
 #' @param ... Ignored.
 #' @return M_new x K matrix of predicted topic proportions.
 #' @export
-predict.egscatm <- function(object, newW, scale_W = TRUE, ...) {
+predict.sgscatm <- function(object, newW, scale_W = TRUE, ...) {
   newW <- as.matrix(newW)
   if (scale_W) {
     rs <- rowSums(newW); rs[rs == 0] <- 1

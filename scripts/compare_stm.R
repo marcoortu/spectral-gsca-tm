@@ -1,11 +1,11 @@
 # =============================================================================
-# egscatm vs STM — Direct comparison
+# sgscatm vs STM — Direct comparison
 #
 # Dataset : poliblog5k (1000 sampled documents, US political blogs 2008)
 # Covariates: rating (Conservative/Liberal), day (centred)
-# Models  :  (1) egscatm  — default (rotate=TRUE)
-#            (2) egscatm  — + M-step refinement of Phi
-#            (3) egscatm  — + refinement + temperature sharpening (tau=0.5)
+# Models  :  (1) sgscatm  — default (rotate=TRUE)
+#            (2) sgscatm  — + M-step refinement of Phi
+#            (3) sgscatm  — + refinement + temperature sharpening (tau=0.5)
 #            (4) STM variational EM (reference)
 # Metrics : timing, semantic coherence, exclusivity, FREX,
 #           topic diversity, held-out log-lik
@@ -55,18 +55,18 @@ C_train <- C[idx_train,];      meta_train<- meta[idx_train,]
 cat(sprintf("Train: %d  |  Test: %d\n\n", length(idx_train), length(idx_test)))
 
 # =============================================================================
-# FIT 1 — egscatm (rotate=TRUE, default)
+# FIT 1 — sgscatm (rotate=TRUE, default)
 # =============================================================================
-cat(">>> egscatm  (rotate=TRUE, no refinement) ...\n")
+cat(">>> sgscatm  (rotate=TRUE, no refinement) ...\n")
 t0 <- proc.time()
-fit_eg <- egscatm(W_train, C_train, K = K, lambda = 3.0, scale_W = TRUE)
+fit_eg <- sgscatm(W_train, C_train, K = K, lambda = 3.0, scale_W = TRUE)
 t_eg   <- (proc.time() - t0)["elapsed"]
 cat(sprintf("    %.2f s\n\n", t_eg))
 
 # =============================================================================
-# FIT 2 — egscatm + refine_phi  (k-means, temp=1)
+# FIT 2 — sgscatm + refine_phi  (k-means, temp=1)
 # =============================================================================
-cat(">>> egscatm  + refine_phi (kmeans, temp=1) ...\n")
+cat(">>> sgscatm  + refine_phi (kmeans, temp=1) ...\n")
 t0      <- proc.time()
 fit_ref <- refine_phi(fit_eg, W_train, method = "kmeans",
                       smooth = 1e-4, temp = 1.0, seed = 2024L)
@@ -74,9 +74,9 @@ t_ref   <- (proc.time() - t0)["elapsed"]
 cat(sprintf("    %.2f s  (overhead over base fit)\n\n", t_ref))
 
 # =============================================================================
-# FIT 3 — egscatm + refine_phi + temperature sharpening (tau=0.5)
+# FIT 3 — sgscatm + refine_phi + temperature sharpening (tau=0.5)
 # =============================================================================
-cat(">>> egscatm  + refine_phi + temp=0.5 ...\n")
+cat(">>> sgscatm  + refine_phi + temp=0.5 ...\n")
 fit_rt <- refine_phi(fit_eg, W_train, method = "kmeans",
                      smooth = 1e-4, temp = 0.5, seed = 2024L)
 cat("    Done (same k-means assignment, only temp differs)\n\n")
@@ -164,24 +164,24 @@ ll_rt    <- held_out_ll(phi_rt,  W_test); ll_stm <- held_out_ll(phi_stm, W_test)
 # =============================================================================
 sep <- paste(rep("=", 72), collapse = "")
 cat("\n", sep, "\n", sep = "")
-cat("  COMPARISON  egscatm / +refine / +refine+temp / STM\n")
+cat("  COMPARISON  sgscatm / +refine / +refine+temp / STM\n")
 cat("  poliblog5k  |  K=7  |  train N=", length(idx_train), "\n", sep = "")
 cat(sep, "\n\n")
 
 # ---- timing -----------------------------------------------------------------
 cat("TIMING\n")
-cat(sprintf("  %-38s %8.2f s\n",  "egscatm (rotate=TRUE)",      t_eg))
+cat(sprintf("  %-38s %8.2f s\n",  "sgscatm (rotate=TRUE)",      t_eg))
 cat(sprintf("  %-38s %8.2f s  (+%.3f s overhead)\n",
-            "egscatm + refine_phi",
+            "sgscatm + refine_phi",
             t_eg + t_ref, t_ref))
 cat(sprintf("  %-38s %8.2f s  (same as above)\n",
-            "egscatm + refine_phi + temp=0.5",
+            "sgscatm + refine_phi + temp=0.5",
             t_eg + t_ref))
 cat(sprintf("  %-38s %8.2f s  (%d EM iter)\n",
             "STM (variational EM)", t_stm, fit_stm$convergence$its))
-cat(sprintf("  Speedup  egscatm / STM          : %.1fx\n",
+cat(sprintf("  Speedup  sgscatm / STM          : %.1fx\n",
             t_stm / t_eg))
-cat(sprintf("  Speedup  egscatm+refine / STM   : %.1fx\n\n",
+cat(sprintf("  Speedup  sgscatm+refine / STM   : %.1fx\n\n",
             t_stm / (t_eg + t_ref)))
 
 # ---- aggregate metrics ------------------------------------------------------
@@ -252,7 +252,7 @@ gap <- c(
 for (nm in names(gap)) {
   cat(sprintf("  %-20s : %+.4f  [%s]\n",
               nm, gap[nm],
-              if (gap[nm] >= 0) "egscatm >= STM" else "STM better"))
+              if (gap[nm] >= 0) "sgscatm >= STM" else "STM better"))
 }
 cat("\n")
 
@@ -314,7 +314,7 @@ delta_eg  <- colMeans(fit_eg$Pi[meta_train$rating=="Liberal",]) -
              colMeans(fit_eg$Pi[meta_train$rating=="Conservative",])
 delta_stm <- colMeans(fit_stm$theta[meta_train$rating=="Liberal",]) -
              colMeans(fit_stm$theta[meta_train$rating=="Conservative",])
-cat(sprintf("  %-7s %12s %12s\n", "Topic", "egscatm", "STM"))
+cat(sprintf("  %-7s %12s %12s\n", "Topic", "sgscatm", "STM"))
 cat(paste(rep("-", 34), collapse=""), "\n")
 for (k in seq_len(K))
   cat(sprintf("  T%-6d %+12.4f %+12.4f\n",
@@ -325,8 +325,8 @@ cat("\n")
 cat(sep, "\n")
 cat("  FINAL SUMMARY\n")
 cat(sep, "\n")
-cat(sprintf("  Speedup egscatm / STM             : %.1fx\n", t_stm/t_eg))
-cat(sprintf("  Speedup egscatm+refine / STM      : %.1fx\n", t_stm/(t_eg+t_ref)))
+cat(sprintf("  Speedup sgscatm / STM             : %.1fx\n", t_stm/t_eg))
+cat(sprintf("  Speedup sgscatm+refine / STM      : %.1fx\n", t_stm/(t_eg+t_ref)))
 cat(sprintf("  refine_phi overhead               : %.3f s\n\n", t_ref))
 cat("  Improvement eg-base -> eg-ref+temp (vs STM):\n")
 metrics_lbl <- c("Sem.Coherence","Exclusivity","FREX","Diversity","Held-out ll")

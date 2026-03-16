@@ -1,8 +1,8 @@
-# egscatm
+# sgscatm
 
-**Structural Topic Modeling via ILR-EGSCA**
+**Structural Topic Modeling via ILR-Spectral-GSCA**
 
-`egscatm` fits structural topic models that operate natively in the Aitchison geometry of the simplex. Document-topic proportions are represented in isometric log-ratio (ILR) coordinates and linked to covariates through a Generalized Structured Component Analysis (GSCA) formulation. Estimation reduces to a single eigenvalue decomposition of a covariate-augmented document similarity matrix — yielding a non-iterative, globally optimal solution.
+`sgscatm` fits structural topic models that operate natively in the Aitchison geometry of the simplex. Document-topic proportions are represented in isometric log-ratio (ILR) coordinates and linked to covariates through a Generalized Structured Component Analysis (GSCA) formulation. Estimation reduces to a single eigenvalue decomposition of a covariate-augmented document similarity matrix — yielding a non-iterative, globally optimal solution.
 
 ## Requirements
 
@@ -16,7 +16,7 @@
 
 ```r
 # install.packages("remotes")  # if not already installed
-remotes::install_github("marcoortu/irl-egsca-tm")
+remotes::install_github("marcoortu/spectral-gsca-tm")
 ```
 
 ### From source
@@ -24,10 +24,10 @@ remotes::install_github("marcoortu/irl-egsca-tm")
 Clone the repository and build/install from the project root:
 
 ```bash
-git clone https://github.com/marcoortu/irl-egsca-tm.git
-cd irl-egsca-tm
+git clone https://github.com/marcoortu/spectral-gsca-tm.git
+cd spectral-gsca-tm
 R CMD build .
-R CMD INSTALL egscatm_0.1.0.tar.gz
+R CMD INSTALL sgscatm_0.1.0.tar.gz
 ```
 
 Or directly from R:
@@ -44,7 +44,7 @@ devtools::install(".")
 R CMD build .
 
 # Full CRAN check
-R CMD check egscatm_0.1.0.tar.gz
+R CMD check sgscatm_0.1.0.tar.gz
 
 # Or with devtools
 devtools::check()
@@ -53,7 +53,7 @@ devtools::check()
 ## Quick start
 
 ```r
-library(egscatm)
+library(sgscatm)
 
 set.seed(42)
 M <- 200   # documents
@@ -66,7 +66,7 @@ W <- matrix(rpois(M * N, 5), M, N)
 C <- scale(matrix(rnorm(M * P), M, P))
 
 # Fit the model
-fit <- egscatm(W, C, K = K, lambda = 1)
+fit <- sgscatm(W, C, K = K, lambda = 1)
 
 # Print a brief summary
 print(fit)
@@ -75,7 +75,7 @@ summary(fit)
 
 ## Main output
 
-The fitted object is of class `"egscatm"` and contains:
+The fitted object is of class `"sgscatm"` and contains:
 
 | Component | Dimensions | Description |
 |-----------|-----------|-------------|
@@ -118,8 +118,8 @@ predict(fit, newW)
 ## Vignettes
 
 ```r
-vignette("introduction", package = "egscatm")
-vignette("poliblog5k",   package = "egscatm")
+vignette("introduction", package = "sgscatm")
+vignette("poliblog5k",   package = "sgscatm")
 ```
 
 ## License

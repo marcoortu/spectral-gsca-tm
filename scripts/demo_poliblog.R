@@ -1,14 +1,14 @@
 # =============================================================================
-# egscatm demo: Political Blog Posts (poliblog5k, stm package)
+# sgscatm demo: Political Blog Posts (poliblog5k, stm package)
 #
 # Dataset: 5000 US political blog posts from the 2008 presidential campaign.
 #   - Covariates: rating (Conservative / Liberal), day (day of campaign)
 #   - Pre-processed vocabulary (stemmed, stopwords removed): 2632 terms
 #
 # We sample 1000 documents and compare three configurations:
-#   (A) egscatm  — default (varimax rotation)
-#   (B) egscatm  — + M-step refinement of Phi
-#   (C) egscatm  — + M-step refinement + temperature sharpening (tau = 0.5)
+#   (A) sgscatm  — default (varimax rotation)
+#   (B) sgscatm  — + M-step refinement of Phi
+#   (C) sgscatm  — + M-step refinement + temperature sharpening (tau = 0.5)
 # =============================================================================
 
 # ---- 0. source package functions --------------------------------------------
@@ -62,10 +62,10 @@ C <- scale(cbind(rating = as.integer(meta_sub$rating == "Liberal"),
 # ---- 5. fit -----------------------------------------------------------------
 K <- 7L; lambda <- 3.0
 
-cat(sprintf("\nFitting egscatm: K=%d, lambda=%.1f, rotate=TRUE (default) ...\n",
+cat(sprintf("\nFitting sgscatm: K=%d, lambda=%.1f, rotate=TRUE (default) ...\n",
             K, lambda))
 t0  <- proc.time()
-fit <- egscatm(W = W, C = C, K = K, lambda = lambda, scale_W = TRUE)
+fit <- sgscatm(W = W, C = C, K = K, lambda = lambda, scale_W = TRUE)
 t_fit <- (proc.time() - t0)["elapsed"]
 cat(sprintf("  Done in %.2f s\n", t_fit))
 
@@ -89,7 +89,7 @@ phi_rt   <- topic_word_dist(fit_rt)       # M-step + temp=0.5
 # ---- 9. model header --------------------------------------------------------
 sep <- paste(rep("=", 70), collapse = "")
 cat("\n", sep, "\n", sep = "")
-cat(sprintf("  egscatm  |  K=%d  |  M=%d  |  N=%d  |  lambda=%.1f\n",
+cat(sprintf("  sgscatm  |  K=%d  |  M=%d  |  N=%d  |  lambda=%.1f\n",
             K, nrow(W), ncol(W), lambda))
 cat(sep, "\n"); print(fit_r)
 
@@ -163,7 +163,7 @@ print(Bz_df); cat("\n")
 cat(sep, "\n")
 cat("  TIMING SUMMARY\n")
 cat(sep, "\n")
-cat(sprintf("  egscatm fit (rotate=TRUE) : %.2f s\n", t_fit))
+cat(sprintf("  sgscatm fit (rotate=TRUE) : %.2f s\n", t_fit))
 cat(sprintf("  refine_phi (M-step)       : %.2f s\n", t_ref))
 cat(sprintf("  Total                     : %.2f s\n", t_fit + t_ref))
 cat(sprintf("  Documents: %d  |  Terms: %d  |  Topics: %d\n", N_sample, V, K))
