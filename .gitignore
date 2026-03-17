@@ -43,3 +43,7 @@ desktop.ini
 *~
 *.tmp
 *.swp
+
+# BES datasets (large files)
+scripts/BES_case_study/*.zip
+scripts/BES_case_study/*.sav
