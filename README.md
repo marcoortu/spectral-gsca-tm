@@ -122,9 +122,24 @@ vignette("introduction", package = "sgscatm")
 vignette("poliblog5k",   package = "sgscatm")
 ```
 
+## Replication package
+
+This repository also serves as the replication package for the companion paper. All code to reproduce the results is in the `replication/` folder:
+
+```
+replication/
+├── README.md            ← step-by-step instructions
+├── simulation/          ← scripts to reproduce the simulation study
+├── application/         ← scripts for the BES real-data application
+├── data/                ← pre-processed data (DTM, filtered corpus)
+└── output/              ← generated figures and tables (reproducible)
+```
+
+The built package tarball (`sgscatm_*.tar.gz`) is included in the root for offline installation.
+
 ## Simulation study
 
-The repository includes a full simulation study (`scripts/simulation/run_simulation.R`) with four blocks:
+The repository includes a full simulation study (`replication/simulation/run_simulation.R`) with four blocks:
 
 | Block | Purpose | Theoretical backing |
 |-------|---------|---------------------|
@@ -176,10 +191,10 @@ To run the simulation:
 
 ```bash
 # Quick mode (M = 500 / 2 000, 20 replicates)
-Rscript scripts/simulation/run_simulation.R --block 4 --quick
+Rscript replication/simulation/run_simulation.R --block 4 --quick
 
 # Full mode (M = 500 / 1 000 / 5 000 / 20 000, 50 replicates)
-Rscript scripts/simulation/run_simulation.R --block 4
+Rscript replication/simulation/run_simulation.R --block 4
 ```
 
 ## License

@@ -13,26 +13,19 @@
 # devtools / roxygen
 NAMESPACE.bak
 
-# Output files
-output/
-*.csv
+# Output files (replication - reproducible from scripts)
+replication/output/
 *.rds
 *.RData
 *.rda
 
-# LaTeX auxiliary files
-latex/*.aux
-latex/*.log
-latex/*.out
-latex/*.toc
-latex/*.lof
-latex/*.lot
-latex/*.fls
-latex/*.fdb_latexmk
-latex/*.synctex.gz
-latex/*.bbl
-latex/*.blg
-latex/*.pdf
+# Replication data (processed, not raw)
+replication/data/*.csv
+replication/data/*.rds
+
+# BES datasets (large raw files)
+replication/application/*.zip
+replication/application/*.sav
 
 # OS-specific
 .DS_Store
@@ -43,7 +36,3 @@ desktop.ini
 *~
 *.tmp
 *.swp
-
-# BES datasets (large files)
-scripts/BES_case_study/*.zip
-scripts/BES_case_study/*.sav
