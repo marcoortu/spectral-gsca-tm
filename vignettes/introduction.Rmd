@@ -12,6 +12,88 @@ vignette: >
 `sgscatm` fits structural topic models in Aitchison geometry via a non-iterative
 spectral solution.
 
+## Simulation study
+
+The package ships with a complete simulation study in
+`scripts/simulation/run_simulation.R` covering four blocks:
+
+| Block | What it verifies |
+|-------|-----------------|
+| 1 | Consistency & asymptotic normality of $\hat{\mathbf{B}}_z$ (Thm 12 & 14) |
+| 2 | Linearisation error bound (Prop 15) |
+| 3 | Structural comparison with STM |
+| **4** | **Four-method benchmark: quality and computation time** |
+
+### Block 4 — Four-method comparison
+
+Block 4 evaluates four estimators on paired synthetic corpora across corpus
+sizes M ∈ {500, 1 000, 5 000, 20 000} and three scenarios that stress-test
+different aspects of each method:
+
+- **`high_sep`** — very distinct topics (`alpha_beta = 0.01`), moderate
+  covariate signal.
+- **`low_sep`** — overlapping topics (`alpha_beta = 1.0`), moderate signal.
+- **`weak_sig`** — medium topics, weak covariate signal (`b_max = 0.10`).
+
+The four methods are:
+
+| Method | Description |
+|--------|-------------|
+| `sgscatm` | Spectral baseline — single eigendecomposition, no EM |
+| `sgscatm+refine` | Spectral + one `refine_phi()` step (k-means M-step) to improve $\hat{\boldsymbol{\Phi}}$ |
+| `stm` | Variational EM with default Spectral init |
+| `stm+warm` | Variational EM warm-started from the `sgscatm` exact solution |
+
+For `stm+warm`, the sgscatm topic proportions $\hat{\boldsymbol{\Pi}}$ are
+converted to STM's logit-normal parameterisation
+($\eta_{ik} = \log(\hat\pi_{ik}/\hat\pi_{iK})$) and used as the initial
+variational parameters, while $\hat{\boldsymbol{\Phi}}$ seeds the beta
+initialisation.
+
+**Metrics recorded per replicate:**
+
+- `mse_Bz` — MSE of $\hat{\mathbf{B}}_z$ after Procrustes alignment.
+- `mse_phi` — MSE of $\hat{\boldsymbol{\Phi}}$ under optimal row permutation.
+- `time_s` — total wall time (`stm+warm` includes sgscatm time).
+- `n_iter` — EM iterations to convergence (STM methods only).
+
+**Selected results (quick mode, K = 5, P = 3, N = 500, 20 replicates):**
+
+| Scenario | M | Method | MSE(B̂z) | Time (s) | Iter |
+|----------|---|--------|---------|---------|------|
+| High sep. | 500 | sgscatm | 0.022 | **0.1** | — |
+| | | stm | 0.010 | 1.2 | 30 |
+| | | **stm+warm** | **0.002** | 1.7 | 35 |
+| Low sep. | 500 | stm | 0.006 | 1.1 | 22 |
+| | | **stm+warm** | **0.005** | **0.8** | **10** |
+| Weak sig. | 500 | **sgscatm** | **0.001** | **0.1** | — |
+| | | stm | 0.009 | 0.9 | 18 |
+
+Key take-aways:
+
+1. `stm+warm` achieves the lowest MSE(B̂z) in all high- and low-separation
+   settings, with the sgscatm solution providing a ~4× accuracy gain over
+   vanilla STM under high topic separation.
+2. `sgscatm+refine` reduces MSE(Φ̂) by ~100× over the spectral baseline at
+   negligible extra cost (~0.05 s).
+3. Under **weak covariate signal**, `sgscatm` is the best method: the spectral
+   closed-form solution is more robust than variational EM when the
+   signal-to-noise ratio is low.
+4. The warm start halves EM iterations under low separation (10 vs 22),
+   yielding wall-time savings on large corpora.
+
+Run the simulation:
+
+```r
+# Quick mode
+system("Rscript scripts/simulation/run_simulation.R --block 4 --quick")
+
+# Full mode
+system("Rscript scripts/simulation/run_simulation.R --block 4")
+```
+
+---
+
 ## Quick start
 
 ```r

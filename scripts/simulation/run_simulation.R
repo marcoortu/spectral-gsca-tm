@@ -23,7 +23,7 @@ args <- commandArgs(trailingOnly = TRUE)
 RUN_BLOCK <- if ("--block" %in% args) {
   as.integer(args[which(args == "--block") + 1L])
 } else {
-  1:3
+  1:4
 }
 QUICK <- "--quick" %in% args
 
@@ -60,13 +60,23 @@ if (QUICK) {
   N_REP       <- 50L
   M_VALUES_B1 <- c(500L, 1000L, 2000L)
   M_VALUES_B3 <- c(1000L, 5000L)
+  M_VALUES_B4 <- c(500L, 2000L)
+  N_REP_B4    <- 20L
   B_BOOT      <- 100L
 } else {
   N_REP       <- 500L
   M_VALUES_B1 <- c(500L, 1000L, 2000L, 5000L, 10000L)
   M_VALUES_B3 <- c(1000L, 5000L, 20000L)
+  M_VALUES_B4 <- c(500L, 1000L, 5000L, 20000L)
+  N_REP_B4    <- 50L
   B_BOOT      <- 200L
 }
+
+# Block 4 scenario definitions (mirrored in the worker script)
+# high_sep : sparse/distinct topics (alpha_beta=0.01), moderate signal
+# low_sep  : diffuse/overlapping topics (alpha_beta=1.0), moderate signal
+# weak_sig : medium topics, weak covariate signal (small b_max)
+SCENARIOS_B4 <- c("high_sep", "low_sep", "weak_sig")
 
 # Fixed across all blocks
 N_VOCAB   <- 500L
@@ -410,12 +420,13 @@ if (2L %in% RUN_BLOCK) {
 if (3L %in% RUN_BLOCK) {
   cat("\n====== BLOCK 3: Comparison with STM ======\n")
 
-  # STM crashes on R 4.4.x due to a binary incompatibility; it works on
-  # R 4.5.1.  We therefore run STM fits in a subprocess via the worker
-  # script block3_stm_worker.R, which only loads stm (no tidyverse).
-  R451 <- file.path("C:/Program Files/R/R-4.5.1/bin/Rscript.exe")
+  # STM is run in a subprocess via the worker script block3_stm_worker.R,
+  # which only loads stm (no tidyverse).
+  R451 <- Sys.which("Rscript")
+  if (nchar(R451) == 0L) R451 <- file.path(R.home("bin"), "Rscript")
   STM_WORKER <- "scripts/simulation/block3_stm_worker.R"
-  STM_AVAILABLE <- file.exists(R451) && file.exists(STM_WORKER)
+  STM_AVAILABLE <- nchar(R451) > 0L && file.exists(STM_WORKER) &&
+    requireNamespace("stm", quietly = TRUE)
   if (!STM_AVAILABLE)
     cat("  NOTE: R 4.5.1 or worker script not found — STM skipped.\n")
 
@@ -556,15 +567,22 @@ if (3L %in% RUN_BLOCK) {
   all_metrics$M_label <- paste0("M = ", format(all_metrics$M, big.mark = ","))
   all_metrics$M_label <- factor(all_metrics$M_label,
     levels = paste0("M = ", format(sort(unique(all_metrics$M)), big.mark = ",")))
+  all_metrics$signal <- factor(all_metrics$signal,
+    levels = c("weak", "strong"),
+    labels = c("Signal: weak", "Signal: strong"))
 
   p3a <- ggplot(all_metrics, aes(x = method, y = mse_Bz, fill = method)) +
     geom_boxplot(alpha = 0.7, outlier.size = 0.8) +
-    facet_grid(signal ~ M_label, scales = "free_y") +
+    facet_grid(signal ~ M_label, scales = "free_y", switch = "y") +
     scale_fill_manual(values = c("sgscatm" = "#534AB7", "STM" = "#D85A30")) +
     scale_y_log10() +
     labs(x = NULL, y = expression("MSE of"~hat(bold(B))[z]),
          fill = NULL) +
-    theme(legend.position = "none")
+    theme(
+      legend.position = "none",
+      strip.text.y.left = element_text(angle = 0, hjust = 1),
+      strip.placement = "outside"
+    )
 
   ggsave("output/figures/block3_mse_boxplot.pdf", p3a,
          width = 7, height = 5)
@@ -595,6 +613,316 @@ if (3L %in% RUN_BLOCK) {
 
 
 # ===================================================================
+#  BLOCK 4: Four-Method Comparison — Quality and Speed
+# ===================================================================
+#
+#  Methods compared:
+#    sgscatm      – ILR-spectral baseline (closed-form, no EM)
+#    sgscatm_ref  – spectral + one refine_phi step (k-means M-step)
+#    stm          – variational EM with default Spectral init
+#    stm_warm     – variational EM warm-started from sgscatm solution
+#
+#  Design axes:
+#    M        – corpus size  (M_VALUES_B4)
+#    scenario – "high_sep", "low_sep", "weak_sig"  (SCENARIOS_B4)
+#
+#  Metrics recorded per replicate:
+#    mse_Bz  – MSE of path coefficients after Procrustes alignment
+#    mse_phi – MSE of topic-word distributions under optimal row perm
+#    time_s  – total wall time (stm_warm includes sgscatm time)
+#    n_iter  – EM iterations to convergence (STM methods only)
+# ===================================================================
+
+if (4L %in% RUN_BLOCK) {
+  cat("\n====== BLOCK 4: Four-Method Comparison ======\n")
+
+  # Locate Rscript executable
+  R_exe_b4 <- Sys.which("Rscript")
+  if (nchar(R_exe_b4) == 0L) R_exe_b4 <- file.path(R.home("bin"), "Rscript")
+
+  WORKER_B4 <- "scripts/simulation/block4_comparison_worker.R"
+  STM_B4_OK <- nchar(R_exe_b4) > 0L &&
+    file.exists(WORKER_B4) &&
+    requireNamespace("stm", quietly = TRUE)
+
+  if (!STM_B4_OK)
+    cat("  WARNING: stm package or worker not found — Block 4 skipped.\n")
+
+  results_b4 <- list()
+  row_idx    <- 0L
+
+  if (STM_B4_OK) {
+    for (M in M_VALUES_B4) {
+      for (scenario in SCENARIOS_B4) {
+        row_idx <- row_idx + 1L
+        cat(sprintf("  M=%d, scenario=%s ...\n", M, scenario))
+
+        out_rds <- tempfile(fileext = ".rds")
+        cmd <- sprintf(
+          '"%s" "%s" %d %s %d %d %d %d %d "%s"',
+          R_exe_b4, WORKER_B4,
+          M, scenario, N_REP_B4,
+          K_TOPICS, P_COV, N_VOCAB, row_idx, out_rds
+        )
+        ret <- system(cmd, ignore.stdout = FALSE, ignore.stderr = FALSE)
+
+        cell_metrics <- NULL
+        if (ret == 0L && file.exists(out_rds)) {
+          cell_metrics <- readRDS(out_rds)
+          unlink(out_rds)
+        } else {
+          cat(sprintf("    WARNING: worker failed (exit %d)\n", ret))
+        }
+
+        results_b4[[row_idx]] <- list(
+          M        = M,
+          scenario = scenario,
+          metrics  = cell_metrics
+        )
+      }
+    }
+  }
+
+  saveRDS(results_b4, "output/data/block4_results.rds")
+
+  # --- Block 4 Summary Table (LaTeX) --------------------------------
+  # One row per (M, scenario, method); grouped by scenario in the table.
+  METHOD_ORDER <- c("sgscatm", "sgscatm_ref", "stm", "stm_warm")
+  METHOD_LABEL <- c(
+    sgscatm     = "\\texttt{sgscatm}",
+    sgscatm_ref = "\\texttt{sgscatm}+refine",
+    stm         = "\\texttt{stm}",
+    stm_warm    = "\\texttt{stm}+warm"
+  )
+  SCENARIO_LABEL <- c(
+    high_sep = "High sep.",
+    low_sep  = "Low sep.",
+    weak_sig = "Weak signal"
+  )
+
+  b4_rows <- do.call(rbind, lapply(results_b4, function(x) {
+    if (is.null(x$metrics) || nrow(x$metrics) == 0L) return(NULL)
+    do.call(rbind, lapply(METHOD_ORDER, function(mth) {
+      m <- x$metrics[x$metrics$method == mth, ]
+      if (nrow(m) == 0L) return(NULL)
+      data.frame(
+        M            = x$M,
+        scenario     = x$scenario,
+        method       = mth,
+        mean_mse_Bz  = mean(m$mse_Bz,  na.rm = TRUE),
+        sd_mse_Bz    = sd(m$mse_Bz,    na.rm = TRUE),
+        mean_mse_phi = mean(m$mse_phi,  na.rm = TRUE),
+        sd_mse_phi   = sd(m$mse_phi,    na.rm = TRUE),
+        mean_time    = mean(m$time_s,   na.rm = TRUE),
+        mean_n_iter  = mean(m$n_iter,   na.rm = TRUE),
+        n_rep        = sum(!is.na(m$mse_Bz)),
+        stringsAsFactors = FALSE
+      )
+    }))
+  }))
+
+  if (!is.null(b4_rows) && nrow(b4_rows) > 0L) {
+    # Render one sub-block per scenario
+    body_lines <- character(0)
+    for (sc_name in SCENARIOS_B4) {
+      sc_rows <- b4_rows[b4_rows$scenario == sc_name, ]
+      if (nrow(sc_rows) == 0L) next
+
+      body_lines <- c(body_lines,
+        sprintf("\\multicolumn{7}{l}{\\textit{Scenario: %s}} \\\\",
+                SCENARIO_LABEL[sc_name]),
+        "\\midrule"
+      )
+
+      for (M_val in M_VALUES_B4) {
+        m_rows <- sc_rows[sc_rows$M == M_val, ]
+        first_m <- TRUE
+        for (mth in METHOD_ORDER) {
+          r_row <- m_rows[m_rows$method == mth, ]
+          if (nrow(r_row) == 0L) next
+
+          n_iter_str <- if (!is.na(r_row$mean_n_iter) &&
+                            mth %in% c("stm", "stm_warm"))
+            sprintf("%.0f", r_row$mean_n_iter) else "---"
+
+          body_lines <- c(body_lines,
+            sprintf(
+              "%s & %s & %.4f$\\pm$%.4f & %.2e$\\pm$%.2e & %.1f & %s & %d \\\\",
+              if (first_m) format(M_val, big.mark = ",") else "",
+              METHOD_LABEL[mth],
+              r_row$mean_mse_Bz, r_row$sd_mse_Bz,
+              r_row$mean_mse_phi, r_row$sd_mse_phi,
+              r_row$mean_time,
+              n_iter_str,
+              r_row$n_rep
+            )
+          )
+          first_m <- FALSE
+        }
+        body_lines <- c(body_lines, "\\addlinespace")
+      }
+      body_lines <- c(body_lines, "\\midrule")
+    }
+
+    tex_b4 <- paste0(
+      "\\begin{table}[t]\n",
+      "\\centering\n",
+      "\\small\n",
+      "\\caption{Four-method comparison across corpus sizes and scenarios. ",
+      "MSE$(\\hat{\\mathbf{B}}_z)$: mean squared error of path coefficients ",
+      "after Procrustes alignment (mean$\\pm$sd). ",
+      "MSE$(\\hat{\\boldsymbol{\\Phi}})$: topic-word MSE under optimal row ",
+      "permutation. Time: total wall time in seconds. Iter: mean EM iterations ",
+      "to convergence (STM methods only). ",
+      "$K=", K_TOPICS, "$, $P=", P_COV, "$, $N=", N_VOCAB, "$, ",
+      N_REP_B4, " replicates per cell.}\n",
+      "\\label{tab:block4}\n",
+      "\\begin{tabular}{rlccccc}\n",
+      "\\toprule\n",
+      "$M$ & Method & MSE$(\\hat{\\mathbf{B}}_z)$ & ",
+      "MSE$(\\hat{\\boldsymbol{\\Phi}})$ & ",
+      "Time (s) & Iter & Reps \\\\\n",
+      "\\midrule\n",
+      paste(body_lines, collapse = "\n"),
+      "\n",
+      "\\bottomrule\n",
+      "\\end{tabular}\n",
+      "\\end{table}\n"
+    )
+    writeLines(tex_b4, "output/tables/block4_comparison.tex")
+    cat("  Table written: output/tables/block4_comparison.tex\n")
+  }
+
+  # --- Block 4 figures ----------------------------------------------
+  if (!is.null(b4_rows) && nrow(b4_rows) > 0L) {
+
+    all_b4_metrics <- do.call(rbind, lapply(results_b4, function(x) {
+      if (is.null(x$metrics) || nrow(x$metrics) == 0L) return(NULL)
+      x$metrics$M        <- x$M
+      x$metrics$scenario <- x$scenario
+      x$metrics
+    }))
+
+    # Factor ordering for display
+    all_b4_metrics$method <- factor(all_b4_metrics$method,
+      levels = METHOD_ORDER,
+      labels = c("sgscatm", "sgscatm+refine", "stm", "stm+warm"))
+    all_b4_metrics$M_label <- factor(
+      paste0("M=", format(all_b4_metrics$M, big.mark = ",")),
+      levels = paste0("M=", format(sort(unique(all_b4_metrics$M)),
+                                   big.mark = ",")))
+    all_b4_metrics$scenario <- factor(all_b4_metrics$scenario,
+      levels = SCENARIOS_B4,
+      labels = c("High sep.", "Low sep.", "Weak signal"))
+
+    METHOD_COLOURS <- c(
+      "sgscatm"       = "#534AB7",
+      "sgscatm+refine"= "#1D9E75",
+      "stm"           = "#D85A30",
+      "stm+warm"      = "#C49A00"
+    )
+
+    # Figure 4a: MSE(Bz) boxplot — faceted by scenario x M
+    p4a <- ggplot(all_b4_metrics,
+                  aes(x = method, y = mse_Bz, fill = method)) +
+      geom_boxplot(alpha = 0.7, outlier.size = 0.6) +
+      facet_grid(scenario ~ M_label, scales = "free_y", switch = "y") +
+      scale_fill_manual(values = METHOD_COLOURS) +
+      scale_y_log10() +
+      labs(x = NULL,
+           y = expression("MSE of"~hat(bold(B))[z]~"(log scale)"),
+           fill = NULL) +
+      theme(
+        axis.text.x  = element_text(angle = 35, hjust = 1, size = 8),
+        legend.position = "none",
+        strip.text.y.left = element_text(angle = 0, hjust = 1),
+        strip.placement = "outside"
+      )
+
+    ggsave("output/figures/block4_mse_Bz.pdf", p4a,
+           width = 8, height = 6)
+    cat("  Figure written: output/figures/block4_mse_Bz.pdf\n")
+
+    # Figure 4b: MSE(Phi) boxplot — same layout
+    p4b <- ggplot(all_b4_metrics,
+                  aes(x = method, y = mse_phi, fill = method)) +
+      geom_boxplot(alpha = 0.7, outlier.size = 0.6) +
+      facet_grid(scenario ~ M_label, scales = "free_y", switch = "y") +
+      scale_fill_manual(values = METHOD_COLOURS) +
+      scale_y_log10() +
+      labs(x = NULL,
+           y = expression("MSE of"~hat(bold(Phi))~"(log scale)"),
+           fill = NULL) +
+      theme(
+        axis.text.x  = element_text(angle = 35, hjust = 1, size = 8),
+        legend.position = "none",
+        strip.text.y.left = element_text(angle = 0, hjust = 1),
+        strip.placement = "outside"
+      )
+
+    ggsave("output/figures/block4_mse_phi.pdf", p4b,
+           width = 8, height = 6)
+    cat("  Figure written: output/figures/block4_mse_phi.pdf\n")
+
+    # Figure 4c: Mean computation time vs M (log-log), by method and scenario
+    time_b4 <- all_b4_metrics %>%
+      group_by(M, scenario, method) %>%
+      summarise(mean_time = mean(time_s, na.rm = TRUE), .groups = "drop")
+
+    p4c <- ggplot(time_b4,
+                  aes(x = M, y = mean_time, colour = method, shape = method)) +
+      geom_point(size = 2.2) +
+      geom_line(linewidth = 0.65) +
+      facet_wrap(~ scenario, ncol = 3L) +
+      scale_x_log10(labels = scales::comma) +
+      scale_y_log10() +
+      scale_colour_manual(values = METHOD_COLOURS) +
+      scale_shape_manual(values = c(16L, 17L, 15L, 18L)) +
+      labs(x = expression(italic(M)~"(corpus size)"),
+           y = "Mean computation time (s, log scale)",
+           colour = NULL, shape = NULL)
+
+    ggsave("output/figures/block4_timing.pdf", p4c,
+           width = 9, height = 3.5)
+    cat("  Figure written: output/figures/block4_timing.pdf\n")
+
+    # Figure 4d: EM iterations for stm vs stm+warm (convergence speedup)
+    iter_b4 <- all_b4_metrics %>%
+      filter(method %in% c("stm", "stm+warm"), !is.na(n_iter)) %>%
+      group_by(M, scenario, method) %>%
+      summarise(mean_iter = mean(n_iter, na.rm = TRUE),
+                sd_iter   = sd(n_iter,   na.rm = TRUE),
+                .groups = "drop")
+
+    if (nrow(iter_b4) > 0L) {
+      p4d <- ggplot(iter_b4,
+                    aes(x = M, y = mean_iter,
+                        colour = method, linetype = method)) +
+        geom_ribbon(aes(ymin = pmax(mean_iter - sd_iter, 0),
+                        ymax = mean_iter + sd_iter,
+                        fill = method),
+                    alpha = 0.15, colour = NA) +
+        geom_line(linewidth = 0.7) +
+        geom_point(size = 2.2) +
+        facet_wrap(~ scenario, ncol = 3L) +
+        scale_x_log10(labels = scales::comma) +
+        scale_colour_manual(values = METHOD_COLOURS[c("stm", "stm+warm")]) +
+        scale_fill_manual(  values = METHOD_COLOURS[c("stm", "stm+warm")]) +
+        labs(x = expression(italic(M)~"(corpus size)"),
+             y = "Mean EM iterations to convergence",
+             colour = NULL, linetype = NULL, fill = NULL)
+
+      ggsave("output/figures/block4_em_iters.pdf", p4d,
+             width = 9, height = 3.5)
+      cat("  Figure written: output/figures/block4_em_iters.pdf\n")
+    }
+  }
+
+  cat("  Block 4 complete.\n")
+}
+
+
+# ===================================================================
 #  Final summary
 # ===================================================================
 
@@ -608,3 +936,4 @@ cat("\nTo include tables in LaTeX:\n")
 cat("  \\input{output/tables/block1_consistency}\n")
 cat("  \\input{output/tables/block2_linearisation}\n")
 cat("  \\input{output/tables/block3_comparison}\n")
+cat("  \\input{output/tables/block4_comparison}\n")

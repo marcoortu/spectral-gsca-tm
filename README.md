@@ -122,6 +122,66 @@ vignette("introduction", package = "sgscatm")
 vignette("poliblog5k",   package = "sgscatm")
 ```
 
+## Simulation study
+
+The repository includes a full simulation study (`scripts/simulation/run_simulation.R`) with four blocks:
+
+| Block | Purpose | Theoretical backing |
+|-------|---------|---------------------|
+| 1 | Consistency & asymptotic normality of B̂z | Thm 12 & 14 |
+| 2 | Linearisation error bound | Prop 15 |
+| 3 | Structural comparison with STM | empirical |
+| **4** | **Four-method comparison: quality & speed** | **empirical** |
+
+### Block 4 — Four-method comparison
+
+Block 4 benchmarks four estimators on the same synthetic corpora across two corpus sizes (M = 500, 2 000 in quick mode; up to M = 20 000 in full mode) and three scenarios:
+
+| Scenario | Description |
+|----------|-------------|
+| `high_sep` | Very distinct topics (`alpha_beta = 0.01`), moderate covariate signal |
+| `low_sep` | Overlapping topics (`alpha_beta = 1.0`), moderate covariate signal |
+| `weak_sig` | Medium topics, weak covariate signal (`b_max = 0.10`) |
+
+**Methods compared:**
+
+| Method | Description |
+|--------|-------------|
+| `sgscatm` | Spectral baseline — closed-form, zero EM iterations |
+| `sgscatm+refine` | Spectral + one k-means M-step to re-estimate Φ |
+| `stm` | Variational EM with default Spectral initialisation |
+| `stm+warm` | Variational EM warm-started from the `sgscatm` solution |
+
+**Metrics:** MSE(B̂z) after Procrustes alignment, MSE(Φ̂) under optimal row permutation, wall time, and EM iterations to convergence.
+
+**Selected results (quick mode, 20 replicates, K = 5, P = 3, N = 500):**
+
+| Scenario | M | Method | MSE(B̂z) | MSE(Φ̂) | Time (s) | Iter |
+|----------|---|--------|---------|--------|---------|------|
+| High sep. | 500 | sgscatm | 0.0222 | 1.85e-02 | **0.1** | — |
+| | | sgscatm+refine | 0.0222 | **2.08e-04** | **0.1** | — |
+| | | stm | 0.0101 | 4.43e-05 | 1.2 | 30 |
+| | | **stm+warm** | **0.0015** | 1.67e-05 | 1.7 | 35 |
+| Low sep. | 500 | stm+warm | 0.0052 | 7.73e-06 | **0.8** | **10** |
+| Weak sig. | 500 | **sgscatm** | **0.0013** | 1.04e-03 | **0.1** | — |
+| | | stm | 0.0087 | 1.68e-05 | 0.9 | 18 |
+
+**Key findings:**
+- `stm+warm` achieves the lowest MSE(B̂z) in most scenarios; the sgscatm warm start gives STM a ~4× accuracy advantage over vanilla STM in high-separation settings.
+- `sgscatm+refine` reduces MSE(Φ̂) by ~100× over the baseline at negligible additional cost.
+- `sgscatm` is the clear winner under **weak signal** (MSE(B̂z) = 0.0013 vs 0.0087 for STM), because the spectral closed-form solution is robust where variational EM struggles.
+- `stm+warm` halves EM iterations in low-separation settings (10 vs 22), giving a measurable speed advantage on large corpora.
+
+To run the simulation:
+
+```bash
+# Quick mode (M = 500 / 2 000, 20 replicates)
+Rscript scripts/simulation/run_simulation.R --block 4 --quick
+
+# Full mode (M = 500 / 1 000 / 5 000 / 20 000, 50 replicates)
+Rscript scripts/simulation/run_simulation.R --block 4
+```
+
 ## License
 
 GPL-3
