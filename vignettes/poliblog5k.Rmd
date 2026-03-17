@@ -489,6 +489,27 @@ knitr::kable(summ_df, align = "lr", caption = "Model summary")
   sum of squared **Aitchison distances** between observed and
   covariate-predicted topic compositions (isometry of ILR).
 
+## Comparison with STM (simulation evidence)
+
+The simulation study in `scripts/simulation/run_simulation.R` (Block 4)
+benchmarks `sgscatm` against STM across three scenarios and up to
+M = 20 000 documents. Key empirical findings relevant to this vignette:
+
+- **Speed**: `sgscatm` is 10–60× faster than STM at all corpus sizes tested
+  (e.g. 0.1 s vs 6 s at M = 2 000, K = 5).
+- **Accuracy under weak signal**: when the covariate effect is small,
+  `sgscatm` recovers $\mathbf{B}_z$ more accurately than STM's variational
+  EM (MSE 0.001 vs 0.009 at M = 500).
+- **Best of both worlds**: `stm+warm` — STM initialised from the `sgscatm`
+  exact solution — achieves the lowest overall MSE(B̂z) in high- and
+  low-separation settings, at a fraction of the iterations of vanilla STM
+  (10 vs 22 iterations under low topic separation).
+- **Topic-word quality**: a single `refine_phi()` step after `sgscatm`
+  reduces MSE($\hat{\boldsymbol{\Phi}}$) by ~100× at negligible extra cost,
+  closing most of the gap with STM's EM-refined topic-word distributions.
+
+To reproduce: `Rscript scripts/simulation/run_simulation.R --block 4 --quick`.
+
 ---
 
 # Session info
