@@ -43,9 +43,9 @@ topic_names <- paste0("T", seq_len(K_TOPICS))
 # ---------------------------------------------------------------
 # Fit
 # ---------------------------------------------------------------
-cat("Fitting egscatm (K=7, lambda=1)...\n")
+cat("Fitting sgscatm (K=7, lambda=1)...\n")
 t0  <- proc.time()[3]
-fit <- egscatm(W, C, K = K_TOPICS, lambda = LAMBDA, rotate = TRUE)
+fit <- sgscatm(W, C, K = K_TOPICS, lambda = LAMBDA, rotate = TRUE)
 t_fit <- proc.time()[3] - t0
 cat(sprintf("  Fit time: %.2f s\n", t_fit))
 

@@ -1,6 +1,6 @@
 ---
 title: "Structural Topic Modeling in Aitchison Geometry: Blog Posts on the 2008 US Presidential Election"
-author: "sgscatm package"
+author: "Marco Ortu"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:

@@ -4,8 +4,8 @@
 # ===================================================================
 #
 #  Three blocks, each tied to a specific theoretical result:
-#    Block 1: Consistency & asymptotic normality of Bz (Thm 12 & 14)
-#    Block 2: Linearisation error bound (Prop 15)
+#    Block 1: Consistency & asymptotic normality of Bz (Thm 4 & 5)
+#    Block 2: Linearisation error bound (Prop 6)
 #    Block 3: Structural comparison with STM (empirical positioning)
 #
 #  Output: /output/tables/  — LaTeX tables (.tex)

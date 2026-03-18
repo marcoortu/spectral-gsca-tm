@@ -4,7 +4,7 @@
 #'
 #' Tools for comparing estimated parameters to ground truth,
 #' accounting for the rotational/sign ambiguity of the spectral
-#' solution (Theorem 11 in the paper).
+#' solution (Theorem 3 in the paper).
 #' ===================================================================
 
 
@@ -16,7 +16,7 @@
 #' via the SVD of Bz_hat' Bz0.
 #'
 #' This resolves the sign/rotation ambiguity inherent in the
-#' spectral solution (Theorem 11).
+#' spectral solution (Theorem 3).
 #'
 #' @param Bz_hat  Numeric P x (K-1). Estimated path coefficients.
 #' @param Bz0     Numeric P x (K-1). True path coefficients.
@@ -259,14 +259,14 @@ run_simulation <- function(n_rep, dgp_fun, dgp_args,
 #'
 #' Computes the discrepancy between exact (softmax) and linearised
 #' topic proportions, and compares to the theoretical bound
-#' (Proposition 15).
+#' (Proposition 6).
 #'
 #' @param fit  An sgscatm fit object.
 #' @param K    Number of topics.
 #' @return A list with:
 #'   \describe{
 #'     \item{mse_linearisation}{Mean squared entry-wise error.}
-#'     \item{theoretical_bound}{Upper bound from Proposition 15.}
+#'     \item{theoretical_bound}{Upper bound from Proposition 6.}
 #'     \item{ratio}{mse / bound (should be < 1).}
 #'     \item{max_z_norm}{Max ||z_i||_2 across documents.}
 #'     \item{C0_empirical}{Empirical incoherence constant.}
@@ -292,7 +292,7 @@ eval_linearisation <- function(fit, K = NULL) {
   z_norms_sq <- rowSums(fit$Z^2)
   C0 <- M * max(z_norms_sq)
 
-  # Theoretical bound (Proposition 15)
+  # Theoretical bound (Proposition 6)
   bound <- 25 * C0 * (Km1) * exp(4 * sqrt(C0 / M)) / (4 * K^2 * M^2)
 
   list(

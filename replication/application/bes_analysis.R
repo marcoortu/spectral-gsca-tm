@@ -277,10 +277,10 @@ if (DO_FIT) {
   # Verify alignment
   stopifnot(nrow(W) == nrow(C))
 
-  # --- Fit egscatm ---
-  cat("  Fitting egscatm...\n")
+  # --- Fit sgscatm ---
+  cat("  Fitting sgscatm...\n")
   t0 <- proc.time()
-  fit <- egscatm(W, C, K = K_TOPICS, lambda = LAMBDA, rotate = TRUE)
+  fit <- sgscatm(W, C, K = K_TOPICS, lambda = LAMBDA, rotate = TRUE)
   t_fit <- (proc.time() - t0)[3]
   cat(sprintf("  Fit time: %.2f seconds\n", t_fit))
 

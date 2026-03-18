@@ -116,7 +116,7 @@ idx <- 1L
 for (K in K_grid) {
   for (lam in lambda_grid) {
     t0  <- proc.time()[3]
-    fit <- egscatm(W, C, K = K, lambda = lam, rotate = TRUE)
+    fit <- sgscatm(W, C, K = K, lambda = lam, rotate = TRUE)
     elapsed <- proc.time()[3] - t0
 
     sc   <- semantic_coherence(fit$Phi, W_bin, m = min(10L, N))

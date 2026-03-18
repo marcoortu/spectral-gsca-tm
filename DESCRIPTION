@@ -2,7 +2,7 @@ Package: sgscatm
 Type: Package
 Title: Structural Topic Modeling via ILR-Spectral-GSCA
 Version: 0.1.0
-Authors@R: person("Author", "Name", role = c("aut", "cre"), email = "author@example.com")
+Authors@R: person("Marco", "Ortu", role = c("aut", "cre"), email = "marco.ortu@unica.it")
 Description: Fits a structural topic model that operates natively in the Aitchison
     geometry of the simplex. Document-topic proportions are represented in isometric
     log-ratio (ILR) coordinates and linked to covariates through a Generalized

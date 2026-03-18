@@ -19,8 +19,8 @@ The package ships with a complete simulation study in
 
 | Block | What it verifies |
 |-------|-----------------|
-| 1 | Consistency & asymptotic normality of $\hat{\mathbf{B}}_z$ (Thm 12 & 14) |
-| 2 | Linearisation error bound (Prop 15) |
+| 1 | Consistency & asymptotic normality of $\hat{\mathbf{B}}_z$ (Thm 4 & 5) |
+| 2 | Linearisation error bound (Prop 6) |
 | 3 | Structural comparison with STM |
 | **4** | **Four-method benchmark: quality and computation time** |
 

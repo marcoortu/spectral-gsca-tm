@@ -14,7 +14,6 @@
 #' the observed data (W, C), the ground truth (Bz0, Z_true, Theta_true,
 #' Beta), and the contrast matrix V.
 #'
-#' @author spectral-gsca simulation study
 # ===================================================================
 
 
@@ -302,7 +301,7 @@ if (FALSE) {
   cat("True Bz:\n"); print(round(dat$Bz0, 3))
   cat("Estimated Bz:\n"); print(round(fit$Bz, 3))
 
-  # Note: Bz is identified only up to rotation (Theorem 11).
+  # Note: Bz is identified only up to rotation (Theorem 3).
   # For comparison, align via Procrustes:
   #   R_align = svd(t(fit$Bz) %*% dat$Bz0)
   #   Bz_aligned = fit$Bz %*% R_align$u %*% t(R_align$v)

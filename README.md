@@ -143,8 +143,8 @@ The repository includes a full simulation study (`replication/simulation/run_sim
 
 | Block | Purpose | Theoretical backing |
 |-------|---------|---------------------|
-| 1 | Consistency & asymptotic normality of B̂z | Thm 12 & 14 |
-| 2 | Linearisation error bound | Prop 15 |
+| 1 | Consistency & asymptotic normality of B̂z | Thm 4 & 5 |
+| 2 | Linearisation error bound | Prop 6 |
 | 3 | Structural comparison with STM | empirical |
 | **4** | **Four-method comparison: quality & speed** | **empirical** |
 
