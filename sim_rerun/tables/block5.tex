@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\caption{Multimodality of the exact GSCA objective (built from the multi-start / corollary validation runs). Per $(K,M)$ cell, averaged over the gap knob: mean restart disagreement, median objective gain of the best over the floor optimum, median number of distinct endpoints, mean $\lambda_{\min}(H)$ ratio, and the SNR (bulk) range covered. Disagreement is flat across SNR, indicating the competing optima are an intrinsic feature of the objective, not a noise artefact.}
+\label{tab:block5}
+\begin{tabular}{rrccccc}
+\toprule
+$K$ & $M$ & Mean disagree & Best gain & $n_{\text{distinct}}$ & $\lambda_{\min}(H)$ ratio & SNR$_{\text{bulk}}$ range \\
+\midrule
+3 & 1,000 & 0.537 & 3.64e-06 & 3.5 & 1.995 & [1.22, 48.56] \\
+3 & 4,000 & 0.523 & 6.65e-07 & 2.0 & 2.002 & [1.58, 52.35] \\
+5 & 1,000 & 0.514 & 5.13e-06 & 13.0 & 2.024 & [0.47, 14.69] \\
+5 & 4,000 & 0.521 & 2.11e-06 & 13.0 & 2.002 & [0.90, 32.43] \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,29 @@
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://cloud.r-project.org
+Bioconductor version 3.22 (BiocManager 1.30.27), R 4.5.1 (2025-06-13 ucrt)
+Installing package(s) 'curatedMetagenomicData'
+installazione pacchetto sorgenti 'curatedMetagenomicData'
+
+apertura URL 'https://bioconductor.org/packages/3.22/data/experiment/src/contrib/curatedMetagenomicData_3.18.0.tar.gz'
+Content type 'application/gzip' length 2138898 bytes (2.0 MB)
+==================================================
+downloaded 2.0 MB
+
+* installing *source* package 'curatedMetagenomicData' ...
+** this is package 'curatedMetagenomicData' version '3.18.0'
+** using staged installation
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+ERROR: lazy loading failed for package 'curatedMetagenomicData'
+* removing 'C:/Users/Utente/AppData/Local/R/win-library/4.5/curatedMetagenomicData'
+
+I pacchetti scaricati con il codice sorgente sono in
+	'C:\Users\Utente\AppData\Local\Temp\RtmpaCqIeP\downloaded_packages'
+Messaggio di avvertimento:
+In install.packages(...) :
+  l'installazione del pacchetto 'curatedMetagenomicData' ha uno stato di uscita non-zero

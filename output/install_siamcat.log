@@ -1,0 +1,40 @@
+[siamcat] installing SIAMCAT ...
+pacchetto 'globals' aperto con successo con controllo somme MD5
+pacchetto 'listenv' aperto con successo con controllo somme MD5
+pacchetto 'nanonext' aperto con successo con controllo somme MD5
+pacchetto 'pixmap' aperto con successo con controllo somme MD5
+pacchetto 'sp' aperto con successo con controllo somme MD5
+pacchetto 'moocore' aperto con successo con controllo somme MD5
+pacchetto 'future' aperto con successo con controllo somme MD5
+pacchetto 'future.apply' aperto con successo con controllo somme MD5
+pacchetto 'mirai' aperto con successo con controllo somme MD5
+pacchetto 'mlbench' aperto con successo con controllo somme MD5
+pacchetto 'mlr3measures' aperto con successo con controllo somme MD5
+pacchetto 'mlr3misc' aperto con successo con controllo somme MD5
+pacchetto 'parallelly' aperto con successo con controllo somme MD5
+pacchetto 'palmerpenguins' aperto con successo con controllo somme MD5
+pacchetto 'uuid' aperto con successo con controllo somme MD5
+pacchetto 'ade4' aperto con successo con controllo somme MD5
+pacchetto 'biomformat' aperto con successo con controllo somme MD5
+pacchetto 'bbotk' aperto con successo con controllo somme MD5
+pacchetto 'mlr3' aperto con successo con controllo somme MD5
+pacchetto 'phyloseq' aperto con successo con controllo somme MD5
+pacchetto 'beanplot' aperto con successo con controllo somme MD5
+pacchetto 'gridBase' aperto con successo con controllo somme MD5
+pacchetto 'LiblineaR' aperto con successo con controllo somme MD5
+pacchetto 'pROC' aperto con successo con controllo somme MD5
+pacchetto 'PRROC' aperto con successo con controllo somme MD5
+pacchetto 'infotheo' aperto con successo con controllo somme MD5
+pacchetto 'corrplot' aperto con successo con controllo somme MD5
+pacchetto 'mlr3learners' aperto con successo con controllo somme MD5
+pacchetto 'mlr3tuning' aperto con successo con controllo somme MD5
+pacchetto 'paradox' aperto con successo con controllo somme MD5
+pacchetto 'lgr' aperto con successo con controllo somme MD5
+pacchetto 'SIAMCAT' aperto con successo con controllo somme MD5
+
+I pacchetti binari scaricati sono in
+	C:\Users\Utente\AppData\Local\Temp\RtmpwjUKVA\downloaded_packages
+[siamcat] SIAMCAT available: TRUE
+[siamcat] feat dim: 1754 x 141
+[siamcat] meta dim: 141 x 6
+[siamcat] meta cols: Age, BMI, Gender, AJCC_stage, FOBT, Group

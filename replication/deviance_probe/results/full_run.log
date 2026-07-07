@@ -1,0 +1,24 @@
+=== Deviance probe ===
+Mode: FULL | cores: 10 
+
+-- Deviance block unit tests (M=30, N=40, K=3) --
+   z-grad rel.err 1.73e-07 | EM monotone 20/20 | sweeps monotone 5/5
+   [0.2 s] PASSED
+
+-- P1: pathology probe (truth start, dev vs LS, gauge-tracked) --
+   [76.2 s] 10/10 replicates OK
+   GATE P1 (mse@100 <= 2x mse@0, all reps): FAIL (ratios: 106.8 59.9 121.4 42.5 41.9 3731.0 7734.6 4240.6 1383.8 1652.9)
+
+-- P2a: deviance k-curves (oracle start, E2 seeds) --
+   [107.5 s] 40/40 replicates OK
+
+   Gate P1 FAILED: skipping P2b per protocol.
+
+-- P3: anchor polish + feasible deviance chain (M = 1000) --
+   [217.5 s] 40/40 replicates OK
+
+-- P3+: crossover cell (M = 5000, strong, 10 reps) --
+   [236.5 s] 10/10 replicates OK
+
+=== Deviance probe complete ===
+Build tables with: Rscript replication/deviance_probe/03_report.R

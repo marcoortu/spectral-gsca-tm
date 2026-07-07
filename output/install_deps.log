@@ -1,0 +1,172 @@
+[install] installing CRAN: BiocManager
+pacchetto 'BiocManager' aperto con successo con controllo somme MD5
+[install] installing CRAN: vegan
+pacchetto 'permute' aperto con successo con controllo somme MD5
+pacchetto 'vegan' aperto con successo con controllo somme MD5
+[install] already have CRAN: Matrix
+[install] already have CRAN: ggplot2
+[install] already have CRAN: dplyr
+[install] already have CRAN: tidyr
+[install] installing Bioc: curatedMetagenomicData
+
+  C'è una versione binaria disponibile, ma la versione con le sorgenti
+  è successiva:
+              binary source needs_compilation
+AnnotationHub 3.99.6  4.0.0              TRUE
+
+pacchetto 'xfun' aperto con successo con controllo somme MD5
+pacchetto 'litedown' aperto con successo con controllo somme MD5
+pacchetto 'formatR' aperto con successo con controllo somme MD5
+pacchetto 'markdown' aperto con successo con controllo somme MD5
+pacchetto 'jpeg' aperto con successo con controllo somme MD5
+pacchetto 'rematch' aperto con successo con controllo somme MD5
+pacchetto 'sitmo' aperto con successo con controllo somme MD5
+pacchetto 'lambda.r' aperto con successo con controllo somme MD5
+pacchetto 'futile.options' aperto con successo con controllo somme MD5
+pacchetto 'bit' aperto con successo con controllo somme MD5
+pacchetto 'png' aperto con successo con controllo somme MD5
+pacchetto 'estimability' aperto con successo con controllo somme MD5
+pacchetto 'mvtnorm' aperto con successo con controllo somme MD5
+pacchetto 'beeswarm' aperto con successo con controllo somme MD5
+pacchetto 'vipor' aperto con successo con controllo somme MD5
+pacchetto 'gridtext' aperto con successo con controllo somme MD5
+pacchetto 'hms' aperto con successo con controllo somme MD5
+pacchetto 'vroom' aperto con successo con controllo somme MD5
+pacchetto 'tzdb' aperto con successo con controllo somme MD5
+pacchetto 'cellranger' aperto con successo con controllo somme MD5
+pacchetto 'cpp11' aperto con successo con controllo somme MD5
+pacchetto 'progress' aperto con successo con controllo somme MD5
+pacchetto 'ScaledMatrix' aperto con successo con controllo somme MD5
+pacchetto 'irlba' aperto con successo con controllo somme MD5
+pacchetto 'rsvd' aperto con successo con controllo somme MD5
+pacchetto 'FNN' aperto con successo con controllo somme MD5
+pacchetto 'RcppAnnoy' aperto con successo con controllo somme MD5
+pacchetto 'dqrng' aperto con successo con controllo somme MD5
+pacchetto 'RcppProgress' aperto con successo con controllo somme MD5
+pacchetto 'Cairo' aperto con successo con controllo somme MD5
+pacchetto 'abind' aperto con successo con controllo somme MD5
+pacchetto 'SparseArray' aperto con successo con controllo somme MD5
+pacchetto 'XVector' aperto con successo con controllo somme MD5
+pacchetto 'futile.logger' aperto con successo con controllo somme MD5
+pacchetto 'snow' aperto con successo con controllo somme MD5
+pacchetto 'tidytree' aperto con successo con controllo somme MD5
+pacchetto 'yulab.utils' aperto con successo con controllo somme MD5
+pacchetto 'dbplyr' aperto con successo con controllo somme MD5
+pacchetto 'DBI' aperto con successo con controllo somme MD5
+pacchetto 'filelock' aperto con successo con controllo somme MD5
+pacchetto 'bit64' aperto con successo con controllo somme MD5
+pacchetto 'blob' aperto con successo con controllo somme MD5
+pacchetto 'KEGGREST' aperto con successo con controllo somme MD5
+pacchetto 'BiocNeighbors' aperto con successo con controllo somme MD5
+pacchetto 'assorthead' aperto con successo con controllo somme MD5
+pacchetto 'sparseMatrixStats' aperto con successo con controllo somme MD5
+pacchetto 'ecodive' aperto con successo con controllo somme MD5
+pacchetto 'emmeans' aperto con successo con controllo somme MD5
+pacchetto 'fillpattern' aperto con successo con controllo somme MD5
+pacchetto 'ggbeeswarm' aperto con successo con controllo somme MD5
+pacchetto 'ggnewscale' aperto con successo con controllo somme MD5
+pacchetto 'ggtext' aperto con successo con controllo somme MD5
+pacchetto 'patchwork' aperto con successo con controllo somme MD5
+pacchetto 'readr' aperto con successo con controllo somme MD5
+pacchetto 'readxl' aperto con successo con controllo somme MD5
+pacchetto 'beachmat' aperto con successo con controllo somme MD5
+pacchetto 'BiocSingular' aperto con successo con controllo somme MD5
+pacchetto 'Rtsne' aperto con successo con controllo somme MD5
+pacchetto 'RcppML' aperto con successo con controllo somme MD5
+pacchetto 'uwot' aperto con successo con controllo somme MD5
+pacchetto 'pheatmap' aperto con successo con controllo somme MD5
+pacchetto 'ggrastr' aperto con successo con controllo somme MD5
+pacchetto 'MatrixGenerics' aperto con successo con controllo somme MD5
+pacchetto 'GenomicRanges' aperto con successo con controllo somme MD5
+pacchetto 'Biobase' aperto con successo con controllo somme MD5
+pacchetto 'BiocGenerics' aperto con successo con controllo somme MD5
+pacchetto 'IRanges' aperto con successo con controllo somme MD5
+pacchetto 'Seqinfo' aperto con successo con controllo somme MD5
+pacchetto 'S4Arrays' aperto con successo con controllo somme MD5
+pacchetto 'DelayedArray' aperto con successo con controllo somme MD5
+pacchetto 'SingleCellExperiment' aperto con successo con controllo somme MD5
+pacchetto 'Biostrings' aperto con successo con controllo somme MD5
+pacchetto 'ape' aperto con successo con controllo somme MD5
+pacchetto 'BiocParallel' aperto con successo con controllo somme MD5
+pacchetto 'treeio' aperto con successo con controllo somme MD5
+pacchetto 'BiocFileCache' aperto con successo con controllo somme MD5
+pacchetto 'RSQLite' aperto con successo con controllo somme MD5
+pacchetto 'AnnotationDbi' aperto con successo con controllo somme MD5
+pacchetto 'BiocBaseUtils' aperto con successo con controllo somme MD5
+pacchetto 'MultiAssayExperiment' aperto con successo con controllo somme MD5
+pacchetto 'DECIPHER' aperto con successo con controllo somme MD5
+pacchetto 'decontam' aperto con successo con controllo somme MD5
+pacchetto 'DelayedMatrixStats' aperto con successo con controllo somme MD5
+pacchetto 'DirichletMultinomial' aperto con successo con controllo somme MD5
+pacchetto 'rbiom' aperto con successo con controllo somme MD5
+pacchetto 'scater' aperto con successo con controllo somme MD5
+pacchetto 'scuttle' aperto con successo con controllo somme MD5
+pacchetto 'SummarizedExperiment' aperto con successo con controllo somme MD5
+pacchetto 'TreeSummarizedExperiment' aperto con successo con controllo somme MD5
+pacchetto 'ExperimentHub' aperto con successo con controllo somme MD5
+pacchetto 'S4Vectors' aperto con successo con controllo somme MD5
+pacchetto 'mia' aperto con successo con controllo somme MD5
+pacchetto 'BiocVersion' aperto con successo con controllo somme MD5
+[install] installing Bioc: ALDEx2
+pacchetto 'deldir' aperto con successo con controllo somme MD5
+pacchetto 'NADA' aperto con successo con controllo somme MD5
+pacchetto 'truncnorm' aperto con successo con controllo somme MD5
+pacchetto 'interp' aperto con successo con controllo somme MD5
+pacchetto 'zigg' aperto con successo con controllo somme MD5
+pacchetto 'RcppParallel' aperto con successo con controllo somme MD5
+pacchetto 'zCompositions' aperto con successo con controllo somme MD5
+pacchetto 'latticeExtra' aperto con successo con controllo somme MD5
+pacchetto 'Rfast' aperto con successo con controllo somme MD5
+pacchetto 'multtest' aperto con successo con controllo somme MD5
+pacchetto 'directlabels' aperto con successo con controllo somme MD5
+pacchetto 'ALDEx2' aperto con successo con controllo somme MD5
+[install] installing Bioc: ANCOMBC
+pacchetto 'proxy' aperto con successo con controllo somme MD5
+pacchetto 'checkmate' aperto con successo con controllo somme MD5
+pacchetto 'rootSolve' aperto con successo con controllo somme MD5
+pacchetto 'e1071' aperto con successo con controllo somme MD5
+pacchetto 'lmom' aperto con successo con controllo somme MD5
+pacchetto 'forcats' aperto con successo con controllo somme MD5
+pacchetto 'clarabel' aperto con successo con controllo somme MD5
+pacchetto 'gmp' aperto con successo con controllo somme MD5
+pacchetto 'highs' aperto con successo con controllo somme MD5
+pacchetto 'osqp' aperto con successo con controllo somme MD5
+pacchetto 'scs' aperto con successo con controllo somme MD5
+pacchetto 'expm' aperto con successo con controllo somme MD5
+pacchetto 'Exact' aperto con successo con controllo somme MD5
+pacchetto 'gld' aperto con successo con controllo somme MD5
+pacchetto 'haven' aperto con successo con controllo somme MD5
+pacchetto 'htmlTable' aperto con successo con controllo somme MD5
+pacchetto 'colorspace' aperto con successo con controllo somme MD5
+pacchetto 'rbibutils' aperto con successo con controllo somme MD5
+pacchetto 'rngtools' aperto con successo con controllo somme MD5
+pacchetto 'gsl' aperto con successo con controllo somme MD5
+pacchetto 'minqa' aperto con successo con controllo somme MD5
+pacchetto 'reformulas' aperto con successo con controllo somme MD5
+pacchetto 'TH.data' aperto con successo con controllo somme MD5
+pacchetto 'CVXR' aperto con successo con controllo somme MD5
+pacchetto 'DescTools' aperto con successo con controllo somme MD5
+pacchetto 'Hmisc' aperto con successo con controllo somme MD5
+pacchetto 'Rdpack' aperto con successo con controllo somme MD5
+pacchetto 'doParallel' aperto con successo con controllo somme MD5
+pacchetto 'doRNG' aperto con successo con controllo somme MD5
+pacchetto 'energy' aperto con successo con controllo somme MD5
+pacchetto 'gtools' aperto con successo con controllo somme MD5
+pacchetto 'lme4' aperto con successo con controllo somme MD5
+pacchetto 'lmerTest' aperto con successo con controllo somme MD5
+pacchetto 'multcomp' aperto con successo con controllo somme MD5
+pacchetto 'nloptr' aperto con successo con controllo somme MD5
+pacchetto 'ANCOMBC' aperto con successo con controllo somme MD5
+[install] already have Bioc: TreeSummarizedExperiment
+[install] already have Bioc: SummarizedExperiment
+[install] installing Bioc: mia
+[install] === availability after install ===
+[install] BiocManager                  TRUE
+[install] vegan                        TRUE
+[install] curatedMetagenomicData       FALSE
+[install] ALDEx2                       TRUE
+[install] ANCOMBC                      TRUE
+[install] TreeSummarizedExperiment     TRUE
+[install] mia                          FALSE
+[install] stm                          TRUE
+[install] DONE

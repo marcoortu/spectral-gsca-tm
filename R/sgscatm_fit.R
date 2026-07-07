@@ -41,7 +41,7 @@
 #'   }
 #' @export
 sgscatm <- function(W, C, K, lambda = 1, r = NULL, V = NULL, scale_W = TRUE,
-                    rotate = TRUE) {
+                    rotate = TRUE, se = FALSE) {
   cl <- match.call()
 
   # --- input checks ---
@@ -142,7 +142,7 @@ sgscatm <- function(W, C, K, lambda = 1, r = NULL, V = NULL, scale_W = TRUE,
     rep(1 / sqrt(s_all[nz]), each = M)        # M x |nz|
 
   # --- assemble output ---
-  structure(
+  out <- structure(
     list(
       Pi          = Pi_hat,
       Phi         = Phi_hat,
@@ -165,6 +165,15 @@ sgscatm <- function(W, C, K, lambda = 1, r = NULL, V = NULL, scale_W = TRUE,
     ),
     class = "sgscatm"
   )
+
+  # --- optional standardized-scale SEs of B_z (Part 1) ---
+  if (isTRUE(se)) {
+    vc <- sgscatm_vcov(out)
+    out$B_z_se  <- vc$se        # P x (K-1) standardized-scale SE
+    out$B_z_std <- vc$B         # standardized (rotation-identified) B_z
+    out$vcov_Bz <- vc$vcov
+  }
+  out
 }
 
 # ---------- internal helpers ----------

@@ -1,0 +1,229 @@
+common.R loaded. ROOT = C:\Users\Utente\WORKSPACE\R\sgscatm
+cairo PDF available: TRUE
+WARNING: SGSCATM_REDUCED set — Block1=30, Blocks3-4=15 reps.
+
+====== BLOCK 1 : corrected inference (Part A) ======
+lambda_A = 0.30 (retuned; see README/caption)
+
+B0 (P x (K-1)), rho2 = 0.5 , sigma_eps = 0.7071 
+        [,1]    [,2]    [,3]    [,4]
+[1,] -0.2141 -0.5749  0.3469 -0.0576
+[2,]  0.2640 -0.4068 -0.4805  0.1843
+[3,] -0.5855  0.0432 -0.2376  0.3145
+attr(,"rho2")
+[1] 0.5
+attr(,"sigma_eps")
+[1] 0.7071068
+attr(,"rowortho_err")
+[1] 1.110223e-16
+||B0 B0' - rho2 I_P||        = 1.110223e-16 
+diag(Cov(z)) [true, analytic]= 0.9583 0.9978 0.9076 0.6362 
+eig(Cov(z))                  = 1 1 1 0.5   (P<K-1 => one direction at 1-rho2; identity unattainable)
+
+  M = 500  (30 reps)
+    rep 10/30 done
+    rep 20/30 done
+    rep 30/30 done
+    LOO jackknife cross-check on 3 rep(s)...
+    median analytic/jackknife SE ratio = 1.950
+
+  M = 1000  (30 reps)
+    rep 10/30 done
+    rep 20/30 done
+    rep 30/30 done
+    LOO jackknife cross-check on 3 rep(s)...
+    median analytic/jackknife SE ratio = 4.905
+
+  M = 2000  (30 reps)
+    rep 10/30 done
+    rep 20/30 done
+    rep 30/30 done
+
+  M = 4000  (30 reps)
+    rep 10/30 done
+    rep 20/30 done
+    rep 30/30 done
+
+  Saved raw per-replicate results: data/block1.rds
+
+  Block 1 aggregate:
+     M n_ok   RMSE mean_abs_bias coverage95 mean_CI_halfwidth se_jack_ratio
+1  500   30 0.0978        0.0836     0.6639            0.1268        1.9500
+2 1000   30 0.0455        0.0378     0.9361            0.1435        4.9053
+3 2000   30 0.0132        0.0102     1.0000            0.1379            NA
+4 4000   30 0.0165        0.0135     0.9972            0.0879            NA
+  null_baseline_RMSE ratio_to_null time_s
+1             0.3536        0.2765 0.1973
+2             0.3536        0.1287 0.4293
+3             0.3536        0.0374 0.0687
+4             0.3536        0.0465 0.1530
+  Wrote tables/block1.csv, tables/block1.tex
+  Wrote imgs/block1_rmse_vs_M.pdf, _coverage_vs_M.pdf, _qqplot.pdf
+
+====== BLOCK 2 : linearisation error (Part B) ======
+  K= 3 sig=0.05  MSE=2.92e-09 Bound=7.18e-06 Ratio=0.000
+  K= 3 sig=0.10  MSE=2.94e-09 Bound=7.01e-06 Ratio=0.000
+  K= 3 sig=0.20  MSE=2.88e-09 Bound=6.63e-06 Ratio=0.000
+  K= 3 sig=0.30  MSE=2.88e-09 Bound=7.14e-06 Ratio=0.000
+  K= 3 sig=0.50  MSE=2.82e-09 Bound=6.32e-06 Ratio=0.000
+  K= 3 sig=0.80  MSE=2.69e-09 Bound=5.15e-06 Ratio=0.001
+  K= 5 sig=0.05  MSE=2.41e-09 Bound=9.99e-06 Ratio=0.000
+  K= 5 sig=0.10  MSE=2.45e-09 Bound=1.04e-05 Ratio=0.000
+  K= 5 sig=0.20  MSE=2.40e-09 Bound=1.08e-05 Ratio=0.000
+  K= 5 sig=0.30  MSE=2.44e-09 Bound=1.03e-05 Ratio=0.000
+  K= 5 sig=0.50  MSE=2.54e-09 Bound=9.80e-06 Ratio=0.000
+  K= 5 sig=0.80  MSE=2.52e-09 Bound=9.08e-06 Ratio=0.000
+  K=10 sig=0.05  MSE=9.31e-10 Bound=1.06e-05 Ratio=0.000
+  K=10 sig=0.10  MSE=9.32e-10 Bound=1.01e-05 Ratio=0.000
+  K=10 sig=0.20  MSE=9.49e-10 Bound=1.20e-05 Ratio=0.000
+  K=10 sig=0.30  MSE=9.59e-10 Bound=1.31e-05 Ratio=0.000
+  K=10 sig=0.50  MSE=1.02e-09 Bound=1.64e-05 Ratio=0.000
+  K=10 sig=0.80  MSE=1.10e-09 Bound=1.58e-05 Ratio=0.000
+  Wrote tables/block2.csv, tables/block2.tex
+  Wrote imgs/block2_linearisation.pdf
+
+====== BLOCK 3 : sgscatm vs STM (Part B) ======
+  M=1000 signal=weak (b_max=0.15) x 15 reps
+    rep 5/15
+    rep 10/15
+    rep 15/15
+  M=1000 signal=strong (b_max=0.50) x 15 reps
+    rep 5/15
+    rep 10/15
+    rep 15/15
+  M=5000 signal=weak (b_max=0.15) x 15 reps
+    rep 5/15
+    rep 10/15
+    rep 15/15
+  M=5000 signal=strong (b_max=0.50) x 15 reps
+    rep 5/15
+    rep 10/15
+    rep 15/15
+
+  Block 3 summary:
+     M MSE_Spectral MSE_STM Time_Spectral Time_STM  Speedup
+1 1000       0.0855  0.0016        0.4140   3.0440   7.3527
+2 1000       0.0434  0.0068        0.4207   4.6640  11.0872
+3 5000       0.0019  0.0017        0.2167  16.4487  75.9169
+4 5000       0.0176  0.0062        0.1907  22.5180 118.1014
+  Wrote tables/block3.csv, tables/block3.tex
+  Wrote imgs/block3_mse_boxplot.pdf, imgs/block3_timing.pdf
+
+====== BLOCK 4 : four-method comparison (Part B) ======
+  M=500 scenario=high_sep x 15 reps
+    rep 5/15
+    rep 10/15
+    rep 15/15
+  M=500 scenario=low_sep x 15 reps
+    rep 5/15
+    rep 10/15
+    rep 15/15
+  M=500 scenario=weak_sig x 15 reps
+    rep 5/15
+    rep 10/15
+    rep 15/15
+  M=2000 scenario=high_sep x 15 reps
+    rep 5/15
+    rep 10/15
+    rep 15/15
+  M=2000 scenario=low_sep x 15 reps
+    rep 5/15
+    rep 10/15
+    rep 15/15
+  M=2000 scenario=weak_sig x 15 reps
+    rep 5/15
+    rep 10/15
+    rep 15/15
+
+  Block 4 summary:
+      M MSE_Bz MSE_Phi   Time    Iter
+1   500 0.0249  0.0238 0.1473     NaN
+2   500 0.0249  0.0002 0.1553     NaN
+3   500 0.0026  0.0000 1.6700 30.4000
+4   500 0.0022  0.0000 1.5200 23.2667
+5   500 0.0541  0.0005 0.1980     NaN
+6   500 0.0541  0.0000 0.2013     NaN
+7   500 0.0223  0.0000 1.5900 21.7333
+8   500 0.0444  0.0000 1.1713 10.1333
+9   500 0.1266  0.0011 0.1787     NaN
+10  500 0.1266  0.0000 0.1873     NaN
+11  500 0.0018  0.0000 1.2533 18.2000
+12  500 0.0716  0.0000 1.5367 19.1333
+13 2000 0.0092  0.1042 0.0653     NaN
+14 2000 0.0092  0.0002 0.0827     NaN
+15 2000 0.0024  0.0000 8.2100 36.8000
+16 2000 0.0025  0.0000 5.6253 23.6667
+17 2000 0.0492  0.0013 0.0667     NaN
+18 2000 0.0492  0.0000 0.0980     NaN
+19 2000 0.0952  0.0000 1.3687  4.6667
+20 2000 0.0259  0.0000 3.6280  9.0000
+21 2000 0.1061  0.0056 0.0680     NaN
+22 2000 0.1061  0.0000 0.0933     NaN
+23 2000 0.0016  0.0000 6.5307 23.1333
+24 2000 0.0140  0.0000 6.0593 19.6000
+  Wrote tables/block4.csv, tables/block4.tex
+
+====== BLOCK 5 : multimodality of exact objective (Part C) ======
+  Using corollary CSV : C:\Users\Utente\WORKSPACE\R\sgscatm/validation/results_corollary.csv
+  Using multistart CSV: C:\Users\Utente\WORKSPACE\R\sgscatm/validation/results_multistart.csv
+
+  Block 5 aggregate:
+  K    M mean_disagree best_gain n_distinct lambda_min_H_ratio snr_bulk_min
+1 3 1000        0.5370         0        3.5             1.9954       1.2243
+2 3 4000        0.5231         0        2.0             2.0015       1.5759
+3 5 1000        0.5139         0       13.0             2.0244       0.4711
+4 5 4000        0.5208         0       13.0             2.0023       0.8958
+  snr_bulk_max
+1      48.5604
+2      52.3501
+3      14.6922
+4      32.4277
+  Wrote tables/block5.csv, tables/block5.tex
+  Wrote imgs/block5_disagree_vs_snr.pdf, _bestgain_vs_M.pdf, _ndistinct.pdf
+
+  --- Block 5 caption-ready numbers ---
+  max snr_bulk reached      : 52.350
+  disagree at that point    : 0.583
+  max n_distinct_endpoints  : 13.0
+  best_gain shrink K=3 (M=1000->4000): 3.64e-06 -> 6.65e-07  (x0.18)
+  best_gain shrink K=5 (M=1000->4000): 5.13e-06 -> 2.11e-06  (x0.41)
+
+=====================================================
+            BLOCK 1 RERUN VERDICT
+=====================================================
+  [FAIL] coverage95 in [0.90,0.97] (M>=1e3) M=1000:0.936 M=2000:1.000 M=4000:0.997
+  [FAIL] RMSE monotone & slope in [-.65,-.35] slope=-0.949 monotone=FALSE
+  [PASS] ratio_to_null < 0.5 at max M       0.047
+  [FAIL] analytic/jackknife SE in [0.8,1.25] median=3.428
+  [PASS] Block2: all MSE/bound ratios < 1   max ratio=0.000527
+  [PASS] Block5: disagree flat in SNR_bulk  slope=-0.0225 p=0.175
+-----------------------------------------------------
+  OVERALL: *** CORRECTED INFERENCE NOT FULLY VALID ***
+=====================================================
+
+--- Figure inventory (imgs/) ---
+  block1_rmse_vs_M.pdf             OK (35809 bytes)
+  block1_coverage_vs_M.pdf         OK (28327 bytes)
+  block1_qqplot.pdf                OK (35332 bytes)
+  block2_linearisation.pdf         OK (35291 bytes)
+  block3_mse_boxplot.pdf           OK (31168 bytes)
+  block3_timing.pdf                OK (27953 bytes)
+  block5_disagree_vs_snr.pdf       OK (25849 bytes)
+  block5_bestgain_vs_M.pdf         OK (27594 bytes)
+  block5_ndistinct.pdf             OK (16543 bytes)
+
+--- Table inventory (tables/) ---
+  block1.csv       OK (703 bytes)
+  block2.csv       OK (1641 bytes)
+  block3.csv       OK (487 bytes)
+  block4.csv       OK (2321 bytes)
+  block5.csv       OK (506 bytes)
+  block1.tex       OK (917 bytes)
+  block2.tex       OK (1382 bytes)
+  block3.tex       OK (818 bytes)
+  block4.tex       OK (2376 bytes)
+  block5.tex       OK (988 bytes)
+
+  All figures and tables rendered.
+
+Total wall time: 50.7 min

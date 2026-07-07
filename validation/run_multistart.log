@@ -1,0 +1,31 @@
+[setup] Loaded sgscatm from source in C:/Users/Utente/WORKSPACE/R/sgscatm/R 
+[setup] Reusing package functions:
+   - ilr_contrast (V: KxK-1, V^T V=I, V^T 1=0) 
+   - ilr_to_proportions (inverse-ILR closure f(z)=softmax(V z)) 
+   - sgscatm (spectral estimator; used as cross-check, see header note) 
+[selftest] analytic-vs-FD gradient max rel err = 3.80e-09
+[ms-cell] K=3 moderate M=1000 | coh=2.32 lmH_ratio=2.01 agree=0.01 disagree=0.26 sinTheta_med=1.4e-02 spread=9.8e-06
+[ms-cell] K=3 moderate M=4000 | coh=2.31 lmH_ratio=2.00 agree=0.00 disagree=0.02 sinTheta_med=7.6e-03 spread=1.1e-06
+[ms-cell] K=3 extreme  M=1000 | coh=1.99 lmH_ratio=2.01 agree=0.00 disagree=0.49 sinTheta_med=1.7e-02 spread=1.1e-05
+[ms-cell] K=3 extreme  M=4000 | coh=1.85 lmH_ratio=2.00 agree=0.00 disagree=0.00 sinTheta_med=4.2e-03 spread=4.8e-07
+[ms-cell] K=5 moderate M=1000 | coh=2.34 lmH_ratio=2.01 agree=0.00 disagree=0.40 sinTheta_med=3.7e-02 spread=1.0e-05
+[ms-cell] K=5 moderate M=4000 | coh=2.49 lmH_ratio=2.00 agree=0.00 disagree=0.07 sinTheta_med=1.9e-02 spread=1.6e-06
+[ms-cell] K=5 extreme  M=1000 | coh=2.11 lmH_ratio=2.05 agree=0.00 disagree=0.31 sinTheta_med=3.2e-02 spread=1.6e-05
+[ms-cell] K=5 extreme  M=4000 | coh=2.68 lmH_ratio=2.03 agree=0.00 disagree=0.06 sinTheta_med=1.4e-02 spread=1.5e-06
+
+[multistart] done in 13.0 min
+
+===============  results_multistart.csv  ===============
+  K  regime      eff      M   coherence      delta0   lambda_min_H_ratio   sinTheta_init   gap_lin   multistart_agree   multistart_disagree   restart_sinTheta_med   restart_gbar_spread   hess_lip
+---  ---------  ----  -----  ----------  ----------  -------------------  --------------  --------  -----------------  --------------------  ---------------------  --------------------  ---------
+  3  moderate      1   1000       2.324   0.0005161                2.007        0.010280     2e-07            0.00625                0.2562               0.014020              9.80e-06     0.1540
+  3  moderate      1   4000       2.310   0.0009315                2.002        0.005531     1e-07            0.00000                0.0250               0.007595              1.10e-06     0.1502
+  3  extreme       8   1000       1.994   0.0014000                2.013        0.010380     3e-07            0.00000                0.4938               0.016530              1.12e-05     0.1572
+  3  extreme       8   4000       1.853   0.0018860                1.997        0.003135     0e+00            0.00000                0.0000               0.004214              5.00e-07     0.1498
+  5  moderate      1   1000       2.340   0.0001382                2.008        0.028720     5e-07            0.00000                0.4000               0.037120              1.00e-05     0.1342
+  5  moderate      1   4000       2.493   0.0001211                1.998        0.012180     1e-07            0.00000                0.0750               0.018710              1.60e-06     0.1341
+  5  extreme       8   1000       2.110   0.0004537                2.054        0.022980     9e-07            0.00000                0.3062               0.031760              1.64e-05     0.1343
+  5  extreme       8   4000       2.677   0.0003529                2.029        0.011680     1e-07            0.00000                0.0625               0.013990              1.50e-06     0.1342
+
+[done] CSV output:
+   C:\Users\Utente\WORKSPACE\R\sgscatm\validation\results_multistart.csv 

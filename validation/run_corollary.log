@@ -1,0 +1,79 @@
+[setup] Loaded sgscatm from source in C:/Users/Utente/WORKSPACE/R/sgscatm/R 
+[setup] Reusing package functions:
+   - ilr_contrast (V: KxK-1, V^T V=I, V^T 1=0) 
+   - ilr_to_proportions (inverse-ILR closure f(z)=softmax(V z)) 
+   - sgscatm (spectral estimator; used as cross-check, see header note) 
+[selftest] analytic-vs-FD gradient max rel err = 3.80e-09
+[preflight] timing worst-case corollary rep (M=4000,K=5,gap=0.02) ...
+[preflight] heavy rep = 31.0s ; projected full grid ~ 38.4 min
+[co-cell  1/24] K=3 M=1000 gap=0.02 | coh=[2.38,2.52] delta0=2.42e-05 relgap=0.024 disagree=0.68 n_dist=3 lmH=1.97
+[co-cell  2/24] K=3 M=1000 gap=0.05 | coh=[2.47,2.98] delta0=5.63e-05 relgap=0.053 disagree=0.49 n_dist=4 lmH=2.00
+[co-cell  3/24] K=3 M=1000 gap=0.12 | coh=[2.36,2.62] delta0=1.34e-04 relgap=0.118 disagree=0.65 n_dist=4 lmH=1.99
+[co-cell  4/24] K=3 M=1000 gap=0.30 | coh=[2.41,3.00] delta0=2.45e-04 relgap=0.196 disagree=0.35 n_dist=3 lmH=2.01
+[co-cell  5/24] K=3 M=1000 gap=0.70 | coh=[2.22,2.89] delta0=6.68e-04 relgap=0.399 disagree=0.58 n_dist=4 lmH=2.00
+[co-cell  6/24] K=3 M=1000 gap=1.60 | coh=[2.13,2.50] delta0=7.31e-04 relgap=0.421 disagree=0.47 n_dist=5 lmH=2.00
+[co-cell  7/24] K=3 M=4000 gap=0.02 | coh=[2.63,3.06] delta0=3.29e-05 relgap=0.116 disagree=0.49 n_dist=2 lmH=2.00
+[co-cell  8/24] K=3 M=4000 gap=0.05 | coh=[2.59,3.14] delta0=7.04e-05 relgap=0.219 disagree=0.50 n_dist=2 lmH=2.00
+[co-cell  9/24] K=3 M=4000 gap=0.12 | coh=[2.63,2.93] delta0=1.36e-04 relgap=0.351 disagree=0.65 n_dist=2 lmH=2.00
+[co-cell 10/24] K=3 M=4000 gap=0.30 | coh=[2.59,3.23] delta0=3.72e-04 relgap=0.597 disagree=0.62 n_dist=2 lmH=2.01
+[co-cell 11/24] K=3 M=4000 gap=0.70 | coh=[2.39,2.77] delta0=6.41e-04 relgap=0.718 disagree=0.29 n_dist=2 lmH=1.99
+[co-cell 12/24] K=3 M=4000 gap=1.60 | coh=[2.25,2.41] delta0=7.17e-04 relgap=0.740 disagree=0.58 n_dist=3 lmH=2.00
+[co-cell 13/24] K=5 M=1000 gap=0.02 | coh=[1.98,2.39] delta0=6.67e-06 relgap=0.007 disagree=0.67 n_dist=13 lmH=2.07
+[co-cell 14/24] K=5 M=1000 gap=0.05 | coh=[2.06,2.27] delta0=1.61e-05 relgap=0.016 disagree=0.54 n_dist=13 lmH=2.05
+[co-cell 15/24] K=5 M=1000 gap=0.12 | coh=[2.01,2.34] delta0=3.31e-05 relgap=0.032 disagree=0.67 n_dist=13 lmH=1.99
+[co-cell 16/24] K=5 M=1000 gap=0.30 | coh=[1.99,2.27] delta0=1.05e-04 relgap=0.095 disagree=0.36 n_dist=13 lmH=2.03
+[co-cell 17/24] K=5 M=1000 gap=0.70 | coh=[2.04,2.40] delta0=2.10e-04 relgap=0.173 disagree=0.47 n_dist=13 lmH=2.00
+[co-cell 18/24] K=5 M=1000 gap=1.60 | coh=[1.93,2.30] delta0=2.54e-04 relgap=0.202 disagree=0.38 n_dist=13 lmH=2.00
+[co-cell 19/24] K=5 M=4000 gap=0.02 | coh=[2.17,2.38] delta0=7.41e-06 relgap=0.029 disagree=0.51 n_dist=13 lmH=2.01
+[co-cell 20/24] K=5 M=4000 gap=0.05 | coh=[2.23,2.50] delta0=1.81e-05 relgap=0.067 disagree=0.50 n_dist=13 lmH=2.00
+[co-cell 21/24] K=5 M=4000 gap=0.12 | coh=[2.18,2.41] delta0=4.33e-05 relgap=0.147 disagree=0.49 n_dist=13 lmH=2.00
+[co-cell 22/24] K=5 M=4000 gap=0.30 | coh=[2.14,2.34] delta0=9.70e-05 relgap=0.278 disagree=0.58 n_dist=13 lmH=2.00
+[co-cell 23/24] K=5 M=4000 gap=0.70 | coh=[2.23,2.53] delta0=2.47e-04 relgap=0.495 disagree=0.54 n_dist=13 lmH=2.00
+[co-cell 24/24] K=5 M=4000 gap=1.60 | coh=[2.19,2.47] delta0=2.91e-04 relgap=0.536 disagree=0.50 n_dist=13 lmH=2.00
+
+[corollary] 24 cells done in 20.3 min
+
+===============  results_corollary.csv  (sorted K,M,delta0)  ===============
+  K      M   gap_knob   reps_ok   coherence_min   coherence_max      delta0   noise_floor   bulk_std   snr_relgap   snr_sigmaK   snr_bulk   lambda_min_H_ratio   gap_lin   floor_num   floor_reliable_frac   disagree    agree   gain_over_floor   restart_sinTheta_med   n_distinct_endpoints
+---  -----  ---------  --------  --------------  --------------  ----------  ------------  ---------  -----------  -----------  ---------  -------------------  --------  ----------  --------------------  ---------  -------  ----------------  ---------------------  ---------------------
+  3   1000       0.02         6           2.381           2.519   0.0000242     0.0010050   2.35e-05     0.023560     0.024120     1.2240                1.969     1e-07           0                     1     0.6806   0.3333           7244000               0.008403                    3.0
+  3   1000       0.05         6           2.468           2.985   0.0000563     0.0010050   2.03e-05     0.053050     0.056020     2.8240                2.002     1e-07           0                     1     0.4861   0.2222          53730000               0.009263                    3.5
+  3   1000       0.12         6           2.357           2.621   0.0001344     0.0010050   2.05e-05     0.117800     0.133700     7.3350                1.990     1e-07           0                     1     0.6528   0.2639          38610000               0.009374                    3.5
+  3   1000       0.30         6           2.410           2.998   0.0002454     0.0010050   1.81e-05     0.196200     0.244400    14.3400                2.007     1e-07           0                     1     0.3472   0.2778          44840000               0.008842                    3.0
+  3   1000       0.70         6           2.218           2.887   0.0006677     0.0010050   1.84e-05     0.398600     0.664000    35.2300                2.003     1e-07           0                     1     0.5833   0.1806          49590000               0.013640                    4.0
+  3   1000       1.60         6           2.129           2.495   0.0007307     0.0010050   1.62e-05     0.421200     0.727700    48.5600                2.001     2e-07           0                     1     0.4722   0.1806          12340000               0.013550                    5.0
+  3   4000       0.02         6           2.630           3.060   0.0000328     0.0002515   2.15e-05     0.115500     0.130600     1.5760                2.001     0e+00           0                     1     0.4861   0.3611           3660000               0.006639                    2.0
+  3   4000       0.05         6           2.589           3.142   0.0000704     0.0002514   1.79e-05     0.218900     0.280300     3.9310                2.001     0e+00           0                     1     0.5000   0.3056          14610000               0.008630                    2.0
+  3   4000       0.12         6           2.626           2.927   0.0001362     0.0002514   1.31e-05     0.351400     0.541800     9.9250                2.002     0e+00           0                     1     0.6528   0.2222          12030000               0.008054                    2.0
+  3   4000       0.30         6           2.594           3.232   0.0003725     0.0002514   1.68e-05     0.597100     1.482000    21.0000                2.009     0e+00           0                     1     0.6250   0.3194          64750000               0.007689                    2.0
+  3   4000       0.70         6           2.386           2.772   0.0006406     0.0002516   1.92e-05     0.717900     2.545000    27.6000                1.994     0e+00           0                     1     0.2917   0.2639          20320000               0.009367                    2.0
+  3   4000       1.60         6           2.254           2.414   0.0007171     0.0002514   1.37e-05     0.740300     2.851000    52.3500                2.002     0e+00           0                     1     0.5833   0.4722          22940000               0.006838                    3.0
+  5   1000       0.02         6           1.980           2.386   0.0000067     0.0010050   1.29e-05     0.006598     0.006642     0.4711                2.073     1e-07           0                     1     0.6667   0.0000          19960000               0.017150                   13.0
+  5   1000       0.05         6           2.064           2.274   0.0000161     0.0010050   1.25e-05     0.015730     0.015990     1.1590                2.051     1e-07           0                     1     0.5417   0.0000          15710000               0.013950                   13.0
+  5   1000       0.12         6           2.009           2.337   0.0000331     0.0010050   1.38e-05     0.031880     0.032950     2.4770                1.995     1e-07           0                     1     0.6667   0.0000          41730000               0.014550                   13.0
+  5   1000       0.30         6           1.991           2.267   0.0001051     0.0010050   1.53e-05     0.094640     0.104500     7.0260                2.029     1e-07           0                     1     0.3611   0.0000          21480000               0.014150                   13.0
+  5   1000       0.70         6           2.040           2.398   0.0002102     0.0010050   1.55e-05     0.173000     0.209300    13.5700                2.001     1e-07           0                     1     0.4722   0.0000          49280000               0.013750                   13.0
+  5   1000       1.60         6           1.926           2.305   0.0002537     0.0010050   1.72e-05     0.201500     0.252400    14.6900                1.998     2e-07           0                     1     0.3750   0.0000          16560000               0.016380                   13.0
+  5   4000       0.02         6           2.167           2.376   0.0000074     0.0002513   7.60e-06     0.028660     0.029510     0.8958                2.006     1e-07           0                     1     0.5139   0.0000           9613000               0.014140                   13.0
+  5   4000       0.05         6           2.230           2.496   0.0000181     0.0002515   1.00e-05     0.067130     0.071950     1.8770                2.003     1e-07           0                     1     0.5000   0.0000           3074000               0.013660                   13.0
+  5   4000       0.12         6           2.184           2.406   0.0000433     0.0002513   1.05e-05     0.146900     0.172300     3.9960                2.002     1e-07           0                     1     0.4861   0.0000          65020000               0.014840                   13.0
+  5   4000       0.30         6           2.138           2.338   0.0000970     0.0002513   9.20e-06     0.278400     0.385800    10.6300                1.999     1e-07           0                     1     0.5833   0.0000          37460000               0.014560                   13.0
+  5   4000       0.70         6           2.228           2.533   0.0002474     0.0002515   1.15e-05     0.494800     0.983800    19.8900                2.004     1e-07           0                     1     0.5417   0.0000          57760000               0.014820                   13.0
+  5   4000       1.60         6           2.188           2.467   0.0002906     0.0002512   9.10e-06     0.536400     1.157000    32.4300                1.999     1e-07           0                     1     0.5000   0.0000          32380000               0.015730                   13.0
+
+==============================  COROLLARY VERDICT  ==============================
+  monotone rho (delta0 vs disagree) = -0.277
+  chosen SNR proxy p* = <none finite at both M>
+  SNR thresholds per proxy (M=1000, M=4000):
+     snr_relgap  : Inf , Inf
+     snr_sigmaK  : Inf , Inf
+     snr_bulk    : Inf , Inf
+  delta0-threshold M=1000 vs M=4000 = Inf , Inf  (ratio NA, expected <1)
+  disagree at extreme gap_knob (M=1000): low=0.681  high=0.375
+  disagree at extreme gap_knob (M=4000): low=0.486  high=0.500
+  MONOTONE=FAIL  COLLAPSES=FAIL  SNR_STABLE=FAIL  STRICT_MINIMA=PASS  IN_N=PASS
+  NOTE: uniqueness is asymptotic-only; no SNR proxy stabilizes the threshold
+  OVERALL: NOT CONFIRMED
+
+[done] CSV output:
+   C:\Users\Utente\WORKSPACE\R\sgscatm\validation\results_corollary.csv 

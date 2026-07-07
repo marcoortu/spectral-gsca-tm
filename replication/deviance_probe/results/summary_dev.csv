@@ -1,0 +1,14 @@
+"block","regime","metric","value"
+"P1","weak","dev_truth_mse100",0.00372717556556059
+"P1","weak","ls_truth_mse100",0.0150496602362782
+"P1","strong","dev_truth_mse100",0.116885927269577
+"P1","strong","ls_truth_mse100",0.0781794486148905
+"P2a","weak","dev_rule_mse",0.0177934541323495
+"P2a","weak","ls_rule_mse",0.000261667612867058
+"P2a","strong","dev_rule_mse",0.27911248622109
+"P2a","strong","ls_rule_mse",0.000558621943317992
+"P3","weak","chain_mse_paper",0.0582322335692938
+"P3","weak","tv_polish",0.247146107889296
+"P3","strong","chain_mse_paper",0.126016450480386
+"P3","strong","tv_polish",0.14284522158993
+"P3","strong_M5000","chain_mse_paper",0.00152127822398808

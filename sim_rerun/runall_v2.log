@@ -1,0 +1,235 @@
+common.R loaded. ROOT = C:\Users\Utente\WORKSPACE\R\sgscatm
+cairo PDF available: TRUE
+WARNING: SGSCATM_REDUCED set — Block1=40, Blocks3-4=12 reps.
+
+====== BLOCK 1 : clean-DGP inference (Part 2) ======
+eig(Cov(z)) = 1 0.7 0.5 0.35   min gap = 0.15 
+lambda_A (data-driven, (K-1)th word eigenvalue) = 0.5916
+top-(K-1) word rho: 0.000696 0.000667 0.000416 0.000296  min rel gap = 0.0418 
+Fitting pilot estimand B_star (M_pilot=50000)...
+
+  M = 500  (40 reps)
+    rep 10/40
+    rep 20/40
+    rep 30/40
+    rep 40/40
+    delete-block jackknife (100 blocks) x 6 reps...
+    median analytic/jackknife = 0.975
+
+  M = 1000  (40 reps)
+    rep 10/40
+    rep 20/40
+    rep 30/40
+    rep 40/40
+    delete-block jackknife (100 blocks) x 6 reps...
+    median analytic/jackknife = 0.984
+
+  M = 2000  (40 reps)
+    rep 10/40
+    rep 20/40
+    rep 30/40
+    rep 40/40
+    delete-block jackknife (100 blocks) x 6 reps...
+    median analytic/jackknife = 1.010
+
+  M = 4000  (40 reps)
+    rep 10/40
+    rep 20/40
+    rep 30/40
+    rep 40/40
+    delete-block jackknife (100 blocks) x 6 reps...
+    median analytic/jackknife = 0.977
+
+  Block 1 aggregate:
+     M n_ok   RMSE coverage95 mean_analytic_se mean_empirical_sd
+1  500   40 0.0178     0.9438           0.0175            0.0169
+2 1000   40 0.0130     0.9391           0.0123            0.0122
+3 2000   40 0.0098     0.9203           0.0088            0.0092
+4 4000   40 0.0079     0.8734           0.0062            0.0072
+  se_analytic_over_empirical se_analytic_over_jack null_baseline_RMSE
+1                     1.0350                0.9754             0.3806
+2                     1.0121                0.9841             0.3806
+3                     0.9556                1.0095             0.3806
+4                     0.8564                0.9769             0.3806
+  ratio_to_null time_s
+1        0.0468 0.1963
+2        0.0343 0.4262
+3        0.0257 0.0610
+4        0.0206 0.1567
+  Wrote tables/block1.csv, tables/block1.tex
+  Wrote imgs/block1_{rmse_vs_M,coverage_vs_M,se_vs_M,qqplot}.pdf
+
+====== PART 3 : lambda diagnostic ======
+  lambda1 M= 500  lambda=1  bias=0.5132  cov=0.196  topWeig=0.000501  covBlk=0.002
+  lambda1 M=1000  lambda=1  bias=0.4774  cov=0.110  topWeig=0.000507  covBlk=0.001
+  lambda1 M=2000  lambda=1  bias=0.4229  cov=0.098  topWeig=0.000489  covBlk=0.0005
+  lambda1 M=4000  lambda=1  bias=0.3125  cov=0.119  topWeig=0.00048  covBlk=0.00025
+  lambdaA M= 500  lambda=0.143  bias=0.3417  cov=0.367  topWeig=0.000501  covBlk=0.000286
+  lambdaA M=1000  lambda=0.276  bias=0.3285  cov=0.296  topWeig=0.000507  covBlk=0.000276
+  lambdaA M=2000  lambda=0.553  bias=0.3310  cov=0.188  topWeig=0.000489  covBlk=0.000277
+  lambdaA M=4000  lambda=1.11  bias=0.3305  cov=0.100  topWeig=0.00048  covBlk=0.000278
+  Wrote tables/lambda_diagnostic.csv
+
+  LAMBDA VERDICT: bias(1)/bias(A) at M=500 vs M=4000 = 1.50 , 0.95  ->  PENALTY ASYMPTOTICALLY INERT (Section 4 lambda-free variance confirmed)
+
+====== BLOCK 2 : linearisation error (Part B) ======
+  K= 3 sig=0.05  MSE=2.91e-09 Bound=7.11e-06 Ratio=0.000
+  K= 3 sig=0.10  MSE=2.85e-09 Bound=6.90e-06 Ratio=0.000
+  K= 3 sig=0.20  MSE=2.91e-09 Bound=6.99e-06 Ratio=0.000
+  K= 3 sig=0.30  MSE=2.88e-09 Bound=6.57e-06 Ratio=0.000
+  K= 3 sig=0.50  MSE=2.82e-09 Bound=5.88e-06 Ratio=0.000
+  K= 3 sig=0.80  MSE=2.64e-09 Bound=5.01e-06 Ratio=0.001
+  K= 5 sig=0.05  MSE=2.42e-09 Bound=7.87e-06 Ratio=0.000
+  K= 5 sig=0.10  MSE=2.39e-09 Bound=8.55e-06 Ratio=0.000
+  K= 5 sig=0.20  MSE=2.40e-09 Bound=7.85e-06 Ratio=0.000
+  K= 5 sig=0.30  MSE=2.43e-09 Bound=8.35e-06 Ratio=0.000
+  K= 5 sig=0.50  MSE=2.39e-09 Bound=8.65e-06 Ratio=0.000
+  K= 5 sig=0.80  MSE=2.55e-09 Bound=8.01e-06 Ratio=0.000
+  K=10 sig=0.05  MSE=9.35e-10 Bound=9.65e-06 Ratio=0.000
+  K=10 sig=0.10  MSE=9.28e-10 Bound=1.16e-05 Ratio=0.000
+  K=10 sig=0.20  MSE=9.33e-10 Bound=1.11e-05 Ratio=0.000
+  K=10 sig=0.30  MSE=9.49e-10 Bound=1.17e-05 Ratio=0.000
+  K=10 sig=0.50  MSE=1.00e-09 Bound=1.49e-05 Ratio=0.000
+  K=10 sig=0.80  MSE=1.13e-09 Bound=1.49e-05 Ratio=0.000
+  Wrote tables/block2.csv, tables/block2.tex
+  Wrote imgs/block2_linearisation.pdf
+
+====== BLOCK 3 : sgscatm vs STM (Part B) ======
+  M=1000 signal=weak (b_max=0.15) x 12 reps
+    rep 5/12
+    rep 10/12
+  M=1000 signal=strong (b_max=0.50) x 12 reps
+    rep 5/12
+    rep 10/12
+  M=5000 signal=weak (b_max=0.15) x 12 reps
+    rep 5/12
+    rep 10/12
+  M=5000 signal=strong (b_max=0.50) x 12 reps
+    rep 5/12
+    rep 10/12
+
+  Block 3 summary:
+     M MSE_Spectral MSE_STM Time_Spectral Time_STM  Speedup
+1 1000       0.1043  0.0017        0.4275   3.4467   8.0624
+2 1000       0.0709  0.0047        0.4158   4.7442  11.4088
+3 5000       0.0925  0.0016        0.2083  19.2250  92.2800
+4 5000       0.0456  0.0058        0.2217  24.9517 112.5639
+  Wrote tables/block3.csv, tables/block3.tex
+  Wrote imgs/block3_mse_boxplot.pdf, imgs/block3_timing.pdf
+
+====== BLOCK 4 : four-method comparison (Part B) ======
+  M=500 scenario=high_sep x 12 reps
+    rep 5/12
+    rep 10/12
+  M=500 scenario=low_sep x 12 reps
+    rep 5/12
+    rep 10/12
+  M=500 scenario=weak_sig x 12 reps
+    rep 5/12
+    rep 10/12
+  M=2000 scenario=high_sep x 12 reps
+    rep 5/12
+    rep 10/12
+  M=2000 scenario=low_sep x 12 reps
+    rep 5/12
+    rep 10/12
+  M=2000 scenario=weak_sig x 12 reps
+    rep 5/12
+    rep 10/12
+
+  Block 4 summary:
+      M MSE_Bz MSE_Phi   Time    Iter
+1   500 0.0586  0.0217 0.1458     NaN
+2   500 0.0586  0.0002 0.1542     NaN
+3   500 0.0032  0.0000 1.8758 33.0833
+4   500 0.0054  0.0000 2.0800 32.2500
+5   500 0.0626  0.0004 0.1925     NaN
+6   500 0.0626  0.0000 0.2000     NaN
+7   500 0.0223  0.0000 1.8383 24.1667
+8   500 0.0508  0.0000 1.2808 10.9167
+9   500 0.1424  0.0003 0.1933     NaN
+10  500 0.1424  0.0000 0.1983     NaN
+11  500 0.0024  0.0000 1.2650 17.6667
+12  500 0.0825  0.0000 1.6658 18.4167
+13 2000 0.0133  0.1141 0.0650     NaN
+14 2000 0.0133  0.0002 0.0892     NaN
+15 2000 0.0016  0.0000 7.7100 33.7500
+16 2000 0.0020  0.0000 7.0675 29.2500
+17 2000 0.0701  0.0009 0.0683     NaN
+18 2000 0.0701  0.0000 0.1042     NaN
+19 2000 0.0870  0.0000 0.9725  3.2500
+20 2000 0.0392  0.0000 3.6892  9.0833
+21 2000 0.1337  0.0012 0.0675     NaN
+22 2000 0.1337  0.0000 0.0967     NaN
+23 2000 0.0014  0.0000 6.6975 23.5833
+24 2000 0.0316  0.0000 5.5092 17.9167
+  Wrote tables/block4.csv, tables/block4.tex
+
+====== BLOCK 5 : multimodality of exact objective (Part C) ======
+  Using corollary CSV : C:\Users\Utente\WORKSPACE\R\sgscatm/validation/results_corollary.csv
+  Using multistart CSV: C:\Users\Utente\WORKSPACE\R\sgscatm/validation/results_multistart.csv
+
+  Block 5 aggregate:
+  K    M mean_disagree best_gain n_distinct lambda_min_H_ratio snr_bulk_min
+1 3 1000        0.5370         0        3.5             1.9954       1.2243
+2 3 4000        0.5231         0        2.0             2.0015       1.5759
+3 5 1000        0.5139         0       13.0             2.0244       0.4711
+4 5 4000        0.5208         0       13.0             2.0023       0.8958
+  snr_bulk_max
+1      48.5604
+2      52.3501
+3      14.6922
+4      32.4277
+  Wrote tables/block5.csv, tables/block5.tex
+  Wrote imgs/block5_disagree_vs_snr.pdf, _bestgain_vs_M.pdf, _ndistinct.pdf
+
+  --- Block 5 caption-ready numbers ---
+  max snr_bulk reached      : 52.350
+  disagree at that point    : 0.583
+  max n_distinct_endpoints  : 13.0
+  best_gain shrink K=3 (M=1000->4000): 3.64e-06 -> 6.65e-07  (x0.18)
+  best_gain shrink K=5 (M=1000->4000): 5.13e-06 -> 2.11e-06  (x0.41)
+
+=====================================================
+            BLOCK 1 RERUN VERDICT
+=====================================================
+  [PASS] SE_SHRINKS             log-log slope(analytic SE) = -0.501
+  [PASS] SE_MATCHES_EMPIRICAL   M1000:1.01 M2000:0.96 M4000:0.86
+  [PASS] SE_MATCHES_JACKKNIFE   M1000:0.98 M2000:1.01 M4000:0.98
+  [FAIL] COVERAGE               M1000:0.939 M2000:0.920 M4000:0.873
+  [PASS] RMSE_DECREASES         slope=-0.396 monotone=TRUE
+  [PASS] NOT_COLLAPSED          ratio_to_null=0.021
+  [PASS] DEGENERACY_GONE        Cov(z) min gap=0.150, word-rho min rel gap=0.042
+-----------------------------------------------------
+  OVERALL: *** SE FORMULA NOT FULLY VALIDATED ***
+  LAMBDA VERDICT: bias(1)/bias(A) M=500 vs M=4000 = 1.50 , 0.95 -> PENALTY ASYMPTOTICALLY INERT (Section 4 lambda-free variance confirmed)
+=====================================================
+
+--- Figure inventory (imgs/) ---
+  block1_rmse_vs_M.pdf             OK (34082 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\imgs\block1_rmse_vs_M.pdf
+  block1_coverage_vs_M.pdf         OK (22718 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\imgs\block1_coverage_vs_M.pdf
+  block1_se_vs_M.pdf               OK (27696 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\imgs\block1_se_vs_M.pdf
+  block1_qqplot.pdf                OK (44032 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\imgs\block1_qqplot.pdf
+  block2_linearisation.pdf         OK (35265 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\imgs\block2_linearisation.pdf
+  block3_mse_boxplot.pdf           OK (31061 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\imgs\block3_mse_boxplot.pdf
+  block3_timing.pdf                OK (27953 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\imgs\block3_timing.pdf
+  block5_disagree_vs_snr.pdf       OK (25849 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\imgs\block5_disagree_vs_snr.pdf
+  block5_bestgain_vs_M.pdf         OK (27594 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\imgs\block5_bestgain_vs_M.pdf
+  block5_ndistinct.pdf             OK (16542 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\imgs\block5_ndistinct.pdf
+
+--- Table inventory (tables/) ---
+  block1.csv               OK (803 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\tables\block1.csv
+  block2.csv               OK (1638 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\tables\block2.csv
+  block3.csv               OK (485 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\tables\block3.csv
+  block4.csv               OK (2326 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\tables\block4.csv
+  block5.csv               OK (506 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\tables\block5.csv
+  block1.tex               OK (863 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\tables\block1.tex
+  block2.tex               OK (1382 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\tables\block2.tex
+  block3.tex               OK (803 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\tables\block3.tex
+  block4.tex               OK (2361 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\tables\block4.tex
+  block5.tex               OK (988 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\tables\block5.tex
+  lambda_diagnostic.csv    OK (810 bytes)  C:\Users\Utente\WORKSPACE\R\sgscatm\sim_rerun\tables\lambda_diagnostic.csv
+
+  All figures and tables rendered.
+
+Total wall time: 50.3 min

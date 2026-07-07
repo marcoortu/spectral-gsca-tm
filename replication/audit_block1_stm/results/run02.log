@@ -1,0 +1,13 @@
+Messaggio di avvertimento:
+il pacchetto 'stm' è stato creato con R versione 4.5.2 
+=== Fair STM comparison ===
+-- B1: ALR -> ILR map unit test --
+   max errors: ilr_from_alr=2.7e-15 alr_from_ilr=1.9e-15 inverse=1.1e-16 roundtrip=5.0e-16
+   PASSED (tol 1e-12)
+
+-- B2: M = 1000, 20 reps x 2 regimes (paired with basin_check) --
+   [39.4 s] 40/40 replicates fully OK
+
+-- B2+: M = 5000, strong, 10 reps (optional) --
+   [53.1 s] 10/10 replicates OK
+Done. Results in C:\Users\Utente\WORKSPACE\R\sgscatm/replication/audit_block1_stm/results 

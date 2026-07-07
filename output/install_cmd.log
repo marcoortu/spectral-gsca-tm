@@ -1,0 +1,4 @@
+Ci sono stati 13 avvertimenti (utilizza warnings() per visualizzarli)
+Errore: l'oggetto 'unifrac' non è esportato da 'namespace:rbiom'
+Esecuzione interrotta
+[cmd] curatedMetagenomicData available: FALSE

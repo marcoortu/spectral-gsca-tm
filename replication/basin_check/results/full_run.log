@@ -1,0 +1,25 @@
+=== Basin-condition verification ===
+Mode: FULL | cores: 10 
+
+-- Derivative verification (tiny instance, M=30 N=40 K=3) --
+   grad rel.err: lambda=0 4.80e-09 | lambda=1 1.79e-08
+   HVP  rel.err: lambda=0 1.59e-10 | lambda=1 8.00e-10
+   gauge tangency (rel): 4.05e-18
+   [0.5 s] PASSED
+
+-- E0: smoke test (M=200, N=200, 2 reps, both regimes) --
+   [133.2 s] errors: 0/6 | monotone: all OK
+   E0 PASSED
+
+-- E1/E2: M=1000, 20 reps x 2 regimes --
+   [824.2 s] 40/40 replicates OK
+
+-- E3/E4: 5 reps x 2 regimes (d = 6500) --
+   [453.5 s] 10/10 replicates OK
+
+-- E5: doc_length in {50, 200, 1000}, weak regime, 10 reps --
+   [19.9 s] 30/30 replicates OK
+
+=== All experiments complete ===
+Results in C:\Users\Utente\WORKSPACE\R\sgscatm/replication/basin_check/results 
+Build tables/figures with: Rscript replication/basin_check/03_report.R

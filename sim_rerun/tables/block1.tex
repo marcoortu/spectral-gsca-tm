@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\caption{Corrected inference for $\hat{\mathbf{B}}_z$ on the clean, well-separated design ($P=K-1=4$, $\mathrm{eig}(\mathrm{Cov}(z))=(1,.7,.5,.35)$). Analytic SE from \texttt{sgscatm\_vcov} (corrected three-term influence with the missing $M^{-1/2}$) versus the across-replicate empirical SD (gold standard). $N=500$, 40 replicates, $\lambda=\lambda_A$ (data-driven). \emph{Reduced replicate count (runtime).}}
+\label{tab:block1}
+\begin{tabular}{rcccccc}
+\toprule
+$M$ & RMSE & Analytic SE & Empirical SD & Cover.\ (95\%) & SE/SD & Time (s) \\
+\midrule
+500 & 0.0178 & 0.0175 & 0.0169 & 0.944 & 1.03 & 0.20 \\
+1,000 & 0.0130 & 0.0123 & 0.0122 & 0.939 & 1.01 & 0.43 \\
+2,000 & 0.0098 & 0.0088 & 0.0092 & 0.920 & 0.96 & 0.06 \\
+4,000 & 0.0079 & 0.0062 & 0.0072 & 0.873 & 0.86 & 0.16 \\
+\bottomrule
+\end{tabular}
+\end{table}

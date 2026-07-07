@@ -1,0 +1,114 @@
+[setup] Loaded sgscatm from source in C:/Users/Utente/WORKSPACE/R/sgscatm/R 
+[setup] Reusing package functions:
+   - ilr_contrast (V: KxK-1, V^T V=I, V^T 1=0) 
+   - ilr_to_proportions (inverse-ILR closure f(z)=softmax(V z)) 
+   - sgscatm (spectral estimator; used as cross-check, see header note) 
+[selftest] analytic-vs-FD gradient max rel err = 3.80e-09
+[preflight] timing heavy reps (M=4000, K=5, moderate) ...
+[preflight] mean heavy rep = 46.6s (cal: 74/20) ; projected reps=20 ~ 139.8 min
+[preflight] budget 28 min -> reps = 8 (projected ~55.9 min) [NOTE: reps floored at 8 per spec; may exceed budget]
+[cell] K=3 weak     M=500  reps_ok= 8 | lmH_ratio=2.01 gap=8.82e-08 coh=2.73 msbeat=0.48 pkgSin=0.007
+[cell] K=3 weak     M=1000 reps_ok= 8 | lmH_ratio=2.01 gap=4.52e-08 coh=2.56 msbeat=0.52 pkgSin=0.012
+[cell] K=3 weak     M=2000 reps_ok= 8 | lmH_ratio=2.01 gap=4.75e-08 coh=2.77 msbeat=0.43 pkgSin=0.015
+[cell] K=3 weak     M=4000 reps_ok= 8 | lmH_ratio=2.00 gap=3.39e-08 coh=2.72 msbeat=0.34 pkgSin=0.005
+[cell] K=3 moderate M=500  reps_ok= 8 | lmH_ratio=2.03 gap=3.77e-07 coh=2.29 msbeat=0.39 pkgSin=0.012
+[cell] K=3 moderate M=1000 reps_ok= 8 | lmH_ratio=2.00 gap=2.46e-07 coh=2.27 msbeat=0.43 pkgSin=0.002
+[cell] K=3 moderate M=2000 reps_ok= 8 | lmH_ratio=2.00 gap=1.21e-07 coh=2.56 msbeat=0.52 pkgSin=0.007
+[cell] K=3 moderate M=4000 reps_ok= 8 | lmH_ratio=2.00 gap=4.68e-08 coh=2.59 msbeat=0.41 pkgSin=0.003
+[cell] K=3 strong   M=500  reps_ok= 8 | lmH_ratio=2.00 gap=8.43e-07 coh=2.11 msbeat=0.44 pkgSin=0.002
+[cell] K=3 strong   M=1000 reps_ok= 8 | lmH_ratio=2.00 gap=3.31e-07 coh=2.04 msbeat=0.49 pkgSin=0.001
+[cell] K=3 strong   M=2000 reps_ok= 8 | lmH_ratio=2.00 gap=1.02e-07 coh=1.90 msbeat=0.44 pkgSin=0.001
+[cell] K=3 strong   M=4000 reps_ok= 8 | lmH_ratio=2.01 gap=3.99e-08 coh=2.04 msbeat=0.50 pkgSin=0.000
+[progress] K=3 done, elapsed 8.0 min
+[cell] K=5 weak     M=500  reps_ok= 8 | lmH_ratio=1.97 gap=2.27e-07 coh=2.40 msbeat=0.47 pkgSin=0.060
+[cell] K=5 weak     M=1000 reps_ok= 8 | lmH_ratio=2.07 gap=1.74e-07 coh=2.35 msbeat=0.66 pkgSin=0.022
+[cell] K=5 weak     M=2000 reps_ok= 8 | lmH_ratio=2.00 gap=9.37e-08 coh=2.59 msbeat=0.45 pkgSin=0.064
+[cell] K=5 weak     M=4000 reps_ok= 8 | lmH_ratio=2.00 gap=4.92e-08 coh=2.58 msbeat=0.45 pkgSin=0.063
+[cell] K=5 moderate M=500  reps_ok= 8 | lmH_ratio=2.02 gap=9.48e-07 coh=2.24 msbeat=0.55 pkgSin=0.035
+[cell] K=5 moderate M=1000 reps_ok= 8 | lmH_ratio=2.01 gap=4.41e-07 coh=2.35 msbeat=0.38 pkgSin=0.030
+[cell] K=5 moderate M=2000 reps_ok= 8 | lmH_ratio=2.01 gap=2.16e-07 coh=2.46 msbeat=0.48 pkgSin=0.040
+[cell] K=5 moderate M=4000 reps_ok= 8 | lmH_ratio=2.00 gap=1.04e-07 coh=2.46 msbeat=0.52 pkgSin=0.031
+[cell] K=5 strong   M=500  reps_ok= 8 | lmH_ratio=2.00 gap=2.04e-06 coh=2.12 msbeat=0.67 pkgSin=0.013
+[cell] K=5 strong   M=1000 reps_ok= 8 | lmH_ratio=2.02 gap=7.57e-07 coh=2.31 msbeat=0.75 pkgSin=0.029
+[cell] K=5 strong   M=2000 reps_ok= 8 | lmH_ratio=2.02 gap=2.94e-07 coh=2.28 msbeat=0.62 pkgSin=0.014
+[cell] K=5 strong   M=4000 reps_ok= 8 | lmH_ratio=2.00 gap=1.15e-07 coh=2.46 msbeat=0.40 pkgSin=0.094
+[progress] K=5 done, elapsed 28.4 min
+
+=====================  TABLE 1: results_cells.csv  =====================
+  K  regime      eff      M   reps_ok   coherence   maxinfnorm   delta0   sinTheta_init   lambda_min_H   lambda_min_H_ratio   grad_recon_factor   gap_lin   gap_lin_se   monotone_frac   iters_med   conv_rate   grad_final_med   multistart_beat   sinTheta_truth_spec   sinTheta_truth_refined   Bz_err_spec   Bz_err_refined   Bz_improve_ratio   hess_opnorm_max   hess_lip
+---  ---------  ----  -----  --------  ----------  -----------  -------  --------------  -------------  -------------------  ------------------  --------  -----------  --------------  ----------  ----------  ---------------  ----------------  --------------------  -----------------------  ------------  ---------------  -----------------  ----------------  ---------
+  3  weak        0.3    500         8       2.731        0.345    0.000           0.014          0.000                2.011               0.001         0            0               1        44.5       0.900                0             0.484                 1.004                    1.004         0.834            0.833              1.000             0.360      0.159
+  3  weak        0.3   1000         8       2.562        0.342    0.000           0.006          0.000                2.011               0.001         0            0               1        38.0       0.773                0             0.523                 0.989                    0.989         0.901            0.901              1.000             0.350      0.156
+  3  weak        0.3   2000         8       2.771        0.339    0.000           0.008          0.000                2.006               0.001         0            0               1        20.5       0.691                0             0.430                 0.799                    0.799         0.735            0.735              1.000             0.346      0.155
+  3  weak        0.3   4000         8       2.723        0.338    0.000           0.007          0.001                1.996               0.000         0            0               1        15.0       0.456                0             0.344                 0.559                    0.558         0.385            0.385              1.001             0.343      0.150
+  3  moderate    1.0    500         8       2.286        0.346    0.000           0.014          0.001                2.029               0.002         0            0               1        32.5       0.740                0             0.391                 0.651                    0.650         1.067            1.067              1.000             0.354      0.157
+  3  moderate    1.0   1000         8       2.272        0.343    0.000           0.010          0.001                2.000               0.001         0            0               1        27.0       0.671                0             0.430                 0.668                    0.667         1.293            1.293              1.000             0.348      0.156
+  3  moderate    1.0   2000         8       2.563        0.340    0.001           0.009          0.001                2.000               0.001         0            0               1        30.0       0.506                0             0.516                 0.584                    0.584         1.058            1.058              1.000             0.346      0.154
+  3  moderate    1.0   4000         8       2.589        0.338    0.000           0.006          0.001                1.997               0.000         0            0               1        18.5       0.474                0             0.414                 0.580                    0.579         0.900            0.900              1.000             0.342      0.149
+  3  strong      3.0    500         8       2.113        0.347    0.001           0.014          0.002                1.996               0.003         0            0               1        24.5       0.630                0             0.438                 0.489                    0.487         5.433            5.432              1.000             0.354      0.156
+  3  strong      3.0   1000         8       2.037        0.343    0.001           0.010          0.003                2.001               0.002         0            0               1        20.5       0.447                0             0.492                 0.626                    0.626         5.904            5.904              1.000             0.347      0.155
+  3  strong      3.0   2000         8       1.898        0.340    0.002           0.006          0.003                2.002               0.001         0            0               1        17.5       0.385                0             0.438                 0.746                    0.746         6.221            6.221              1.000             0.344      0.151
+  3  strong      3.0   4000         8       2.036        0.338    0.002           0.004          0.003                2.006               0.000         0            0               1        13.5       0.468                0             0.500                 0.783                    0.783         5.243            5.242              1.000             0.344      0.149
+  5  weak        0.3    500         8       2.397        0.210    0.000           0.039          0.000                1.966               0.001         0            0               1        73.0       0.964                0             0.469                 1.443                    1.443         1.042            1.042              1.000             0.226      0.134
+  5  weak        0.3   1000         8       2.353        0.207    0.000           0.053          0.000                2.065               0.001         0            0               1        56.5       0.903                0             0.656                 1.366                    1.371         0.963            0.965              1.002             0.217      0.134
+  5  weak        0.3   2000         8       2.593        0.205    0.000           0.025          0.000                2.004               0.001         0            0               1        74.0       0.908                0             0.453                 1.353                    1.351         0.993            0.992              0.999             0.214      0.134
+  5  weak        0.3   4000         8       2.579        0.204    0.000           0.014          0.000                2.000               0.001         0            0               1        43.5       0.849                0             0.445                 1.201                    1.201         0.867            0.868              1.000             0.210      0.134
+  5  moderate    1.0    500         8       2.241        0.210    0.000           0.038          0.000                2.021               0.002         0            0               1        40.0       0.832                0             0.555                 1.107                    1.107         2.110            2.110              1.000             0.227      0.134
+  5  moderate    1.0   1000         8       2.347        0.207    0.000           0.031          0.000                2.012               0.002         0            0               1        48.0       0.910                0             0.383                 1.185                    1.185         1.943            1.943              1.000             0.218      0.134
+  5  moderate    1.0   2000         8       2.459        0.205    0.000           0.018          0.000                2.009               0.001         0            0               1        42.0       0.835                0             0.477                 1.172                    1.172         1.977            1.978              1.000             0.214      0.134
+  5  moderate    1.0   4000         8       2.463        0.203    0.000           0.013          0.000                1.995               0.001         0            0               1        43.5       0.825                0             0.516                 1.207                    1.207         2.563            2.564              1.000             0.211      0.134
+  5  strong      3.0    500         8       2.120        0.210    0.000           0.045          0.001                2.005               0.004         0            0               1        31.5       0.744                0             0.672                 1.104                    1.105         8.376            8.377              1.000             0.224      0.134
+  5  strong      3.0   1000         8       2.314        0.207    0.000           0.027          0.000                2.016               0.002         0            0               1        43.0       0.849                0             0.750                 1.155                    1.155         8.346            8.346              1.000             0.224      0.134
+  5  strong      3.0   2000         8       2.278        0.205    0.000           0.016          0.000                2.020               0.002         0            0               1        45.5       0.833                0             0.617                 1.254                    1.255         9.772            9.772              1.000             0.215      0.134
+  5  strong      3.0   4000         8       2.458        0.204    0.000           0.011          0.000                1.996               0.001         0            0               1        42.0       0.817                0             0.398                 1.331                    1.331         8.845            8.845              1.000             0.210      0.134
+
+=====================  TABLE 2: results_rates.csv  =====================
+  K  regime      slope_sinTheta_init   slope_grad_recon   slope_gap_lin  C1_basin   C2_localconvex   C3_dangerous   C4_gapcloses   C5_descent   C6_globalN   C7_refinehelps   C8_boundary                                                    C9_C2brick   overall                
+---  ---------  --------------------  -----------------  --------------  ---------  ---------------  -------------  -------------  -----------  -----------  ---------------  -------------------------------------------------------------  -----------  -----------------------
+  3  weak                     -0.264             -0.353          -0.407  PASS       PASS             PASS           PASS           PASS         FAIL         PASS             NO DEGRADATION (regime knob too weak, rerun with larger eff)   PASS         CONFIRMED WITH CAVEATS 
+  3  moderate                 -0.362             -0.576          -1.006  PASS       PASS             PASS           PASS           PASS         FAIL         PASS             NO DEGRADATION (regime knob too weak, rerun with larger eff)   PASS         CONFIRMED WITH CAVEATS 
+  3  strong                   -0.607             -0.804          -1.489  PASS       PASS             PASS           PASS           PASS         FAIL         PASS             NO DEGRADATION (regime knob too weak, rerun with larger eff)   PASS         CONFIRMED WITH CAVEATS 
+  5  weak                     -0.557             -0.141          -0.751  PASS       PASS             PASS           PASS           PASS         FAIL         MARGINAL         PASS                                                           PASS         NOT CONFIRMED          
+  5  moderate                 -0.556             -0.499          -1.061  PASS       PASS             PASS           PASS           PASS         FAIL         MARGINAL         PASS                                                           PASS         NOT CONFIRMED          
+  5  strong                   -0.676             -0.692          -1.380  PASS       PASS             PASS           PASS           PASS         FAIL         MARGINAL         PASS                                                           PASS         NOT CONFIRMED          
+
+=====================  VERDICT  =====================
+
+VERDICT (K=3): CONFIRMED WITH CAVEATS
+  (spec-literal mechanical verdict: NOT CONFIRMED; reconciled via C6 materiality below)
+  decisive column lambda_min_H_ratio (moderate): 2.000
+  C1 basin       : PASS      slope_sinTheta_init(in-reg)=-0.313
+  C2 localconvex : PASS      median lambda_min_H_ratio(in-reg)>=0.5?
+  C3 dangerous   : PASS      slope_grad_recon(in-reg)=-0.465
+  C4 gapcloses   : PASS      slope_gap_lin(in-reg)=-0.706
+  C5 descent     : PASS    
+  C6 globalN     : FAIL      max multistart_beat(in-reg)=0.523
+  C7 refinehelps : PASS      median Bz_improve_ratio(moderate)=1.000
+  C8 boundary    : NO DEGRADATION (regime knob too weak, rerun with larger eff)
+  C9 C2brick     : PASS    
+  ANALYST NOTE (C6): subspace disagreement is IMMATERIAL (disagreement is a finite-M effect, ->0 as M grows). worst(small-M) multistart_disagree=0.344; at largest M=4000 it is 0.062.
+    => C6's multistart_beat flags shallow noise-degeneracy minima, but
+       the decisive subspace-agreement metric shows restarts land in the
+       spectral basin; no genuine lower basin is missed, so the spectral
+       route reaches the global-quality subspace on N.
+
+VERDICT (K=5): NOT CONFIRMED
+  decisive column lambda_min_H_ratio (moderate): 2.011
+  C1 basin       : PASS      slope_sinTheta_init(in-reg)=-0.556
+  C2 localconvex : PASS      median lambda_min_H_ratio(in-reg)>=0.5?
+  C3 dangerous   : PASS      slope_grad_recon(in-reg)=-0.320
+  C4 gapcloses   : PASS      slope_gap_lin(in-reg)=-0.906
+  C5 descent     : PASS    
+  C6 globalN     : FAIL      max multistart_beat(in-reg)=0.656
+  C7 refinehelps : MARGINAL  median Bz_improve_ratio(moderate)=1.000
+  C8 boundary    : PASS
+  C9 C2brick     : PASS    
+  ANALYST NOTE (C6): subspace disagreement is MATERIAL (restarts find a genuinely lower basin even at large M). worst(small-M) multistart_disagree=0.445; at largest M=4000 it is 0.148.
+    => Restarts land in a genuinely DIFFERENT, lower-gbar basin
+       (sinTheta >= 1e-4, gbar below the noise floor) that the spectral
+       init misses at these M -- a real global-on-N gap. This typically
+       shrinks with M (see results_multistart.csv); confirm the trend.
+
+[done] CSV outputs:
+   C:\Users\Utente\WORKSPACE\R\sgscatm\validation\results_cells.csv 
+   C:\Users\Utente\WORKSPACE\R\sgscatm\validation\results_rates.csv 

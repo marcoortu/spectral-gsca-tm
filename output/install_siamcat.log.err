@@ -1,0 +1,48 @@
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://cloud.r-project.org
+Bioconductor version 3.22 (BiocManager 1.30.27), R 4.5.1 (2025-06-13 ucrt)
+Installing package(s) 'SIAMCAT'
+si installano anche le dipendenze 'globals', 'listenv', 'nanonext', 'pixmap', 'sp', 'moocore', 'future', 'future.apply', 'mirai', 'mlbench', 'mlr3measures', 'mlr3misc', 'parallelly', 'palmerpenguins', 'uuid', 'ade4', 'biomformat', 'bbotk', 'mlr3', 'phyloseq', 'beanplot', 'gridBase', 'LiblineaR', 'pROC', 'PRROC', 'infotheo', 'corrplot', 'mlr3learners', 'mlr3tuning', 'paradox', 'lgr'
+
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/globals_0.19.1.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/listenv_1.0.0.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/nanonext_1.10.0.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/pixmap_0.4-14.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/sp_2.2-1.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/moocore_0.3.1.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/future_1.70.0.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/future.apply_1.20.2.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/mirai_2.7.1.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/mlbench_2.1-8.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/mlr3measures_1.3.0.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/mlr3misc_0.22.0.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/parallelly_1.48.0.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/palmerpenguins_0.1.1.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/uuid_1.2-2.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/ade4_1.7-24.zip'
+apertura URL 'https://bioconductor.org/packages/3.22/bioc/bin/windows/contrib/4.5/biomformat_1.38.3.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/bbotk_1.11.0.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/mlr3_1.7.1.zip'
+apertura URL 'https://bioconductor.org/packages/3.22/bioc/bin/windows/contrib/4.5/phyloseq_1.54.2.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/beanplot_1.3.1.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/gridBase_0.4-7.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/LiblineaR_2.10-24.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/pROC_1.19.0.1.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/PRROC_1.4.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/infotheo_1.2.0.1.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/corrplot_0.95.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/mlr3learners_0.15.0.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/mlr3tuning_1.6.0.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/paradox_1.0.1.zip'
+apertura URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/lgr_0.5.2.zip'
+apertura URL 'https://bioconductor.org/packages/3.22/bioc/bin/windows/contrib/4.5/SIAMCAT_2.14.0.zip'
+Messaggi di avvertimento:
+1: il pacchetto 'SIAMCAT' è stato creato con R versione 4.5.2 
+2: il pacchetto 'mlr3' è stato creato con R versione 4.5.3 
+3: il pacchetto 'phyloseq' è stato creato con R versione 4.5.2 
+4: In data("feat.crc.zeller", package = "SIAMCAT") :
+  il dataset 'feat.crc.zeller' non è stato trovato
+5: In data("meta.crc.zeller", package = "SIAMCAT") :
+  il dataset 'meta.crc.zeller' non è stato trovato

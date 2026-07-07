@@ -1,0 +1,44 @@
+si installa anche la dipendenza 'permute'
+
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://cloud.r-project.org
+Bioconductor version 3.22 (BiocManager 1.30.27), R 4.5.1 (2025-06-13 ucrt)
+Installing package(s) 'BiocVersion', 'curatedMetagenomicData'
+si installano anche le dipendenze 'xfun', 'litedown', 'formatR', 'markdown', 'jpeg', 'rematch', 'sitmo', 'lambda.r', 'futile.options', 'bit', 'png', 'estimability', 'mvtnorm', 'beeswarm', 'vipor', 'gridtext', 'hms', 'vroom', 'tzdb', 'cellranger', 'cpp11', 'progress', 'ScaledMatrix', 'irlba', 'rsvd', 'FNN', 'RcppAnnoy', 'dqrng', 'RcppProgress', 'Cairo', 'abind', 'SparseArray', 'XVector', 'futile.logger', 'snow', 'tidytree', 'yulab.utils', 'dbplyr', 'DBI', 'filelock', 'bit64', 'blob', 'KEGGREST', 'BiocNeighbors', 'assorthead', 'sparseMatrixStats', 'ecodive', 'emmeans', 'fillpattern', 'ggbeeswarm', 'ggnewscale', 'ggtext', 'patchwork', 'readr', 'readxl', 'beachmat', 'BiocSingular', 'Rtsne', 'RcppML', 'uwot', 'pheatmap', 'ggrastr', 'MatrixGenerics', 'GenomicRanges', 'Biobase', 'BiocGenerics', 'IRanges', 'Seqinfo', 'S4Arrays', 'DelayedArray', 'SingleCellExperiment', 'Biostrings', 'ape', 'BiocParallel', 'treeio', 'BiocFileCache', 'RSQLite', 'AnnotationDbi', 'BiocBaseUtils', 'MultiAssayExperiment', 'bluster', 'DECIPHER', 'decontam', 'DelayedMatrixStats', 'DirichletMultinomial', 'rbiom', 'scater', 'scuttle', 'SummarizedExperiment', 'TreeSummarizedExperiment', 'AnnotationHub', 'ExperimentHub', 'S4Vectors', 'mia'
+
+Il pacchetto è disponibile solo in forma sorgenti e richiede
+  compilazione di codice C/C++/Fortran: 'bluster'
+Avvertimento: non è possibile rimuovere una precedente installazione del pacchetto 'xfun'
+Avvertimento: ripristinato 'xfun'
+installazione pacchetti sorgenti 'bluster', 'AnnotationHub', 'curatedMetagenomicData'
+
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://cloud.r-project.org
+Bioconductor version 3.22 (BiocManager 1.30.27), R 4.5.1 (2025-06-13 ucrt)
+Installing package(s) 'ALDEx2'
+si installano anche le dipendenze 'deldir', 'NADA', 'truncnorm', 'interp', 'zigg', 'RcppParallel', 'zCompositions', 'latticeExtra', 'Rfast', 'multtest', 'directlabels'
+
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://cloud.r-project.org
+Bioconductor version 3.22 (BiocManager 1.30.27), R 4.5.1 (2025-06-13 ucrt)
+Installing package(s) 'ANCOMBC'
+si installano anche le dipendenze 'proxy', 'checkmate', 'rootSolve', 'e1071', 'lmom', 'forcats', 'clarabel', 'gmp', 'highs', 'osqp', 'scs', 'expm', 'Exact', 'gld', 'haven', 'htmlTable', 'colorspace', 'rbibutils', 'rngtools', 'gsl', 'minqa', 'reformulas', 'TH.data', 'CVXR', 'DescTools', 'Hmisc', 'Rdpack', 'doParallel', 'doRNG', 'energy', 'gtools', 'lme4', 'lmerTest', 'multcomp', 'nloptr'
+
+'getOption("repos")' replaces Bioconductor standard repositories, see
+'help("repositories", package = "BiocManager")' for details.
+Replacement repositories:
+    CRAN: https://cloud.r-project.org
+Bioconductor version 3.22 (BiocManager 1.30.27), R 4.5.1 (2025-06-13 ucrt)
+Messaggi di avvertimento:
+1: In file.copy(savedcopy, lib, recursive = TRUE) :
+  problema durante la copia di C:\Users\Utente\AppData\Local\R\win-library\4.5\00LOCK\xfun\libs\x64\xfun.dll in C:\Users\Utente\AppData\Local\R\win-library\4.5\xfun\libs\x64\xfun.dll: Permission denied
+2: In install.packages(...) :
+  l'installazione del pacchetto 'curatedMetagenomicData' ha uno stato di uscita non-zero
+3: package(s) not installed when version(s) same as or greater than current; use
+  `force = TRUE` to re-install: 'mia' 

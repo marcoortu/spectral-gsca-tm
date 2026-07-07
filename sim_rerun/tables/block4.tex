@@ -1,0 +1,50 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Four-method comparison across corpus sizes and scenarios. MSE$(\hat{\mathbf{B}}_z)$ on the corrected standardized scale; MSE$(\hat{\boldsymbol{\Phi}})$ under optimal row permutation; Time in seconds (\texttt{+warm}/\texttt{+refine} include the \texttt{sgscatm} base); Iter = mean EM iterations (STM only). $K=5$, $P=4$, $N=500$, $\lambda=1$, 12 replicates per cell. \emph{Reduced replicate count (runtime).}}
+\label{tab:block4}
+\begin{tabular}{rlcccc}
+\toprule
+$M$ & Method & MSE$(\hat{\mathbf{B}}_z)$ & MSE$(\hat{\boldsymbol{\Phi}})$ & Time (s) & Iter \\
+\midrule
+\multicolumn{6}{l}{\textit{Scenario: High sep.}} \\
+\midrule
+500 & \texttt{sgscatm} & 0.0586 & 2.17e-02 & 0.15 & --- \\
+ & \texttt{sgscatm}+refine & 0.0586 & 2.26e-04 & 0.15 & --- \\
+ & \texttt{stm} & 0.0032 & 3.54e-05 & 1.88 & 33 \\
+ & \texttt{stm}+warm & 0.0054 & 2.77e-05 & 2.08 & 32 \\
+\addlinespace
+2,000 & \texttt{sgscatm} & 0.0133 & 1.14e-01 & 0.06 & --- \\
+ & \texttt{sgscatm}+refine & 0.0133 & 1.85e-04 & 0.09 & --- \\
+ & \texttt{stm} & 0.0016 & 2.68e-05 & 7.71 & 34 \\
+ & \texttt{stm}+warm & 0.0020 & 1.48e-05 & 7.07 & 29 \\
+\addlinespace
+\midrule
+\multicolumn{6}{l}{\textit{Scenario: Low sep.}} \\
+\midrule
+500 & \texttt{sgscatm} & 0.0626 & 3.68e-04 & 0.19 & --- \\
+ & \texttt{sgscatm}+refine & 0.0626 & 2.86e-06 & 0.20 & --- \\
+ & \texttt{stm} & 0.0223 & 3.43e-06 & 1.84 & 24 \\
+ & \texttt{stm}+warm & 0.0508 & 6.77e-06 & 1.28 & 11 \\
+\addlinespace
+2,000 & \texttt{sgscatm} & 0.0701 & 8.68e-04 & 0.07 & --- \\
+ & \texttt{sgscatm}+refine & 0.0701 & 2.80e-06 & 0.10 & --- \\
+ & \texttt{stm} & 0.0870 & 3.06e-06 & 0.97 & 3 \\
+ & \texttt{stm}+warm & 0.0392 & 5.58e-06 & 3.69 & 9 \\
+\addlinespace
+\midrule
+\multicolumn{6}{l}{\textit{Scenario: Weak signal}} \\
+\midrule
+500 & \texttt{sgscatm} & 0.1424 & 3.46e-04 & 0.19 & --- \\
+ & \texttt{sgscatm}+refine & 0.1424 & 3.03e-05 & 0.20 & --- \\
+ & \texttt{stm} & 0.0024 & 1.65e-05 & 1.26 & 18 \\
+ & \texttt{stm}+warm & 0.0825 & 2.39e-05 & 1.67 & 18 \\
+\addlinespace
+2,000 & \texttt{sgscatm} & 0.1337 & 1.19e-03 & 0.07 & --- \\
+ & \texttt{sgscatm}+refine & 0.1337 & 2.95e-05 & 0.10 & --- \\
+ & \texttt{stm} & 0.0014 & 1.10e-05 & 6.70 & 24 \\
+ & \texttt{stm}+warm & 0.0316 & 1.52e-05 & 5.51 & 18 \\
+\addlinespace
+\bottomrule
+\end{tabular}
+\end{table}

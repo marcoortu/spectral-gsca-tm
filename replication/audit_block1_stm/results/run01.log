@@ -1,0 +1,11 @@
+=== Block 1 forensic audit ===
+-- Sandwich unit test (M=200, P=2, K-1=3, heteroscedastic) --
+   rel Frobenius error (mean sandwich vs empirical cov): 0.040 
+   PASSED
+
+-- A2: published pipeline, 20 reps x M in {500,1000,2000} --
+   [3.8 s] 60/60 replicates OK
+
+-- A3: two-step estimator, 50 reps x M in {500,1000,2000} --
+   [15.8 s] 150/150 replicates OK
+Done. Results in C:\Users\Utente\WORKSPACE\R\sgscatm/replication/audit_block1_stm/results 

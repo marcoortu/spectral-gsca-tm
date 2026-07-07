@@ -1,0 +1,25 @@
+=== Feasibility round ===
+Mode: QUICK | cores: 10 
+
+-- F1a unit test: anchor recovery at alpha_beta = 0.05 --
+   mean row TV = 0.1264 (gate <= 0.15) | perm-metric self-test = 1.73e-32 | true exclusivity = 1.000
+   [0.5 s] PASSED
+
+-- F3: k curves, oracle-start, E2 seeds, 100 sweeps --
+   [11.8 s] 4/4 replicates OK
+
+-- F1c: V1/V2/V3 vs oracle, E2 seeds --
+   [13.2 s] 4/4 replicates OK
+   F4 init variant: V2 (jk mse V2 0.03145 | V3 0.27320 | V4 0.03203)
+
+-- F2: Block 1 grid, oracle-start + jackknife --
+   [3.9 s] 6/6 replicates OK
+
+-- F2: L-grid (E5 pairing, weak regime) --
+   [4.0 s] 6/6 replicates OK
+
+-- F4(ii): feasible chain (init V2) on the Block 1 grid --
+   [4.4 s] 6/6 replicates OK
+
+=== Feasibility runs complete ===
+Build tables with: Rscript replication/feasibility/05_report.R
