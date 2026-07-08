@@ -1,0 +1,41 @@
+BES Wave 25 — ILR-EGSCA Summary
+================================
+
+M (documents):      18836
+N (vocab terms):    298
+K (topics):         7
+P (covariates):     5
+lambda:             1.0
+Fit time (s):       0.76
+Mean doc length:    1.6 tokens
+Median doc length:  2 tokens
+Leave voters:       7997 (42.5%)
+Remain voters:      10839 (57.5%)
+
+Topic prevalences:
+  T1: 14.3%  top: inflat, economi, rate
+  T2: 14.3%  top: immigr, illeg, uncontrol
+  T3: 14.3%  top: brexit, effect, consequ
+  T4: 14.3%  top: climat, chang, govern
+  T5: 14.3%  top: economi, poor, issu
+  T6: 14.3%  top: nhs, crisi, fund
+  T7: 14.3%  top: cost, live, crisi
+
+Top eigenvalues:
+[1] 2672.0524 1917.8274 1439.7735  975.2733  632.5986  358.8289
+
+Path coefficients (Bz):
+              ILR1    ILR2   ILR3    ILR4   ILR5   ILR6
+Age          3e-04  0.0004 -3e-04 -0.0011  5e-04  4e-04
+Female      -4e-04 -0.0003  1e-03  0.0013  1e-03 -6e-04
+Education    3e-04 -0.0006  1e-04 -0.0006 -1e-04  1e-04
+Left--right  8e-04  0.0004 -6e-04 -0.0003  1e-04 -1e-04
+Leave        0e+00  0.0043 -6e-04  0.0002  1e-04 -5e-04
+
+Analytical SEs:
+            ILR1 ILR2 ILR3 ILR4 ILR5 ILR6
+Age            0    0    0    0    0    0
+Female         0    0    0    0    0    0
+Education      0    0    0    0    0    0
+Left--right    0    0    0    0    0    0
+Leave          0    0    0    0    0    0
