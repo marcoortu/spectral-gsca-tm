@@ -1,0 +1,18 @@
+A2 OK: dim(Beta) = 5 x 200 = (K, N)
+== Feasible frozen@k*=1, N=200, L=1e4 (A1-corrected) ==
+  done M=1000 (monotone violations: 0/50)
+  done M=2000 (monotone violations: 0/80)
+  done M=5000 (monotone violations: 0/50)
+total monotone violations: 0
+    M           tag bias_norm se_sd true_cov biasrem_cov
+ 1000         plain    0.2304 0.134    0.366       0.244
+ 1000   jk_inflated    0.2304 0.138    0.374       0.255
+ 1000 SECONDARY_Bjk    0.1343 0.201    0.480       0.406
+ 2000         plain    0.0370 0.154    0.455       0.381
+ 2000   jk_inflated    0.0370 0.158    0.464       0.389
+ 2000 SECONDARY_Bjk    0.0287 0.251    0.510       0.509
+ 5000         plain    0.0387 0.164    0.379       0.448
+ 5000   jk_inflated    0.0387 0.167    0.385       0.451
+ 5000 SECONDARY_Bjk    0.0417 0.216    0.389       0.506
+
+diag_feasible DONE

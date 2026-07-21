@@ -1,0 +1,46 @@
+Messaggio di avvertimento:
+il pacchetto 'testthat' è stato creato con R versione 4.5.3 
+=== 02 b_max sweep (n_rep=60) ===
+b_max=0.10 done in 21s
+    estimator rmse_norm  se_sd cov_Bz0 cov_mean bias_norm se_med sd_med
+ baseline_std    0.8238 0.0663  0.0000   0.1111    0.0398 0.0000 0.0003
+         proj    0.1240 0.9922  0.9528   0.9542    0.0014 0.0061 0.0059
+   onestep_uw    0.1376 0.9824  0.9528   0.9486    0.0020 0.0065 0.0062
+   onestep_mw    0.1376 0.9824  0.9528   0.9486    0.0020 0.0065 0.0062
+
+b_max=0.25 done in 21s
+    estimator rmse_norm  se_sd cov_Bz0 cov_mean bias_norm se_med sd_med
+ baseline_std    0.9273 0.1480  0.0000   0.2500    0.1121 0.0000 0.0003
+         proj    0.0549 1.0420  0.9278   0.9486    0.0037 0.0061 0.0057
+   onestep_uw    0.0567 1.0363  0.9333   0.9569    0.0032 0.0066 0.0062
+   onestep_mw    0.0567 1.0363  0.9333   0.9569    0.0032 0.0066 0.0062
+
+b_max=0.50 done in 24s
+    estimator rmse_norm  se_sd cov_Bz0 cov_mean bias_norm se_med sd_med
+ baseline_std    0.9638 0.2396  0.0000   0.3750    0.2331 0.0001 0.0003
+         proj    0.0641 0.9967  0.5597   0.9556    0.0144 0.0064 0.0060
+   onestep_uw    0.0309 1.0242  0.9292   0.9500    0.0031 0.0070 0.0068
+   onestep_mw    0.0309 1.0242  0.9292   0.9500    0.0031 0.0070 0.0068
+
+b_max=0.75 done in 23s
+    estimator rmse_norm  se_sd cov_Bz0 cov_mean bias_norm se_med sd_med
+ baseline_std    0.9758 0.2762  0.0000   0.4306    0.3540 0.0001 0.0003
+         proj    0.1060 1.1010  0.1403   0.9750    0.0380 0.0064 0.0063
+   onestep_uw    0.0322 0.9662  0.8375   0.9542    0.0081 0.0085 0.0086
+   onestep_mw    0.0322 0.9662  0.8375   0.9542    0.0081 0.0085 0.0086
+
+b_max=1.00 done in 21s
+    estimator rmse_norm  se_sd cov_Bz0 cov_mean bias_norm se_med sd_med
+ baseline_std    0.9818 0.3011  0.0000   0.4611    0.4749 0.0001 0.0003
+         proj    0.1605 1.1516  0.0097   0.9750    0.0774 0.0070 0.0068
+   onestep_uw    0.0476 1.0242  0.6389   0.9583    0.0207 0.0108 0.0113
+   onestep_mw    0.0476 1.0242  0.6389   0.9583    0.0207 0.0108 0.0113
+
+b_max=1.50 done in 20s
+    estimator rmse_norm  se_sd cov_Bz0 cov_mean bias_norm se_med sd_med
+ baseline_std    0.9879 0.3939  0.0000   0.5319    0.7168 0.0001 0.0003
+         proj    0.2744 1.1597  0.0000   0.9778    0.1989 0.0091 0.0093
+   onestep_uw    0.1099 0.9496  0.2486   0.9444    0.0777 0.0184 0.0204
+   onestep_mw    0.1099 0.9496  0.2486   0.9444    0.0777 0.0184 0.0204
+
+saved out_02_bmax.{rds,csv}

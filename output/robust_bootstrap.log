@@ -1,0 +1,31 @@
+[[1]]
+[1] TRUE
+
+[[2]]
+[1] TRUE
+
+[[3]]
+[1] TRUE
+
+[[4]]
+[1] TRUE
+
+[[5]]
+[1] TRUE
+
+[[6]]
+[1] TRUE
+
+[[7]]
+[1] TRUE
+
+[[8]]
+[1] TRUE
+
+== Phase B robust bootstrap: N=200 L=1e4 M=2000, R=20 x B=100 ==
+[4012s]
+ scale se_sd_ratio coverage
+    SD        1.93    0.991
+   MAD        1.42    0.991
+MAD-scale acceptance: FAIL (SE/SD=1.42, cov=0.991)
+robust_bootstrap DONE

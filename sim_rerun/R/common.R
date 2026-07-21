@@ -32,7 +32,7 @@ for (d in c(DATA_DIR, TAB_DIR, IMG_DIR))
 
 # --- Reuse the sgscatm package solver (source, do NOT modify) ------
 # We deliberately source individual package files rather than the old
-# egscatm_fit.R alias to avoid duplicate definitions.
+# sgscatm_fit.R alias to avoid duplicate definitions.
 .pkg_files <- c("R/sgscatm_fit.R", "R/ilr_contrast.R", "R/utils.R",
                 "R/ilr_se.R", "R/refine_phi.R", "R/methods.R", "R/vcov.R")
 for (f in .pkg_files) source(file.path(ROOT, f))

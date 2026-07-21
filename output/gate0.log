@@ -1,0 +1,5 @@
+== Gate 0a (STOP-IF-FAIL): N=200 L=1e4 M=2000, R=30 x B=100 ==
+  coverage=0.979  SE/SD=1.605  bias=0.1061  [5546s]
+  Gate 0a: FAIL
+
+gate0 DONE

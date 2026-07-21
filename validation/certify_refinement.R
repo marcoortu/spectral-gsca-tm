@@ -42,7 +42,7 @@ loaded_installed <- suppressWarnings(suppressMessages(
 if (!loaded_installed) {
   rdir <- file.path(PKG_DIR, "R")
   for (f in list.files(rdir, pattern = "\\.R$", full.names = TRUE)) {
-    if (basename(f) == "egscatm_fit.R") next          # byte-identical duplicate
+    if (basename(f) == "sgscatm_fit.R") next          # byte-identical duplicate
     source(f)
   }
   cat("[setup] Loaded sgscatm from source in", rdir, "\n")

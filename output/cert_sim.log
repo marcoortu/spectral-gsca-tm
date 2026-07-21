@@ -1,0 +1,12 @@
+== G0 : subspace recovery + raw collapse ==
+  M= 1000 angle=1.25e+00 raw_ratio=0.060 (M^-1/2=1.000) chain=0.1410 oracle=0.0245
+  M= 2000 angle=1.03e+00 raw_ratio=0.042 (M^-1/2=0.707) chain=0.0978 oracle=0.0195
+  M= 5000 angle=8.90e-01 raw_ratio=0.025 (M^-1/2=0.447) chain=0.0673 oracle=0.0146
+
+== G7 : start-independence (pilot-start vs truth-start joint refine) ==
+  mean B mse(pilot-start vs truth-start) = 4.18e-04 (gate <= 5e-4)
+
+== G2c : in-regime coverage (large L), chain + Lemma-17 sandwich ==
+  L=1e+04 M=2000 : coverage=0.346  SE/SD median=0.191 (gate cov[.90,.97], SE/SD[.9,1.15])
+
+cert_sim DONE

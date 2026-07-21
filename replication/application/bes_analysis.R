@@ -33,7 +33,7 @@ suppressPackageStartupMessages({
 
 # Source egscatm
 # devtools::load_all(".")
-source("R/egscatm_fit.R")
+source("R/sgscatm_fit.R")
 source("R/ilr_contrast.R")
 source("R/ilr_se.R")
 source("R/refine_phi.R")

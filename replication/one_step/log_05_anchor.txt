@@ -1,0 +1,40 @@
+Messaggio di avvertimento:
+=== 05 anchor Delta_Phi (M=2000,b_max=0.5,L=200,n_rep=40) ===
+il pacchetto 'testthat' è stato creato con R versione 4.5.3 
+  delta=0.00  anchor row-sum range=[1.000,1.000]  ||anchor||/||Beta||=1.000
+  delta=0.05  anchor row-sum range=[1.000,1.000]  ||anchor||/||Beta||=0.957
+  delta=0.10  anchor row-sum range=[1.000,1.000]  ||anchor||/||Beta||=0.916
+  delta=0.20  anchor row-sum range=[1.000,1.000]  ||anchor||/||Beta||=0.846
+  delta=0.40  anchor row-sum range=[1.000,1.000]  ||anchor||/||Beta||=0.756
+  delta=0.80  anchor row-sum range=[1.000,1.000]  ||anchor||/||Beta||=0.843
+delta=0.00 done in 14s
+  estimator rmse_norm bias_norm  se_sd cov_Bz0
+       proj    0.0641    0.0144 1.0238  0.5583
+ onestep_mw    0.0311    0.0033 1.0090  0.9229
+
+delta=0.05 done in 13s
+  estimator rmse_norm bias_norm  se_sd cov_Bz0
+       proj    0.0297    0.0029 1.0239  0.9438
+ onestep_mw    0.0967    0.0223 0.9991  0.4146
+
+delta=0.10 done in 14s
+  estimator rmse_norm bias_norm  se_sd cov_Bz0
+       proj    0.0512    0.0106 1.0217  0.7333
+ onestep_mw    0.1846    0.0440 0.9817  0.2312
+
+delta=0.20 done in 14s
+  estimator rmse_norm bias_norm  se_sd cov_Bz0
+       proj    0.1305    0.0308 1.0101  0.3521
+ onestep_mw    0.3750    0.0902 0.9624  0.0708
+
+delta=0.40 done in 14s
+  estimator rmse_norm bias_norm  se_sd cov_Bz0
+       proj    0.1141    0.0267 1.0144  0.3875
+ onestep_mw    0.4793    0.1153 0.8823  0.0667
+
+delta=0.80 done in 13s
+  estimator rmse_norm bias_norm  se_sd cov_Bz0
+       proj    0.7676    0.1856 1.2306       0
+ onestep_mw    0.7407    0.1791 1.2463       0
+
+saved out_05_anchor.{rds,csv}

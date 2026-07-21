@@ -1,0 +1,32 @@
+[[1]]
+[1] TRUE
+
+[[2]]
+[1] TRUE
+
+[[3]]
+[1] TRUE
+
+[[4]]
+[1] TRUE
+
+[[5]]
+[1] TRUE
+
+[[6]]
+[1] TRUE
+
+[[7]]
+[1] TRUE
+
+[[8]]
+[1] TRUE
+
+M=1000 cov=0.491 SE/SD=0.163 excl=1.000 boot/sandwich=16.28 [2747s]
+M=5000 cov=0.598 SE/SD=0.128 excl=1.000 boot/sandwich=NaN [62s]
+    M  R coverage se_sd excl boot_over_sandwich
+ 1000 50    0.491 0.163    1               16.3
+ 5000 50    0.598 0.128    1                NaN
+
+T2-inreg-feasible: FAIL
+t2_inreg DONE
